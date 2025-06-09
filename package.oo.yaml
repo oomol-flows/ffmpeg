@@ -4,7 +4,6 @@ scripts:
   # eg: bootstrap: pip install pandas
   bootstrap: |
     pnpm install
-    pip install -r requirements.txt
     apt update && apt install -y openssh-client
     wget https://github.com/oomol/sshexec/releases/download/v1.0.6/installer.sh --output-document /tmp/installer.sh
     bash +x /tmp/installer.sh
