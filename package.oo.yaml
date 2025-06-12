@@ -10,8 +10,8 @@ scripts:
 dependencies:
   oomol-file: 0.0.9
 name: ffmpeg
-version: 0.1.4
+version: 0.1.5
 description: Video processing library based on fluent-ffmpeg package
 displayName: FFmpeg
-releaseNotes: fix bootstrap bug
+releaseNotes: upgrade ffmpeg installer.sh
 repository: https://github.com/oomol-flows/ffmpeg
