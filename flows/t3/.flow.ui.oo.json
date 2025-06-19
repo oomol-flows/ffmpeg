@@ -1,0 +1,31 @@
+{
+  "nodes": {
+    "video_filter#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 530,
+          "y": 402
+        }
+      }
+    },
+    "read_media_to_ffmpeg#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 60,
+          "y": 389.5
+        }
+      }
+    },
+    "save_video#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1093,
+          "y": 420.5
+        }
+      }
+    }
+  }
+}

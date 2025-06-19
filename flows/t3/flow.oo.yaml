@@ -1,0 +1,32 @@
+title: test_videofilter
+nodes:
+  - node_id: video_filter#1
+    title: "Video Filter #1"
+    inputs_from:
+      - handle: ffmpeg_source
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: ffmpeg_source
+      - handle: videoFilter
+        value: crop=ih*4/3:ih
+    task: self::video_filter
+  - node_id: read_media_to_ffmpeg#1
+    title: "Read Media To FFmpeg #1"
+    inputs_from:
+      - handle: video_source
+        value: /oomol-driver/oomol-storage/tmp.mp4
+    task: self::read_media_to_ffmpeg
+  - node_id: save_video#1
+    title: "Save Video #1"
+    inputs_from:
+      - handle: video_source
+        from_node:
+          - node_id: video_filter#1
+            output_handle: ffmpeg_source
+      - handle: file_name
+        value: null
+      - handle: format
+        value: null
+      - handle: save_address
+        value: null
+    task: self::save_video

@@ -1,0 +1,22 @@
+ui:
+  default_width: 450
+inputs_def:
+  - handle: ffmpeg_source
+    description: Input
+    json_schema:
+      contentMediaType: oomol/var
+  - handle: videoFilter
+    json_schema:
+      type: string
+outputs_def:
+  - handle: ffmpeg_source
+    description: Output
+    json_schema:
+      contentMediaType: oomol/var
+executor:
+  name: nodejs
+  options:
+    entry: main.ts
+    spawn: false
+title: Video Filter
+icon: ":skill-icons:typescript:"
