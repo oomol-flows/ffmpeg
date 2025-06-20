@@ -32,7 +32,6 @@ inputs_def:
   - handle: save_address
     json_schema:
       type: string
-      minLength: 1
       ui:widget: dir
     value:
     nullable: true
@@ -41,7 +40,6 @@ outputs_def:
     description: Output
     json_schema:
       type: string
-      minLength: 1
       ui:widget: file
 icon: ":carbon:document-audio:"
 ui:

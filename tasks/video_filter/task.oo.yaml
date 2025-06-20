@@ -19,4 +19,4 @@ executor:
     entry: main.ts
     spawn: false
 title: Video Filter
-icon: ":skill-icons:typescript:"
+icon: ":carbon:filter:"
