@@ -10,8 +10,8 @@ type Inputs = Readonly<{
 
 type Outputs = Readonly<{ file_adress: string }>;
 
-import { extractBaseName } from "../../utils/get-file-name";
-import { getInputPath } from "../../utils/get-input-path";
+import { extractBaseName } from "~/utils/get-file-name";
+import { getInputPath } from "~/utils/get-input-path";
 
 export default async function (params: Inputs, context: Context): Promise<Outputs> {
   const inputPath = getInputPath(params.audio_source);

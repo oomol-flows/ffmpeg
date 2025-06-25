@@ -1,6 +1,6 @@
 import type { Context } from "@oomol/types/oocana";
 import {FfmpegCommand} from "fluent-ffmpeg";
-import { getInputPath } from "../../utils/get-input-path";
+import { getInputPath } from "~/utils/get-input-path";
 
 type Inputs = Readonly<{ 
   ffmpeg_source: FfmpegCommand,

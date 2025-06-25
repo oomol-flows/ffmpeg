@@ -14,7 +14,6 @@ nodes:
     title: "Read Media To FFmpeg #1"
     inputs_from:
       - handle: video_source
-        value: /oomol-driver/oomol-storage/tmp.mp4
     task: self::read_media_to_ffmpeg
   - node_id: save_video#1
     title: "Save Video #1"

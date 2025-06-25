@@ -1,7 +1,7 @@
 import type { Context } from "@oomol/types/oocana";
 import ffmpeg, { FfmpegCommand } from "fluent-ffmpeg";
 import { promisify } from "node:util"
-import { getInputPath } from "../../utils/get-input-path";
+import { getInputPath } from "~/utils/get-input-path";
 const ffprobe = promisify(ffmpeg.ffprobe);
 
 type Inputs = {

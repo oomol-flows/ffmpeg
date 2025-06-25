@@ -16,20 +16,6 @@ nodes:
         from_node:
           - node_id: read_media_to_ffmpeg#1
             output_handle: ffmpeg_source
-  - task: self::save_video
-    title: "Save Video #1"
-    node_id: save_video#1
-    inputs_from:
-      - handle: video_source
-        from_node:
-          - node_id: audio_video_separation#1
-            output_handle: only_video
-      - handle: file_name
-        value:
-      - handle: format
-        value:
-      - handle: save_address
-        value:
   - task: self::save_audio
     title: "Save Audio #1"
     node_id: save_audio#1
