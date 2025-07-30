@@ -1,0 +1,115 @@
+nodes:
+  - node_id: read_media_to_ffmpeg#1
+    title: "Read Media To FFmpeg #1"
+    inputs_from:
+      - handle: video_source
+        from_flow:
+          - input_handle: video_source
+    task: self::read_media_to_ffmpeg
+  - node_id: media_intercept#1
+    title: "Media Intercept #1"
+    inputs_from:
+      - handle: ffmpeg_source
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: ffmpeg_source
+      - handle: start_time
+        from_flow:
+          - input_handle: start_time
+      - handle: end_time
+        from_flow:
+          - input_handle: end_time
+    task: self::media_intercept
+  - node_id: save_video#1
+    title: "Save Video #1"
+    inputs_from:
+      - handle: video_source
+        from_node:
+          - node_id: media_intercept#1
+            output_handle: ffmpeg_source
+      - handle: file_name
+        value: null
+        from_flow:
+          - input_handle: file_name
+      - handle: format
+        value: null
+        from_flow:
+          - input_handle: format
+      - handle: save_address
+        value: null
+        from_flow:
+          - input_handle: save_address
+    task: self::save_video
+inputs_def:
+  - handle: video_source
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: Input
+    executor_name: nodejs
+  - handle: start_time
+    json_schema:
+      type: number
+      ui:options:
+        step: 1
+      minimum: 0
+    nullable: false
+    executor_name: nodejs
+  - handle: end_time
+    json_schema:
+      type: number
+      ui:options:
+        step: 1
+      minimum: 0
+    nullable: false
+    executor_name: nodejs
+  - handle: file_name
+    json_schema:
+      type: string
+    nullable: true
+    value:
+    executor_name: nodejs
+  - handle: format
+    json_schema:
+      enum:
+        - mp4
+        - wmv
+        - mov
+        - gif
+        - flv
+        - avi
+      ui:options:
+        labels:
+          - MP4
+          - WMV
+          - MOV
+          - GIF
+          - FLV
+          - AVI
+    nullable: true
+    value:
+    executor_name: nodejs
+  - handle: save_address
+    json_schema:
+      type: string
+      ui:widget: dir
+    nullable: true
+    value:
+    executor_name: nodejs
+outputs_def:
+  - handle: file_adress
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: Output
+    executor_name: nodejs
+outputs_from:
+  - handle: file_adress
+    from_node:
+      - node_id: save_video#1
+        output_handle: file_adress
+description: 输入视频文件地址，截取开始时间，截取结束时间，输出处理后的视频文件
+title: Intercept Video
+icon: ":carbon:cut-out:"

@@ -1,0 +1,94 @@
+nodes:
+  - node_id: read_media_to_ffmpeg#1
+    title: "Read Media To FFmpeg #1"
+    inputs_from:
+      - handle: video_source
+        from_flow:
+          - input_handle: video_source
+    task: self::read_media_to_ffmpeg
+  - node_id: audio_video_separation#1
+    title: "Audio Video Separation #1"
+    inputs_from:
+      - handle: ffmpeg_source
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: ffmpeg_source
+    task: self::audio_video_separation
+  - node_id: save_audio#1
+    title: "Save Audio #1"
+    inputs_from:
+      - handle: audio_source
+        from_node:
+          - node_id: audio_video_separation#1
+            output_handle: only_audio
+      - handle: file_name
+        value: null
+        from_flow:
+          - input_handle: file_name
+      - handle: format
+        value: null
+        from_flow:
+          - input_handle: format
+      - handle: save_address
+        value: null
+        from_flow:
+          - input_handle: save_address
+    task: self::save_audio
+inputs_def:
+  - handle: video_source
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: Input
+    executor_name: nodejs
+  - handle: file_name
+    json_schema:
+      type: string
+    nullable: true
+    value:
+    executor_name: nodejs
+  - handle: format
+    json_schema:
+      type: string
+      enum:
+        - mp3
+        - aac
+        - wav
+        - flac
+        - wma
+        - m4a
+      ui:options:
+        labels:
+          - MP3
+          - AAC
+          - " WAV"
+          - FLAC
+          - WMA
+          - M4A
+    nullable: true
+    value:
+    executor_name: nodejs
+  - handle: save_address
+    json_schema:
+      type: string
+      ui:widget: dir
+    nullable: true
+    value:
+    executor_name: nodejs
+outputs_def:
+  - handle: file_adress
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: Output
+    executor_name: nodejs
+outputs_from:
+  - handle: file_adress
+    from_node:
+      - node_id: save_audio#1
+        output_handle: file_adress
+title: Get Audio from Video
+description: 传入一个视频的地址，获取音频文件，存入目标地址
+icon: ":carbon:mobile-audio:"

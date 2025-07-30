@@ -9,6 +9,7 @@ type Inputs = {
 }
 type Outputs = {
   ffmpeg_source: FfmpegCommand;
+  meta_data: string;
 }
 
 export default async function(
@@ -25,5 +26,5 @@ export default async function(
     })
   }
 
-  return { ffmpeg_source: ffmpeg_source };
+  return { ffmpeg_source: ffmpeg_source, meta_data: JSON.stringify(metadata) as string };
 };

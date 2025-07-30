@@ -1,0 +1,46 @@
+{
+  "nodes": {
+    "read_media_to_ffmpeg#1": {
+      "rfNode": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "media_intercept#1": {
+      "rfNode": {
+        "position": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    "save_video#1": {
+      "rfNode": {
+        "position": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -89.71583080212875,
+          "y": -134.81509852022907
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1000,
+          "y": -100
+        }
+      }
+    }
+  }
+}

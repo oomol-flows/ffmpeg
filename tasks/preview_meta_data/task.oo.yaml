@@ -8,6 +8,9 @@ outputs_def:
     description: Output
     json_schema:
       contentMediaType: oomol/var
+  - handle: meta_data
+    json_schema:
+      type: string
 ui:
   default_width: 450
 executor:

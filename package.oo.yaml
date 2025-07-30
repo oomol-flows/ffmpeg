@@ -10,8 +10,8 @@ scripts:
 dependencies:
   oomol-file: 0.0.9
 name: ffmpeg
-version: 0.1.10
+version: 0.1.11
 description: Video processing library based on fluent-ffmpeg package
 displayName: FFmpeg
-releaseNotes: fix utils bug
+releaseNotes: update new block for ai
 repository: https://github.com/oomol-flows/ffmpeg

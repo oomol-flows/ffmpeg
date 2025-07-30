@@ -1,0 +1,39 @@
+nodes:
+  - node_id: read_media_to_ffmpeg#1
+    title: "Read Media To FFmpeg #1"
+    inputs_from:
+      - handle: video_source
+        value: "/oomol-driver/oomol-storage/【纯享版】刘宇宁“爱情保安”爆改“初恋杀手”！搭档姚晓棠一曲《座位》将青春时期无疾而终\
+          的爱唱绝了！ #天赐的声音6 EP2 20250425.mp4"
+        from_flow:
+          - input_handle: video_source
+    task: self::read_media_to_ffmpeg
+  - node_id: preview_meta_data#1
+    title: "Preview Meta Data #1"
+    inputs_from:
+      - handle: ffmpeg_source
+        from_node:
+          - node_id: read_media_to_ffmpeg#1
+            output_handle: ffmpeg_source
+    task: self::preview_meta_data
+inputs_def:
+  - handle: video_source
+    json_schema:
+      type: string
+      ui:widget: file
+    nullable: false
+    description: Input
+    executor_name: nodejs
+outputs_def:
+  - handle: meta_data
+    json_schema:
+      type: string
+    nullable: false
+    executor_name: nodejs
+outputs_from:
+  - handle: meta_data
+    from_node:
+      - node_id: preview_meta_data#1
+        output_handle: meta_data
+description: 输入一个媒体文件地址，输出元信息的 json
+icon: ":carbon:ibm-knowledge-catalog-premium:"

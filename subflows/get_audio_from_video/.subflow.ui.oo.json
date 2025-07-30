@@ -1,0 +1,47 @@
+{
+  "nodes": {
+    "read_media_to_ffmpeg#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 486,
+          "y": 0
+        }
+      }
+    },
+    "audio_video_separation#1": {
+      "rfNode": {
+        "position": {
+          "x": 902,
+          "y": 13.5
+        }
+      }
+    },
+    "save_audio#1": {
+      "rfNode": {
+        "position": {
+          "x": 1388,
+          "y": 76
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": 0,
+          "y": 134.5
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1874,
+          "y": 175
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "nodes": {
+    "read_media_to_ffmpeg#1": {
+      "rfNode": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "preview_meta_data#1": {
+      "rfNode": {
+        "position": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -489.6048850166332,
+          "y": -192.62795121936304
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1000,
+          "y": -100
+        }
+      }
+    }
+  }
+}
