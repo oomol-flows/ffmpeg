@@ -37,3 +37,4 @@ outputs_from:
         output_handle: meta_data
 description: 输入一个媒体文件地址，输出元信息的 json
 icon: ":carbon:ibm-knowledge-catalog-premium:"
+title: Get Media Metadata

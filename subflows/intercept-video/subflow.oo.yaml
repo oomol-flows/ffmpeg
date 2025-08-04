@@ -42,11 +42,11 @@ nodes:
     task: self::save_video
 inputs_def:
   - handle: video_source
+    description: Input
     json_schema:
       type: string
       ui:widget: file
     nullable: false
-    description: Input
     executor_name: nodejs
   - handle: start_time
     json_schema:
@@ -67,8 +67,8 @@ inputs_def:
   - handle: file_name
     json_schema:
       type: string
-    nullable: true
     value:
+    nullable: true
     executor_name: nodejs
   - handle: format
     json_schema:
@@ -87,15 +87,15 @@ inputs_def:
           - GIF
           - FLV
           - AVI
-    nullable: true
     value:
+    nullable: true
     executor_name: nodejs
   - handle: save_address
     json_schema:
       type: string
       ui:widget: dir
-    nullable: true
     value:
+    nullable: true
     executor_name: nodejs
 outputs_def:
   - handle: file_adress

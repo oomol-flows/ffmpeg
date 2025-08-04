@@ -1,0 +1,12 @@
+{
+  "nodes": {
+    "get_audio_from_video#1": {
+      "rfNode": {
+        "position": {
+          "x": 458,
+          "y": 100
+        }
+      }
+    }
+  }
+}

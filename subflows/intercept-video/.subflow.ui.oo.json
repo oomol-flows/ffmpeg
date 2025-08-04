@@ -3,7 +3,7 @@
     "read_media_to_ffmpeg#1": {
       "rfNode": {
         "position": {
-          "x": 0,
+          "x": 486,
           "y": 0
         }
       }
@@ -11,16 +11,16 @@
     "media_intercept#1": {
       "rfNode": {
         "position": {
-          "x": 600,
-          "y": 0
+          "x": 972,
+          "y": 89.5
         }
       }
     },
     "save_video#1": {
       "rfNode": {
         "position": {
-          "x": 1200,
-          "y": 0
+          "x": 1458,
+          "y": 165.5
         }
       }
     }
@@ -29,16 +29,16 @@
     "input": {
       "rfNode": {
         "position": {
-          "x": -89.71583080212875,
-          "y": -134.81509852022907
+          "x": 0,
+          "y": 197
         }
       }
     },
     "output": {
       "rfNode": {
         "position": {
-          "x": 1000,
-          "y": -100
+          "x": 1944,
+          "y": 264.5
         }
       }
     }

@@ -7,12 +7,7 @@ nodes:
         from_node:
           - node_id: list_files_from_folder#1
             output_handle: file_paths
-      - handle: name
-        value:
-      - handle: format
-        value:
       - handle: save_address
-        value:
   - task: oomol-file::list_files_from_folder
     title: "List files from folder #1"
     node_id: list_files_from_folder#1
@@ -24,3 +19,25 @@ nodes:
         value: false
       - handle: absolute_path
         value: true
+  - node_id: media_merge#1
+    title: "Media Merge #1"
+    inputs_from:
+      - handle: video_file
+      - handle: audio_file
+        value: null
+      - handle: srt
+        value: null
+      - handle: formate
+        value: null
+      - handle: file_name
+        value: null
+      - handle: save_address
+        value: null
+    task: self::media_merge
+  - node_id: merged_audio#1
+    title: "Merged Audio #1"
+    inputs_from:
+      - handle: audio_files
+      - handle: save_address
+        value: null
+    task: self::merged_audio

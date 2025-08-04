@@ -4,35 +4,16 @@ inputs_def:
     json_schema:
       contentMediaType: oomol/var
     kind: audio
-  - handle: file_name
-    json_schema:
-      type: string
-    value:
-    nullable: true
-  - handle: format
-    json_schema:
-      type: string
-      enum:
-        - mp3
-        - aac
-        - wav
-        - flac
-        - wma
-        - m4a
-      ui:options:
-        labels:
-          - MP3
-          - AAC
-          - " WAV"
-          - FLAC
-          - WMA
-          - M4A
-    value:
-    nullable: true
   - handle: save_address
     json_schema:
       type: string
-      ui:widget: dir
+      ui:widget: save
+      ui:options:
+        excludeAll: true
+        filters:
+          - name: MP3
+            extensions:
+              - mp3
     value:
     nullable: true
 outputs_def:

@@ -19,9 +19,21 @@ export default async function (params: Inputs, context: Context): Promise<Output
   const origin_file_name = extractBaseName(inputPath);
   const file_name = params.file_name ? params.file_name : origin_file_name;
   const formate = params.format ? params.format : "mp4";
-  const save_address = params.save_address 
-    ? `${params.save_address}/${file_name}.${formate}` 
-    : `${context.sessionDir}/output-${file_name}.${formate}` // Add 'output-' prefix to avoid overwriting input
+  
+  // Check if save_address already has a file extension
+  let save_address: string;
+  if (params.save_address) {
+    // If save_address already ends with a file extension, use it as is
+    if (/\.[a-zA-Z0-9]+$/.test(params.save_address)) {
+      save_address = params.save_address;
+    } else {
+      // Otherwise, append the filename and format
+      save_address = `${params.save_address}/${file_name}.${formate}`;
+    }
+  } else {
+    // Default behavior when save_address is not provided
+    save_address = `${context.sessionDir}/output-${file_name}.${formate}`; // Add 'output-' prefix to avoid overwriting input
+  }
   try {
     await new Promise((resolve, reject) => {
       params.video_source
