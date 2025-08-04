@@ -20,8 +20,8 @@ export default async function (
     const inputPath = getInputPath(params.ffmpeg_source);
     const cloned_ffmpeg = ffmpeg_source.clone().input(inputPath);
     const my_duration = end_time - start_time;
-    cloned_ffmpeg.setStartTime(start_time).duration(my_duration)
+    
+    cloned_ffmpeg.seekInput(start_time).setDuration(my_duration);
+    
     return {ffmpeg_source: cloned_ffmpeg}
 };
-
-

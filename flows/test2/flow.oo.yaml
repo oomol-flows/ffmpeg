@@ -41,3 +41,19 @@ nodes:
       - handle: save_address
         value: null
     task: self::merged_audio
+  - node_id: intercept-video#1
+    title: "Intercept Video #1"
+    inputs_from:
+      - handle: video_source
+        value: /oomol-driver/desktop/一口气了解稳定币.mp4
+      - handle: start_time
+        value: 100
+      - handle: end_time
+        value: 130
+      - handle: file_name
+        value: 一口气了解稳定币.mp4
+      - handle: format
+        value: null
+      - handle: save_address
+        value: null
+    subflow: self::intercept-video

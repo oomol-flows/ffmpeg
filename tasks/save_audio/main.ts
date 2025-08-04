@@ -3,6 +3,7 @@ import { FfmpegCommand } from "fluent-ffmpeg";
 
 type Inputs = Readonly<{
   audio_source: FfmpegCommand;
+  format: string | null;
   save_address: string | null;
 }>;
 
@@ -18,16 +19,22 @@ export default async function (params: Inputs, context: Context): Promise<Output
   }
 
   const origin_file_name = extractBaseName(inputPath);
+  const format = params.format ? params.format : "mp3";
+  
   let save_address: string;
   
   if (params.save_address) {
-    if (params.save_address.includes('.')) {
-      save_address = params.save_address;
+    if (/\.[a-zA-Z0-9]+$/.test(params.save_address)) {
+      if (params.format) {
+        save_address = params.save_address.replace(/\.[a-zA-Z0-9]+$/, `.${format}`);
+      } else {
+        save_address = params.save_address;
+      }
     } else {
-      save_address = `${params.save_address}.mp3`;
+      save_address = `${params.save_address}.${format}`;
     }
   } else {
-    save_address = `${context.sessionDir}/${origin_file_name}.mp3`;
+    save_address = `${context.sessionDir}/${origin_file_name}.${format}`;
   }
 
   console.log(`Input Path: ${inputPath}`);
