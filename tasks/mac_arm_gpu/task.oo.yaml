@@ -23,3 +23,4 @@ outputs_def:
       contentMediaType: oomol/var
 title: Mac Arm GPU
 icon: ":simple-icons:apple:"
+tool: true

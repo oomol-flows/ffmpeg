@@ -16,12 +16,9 @@ export default async function (
     params: Inputs,
     context: Context<Inputs, Outputs>
 ): Promise<Partial<Outputs> | undefined | void> {
-    const { ffmpeg_source, start_time, end_time } = params;
-    const inputPath = getInputPath(params.ffmpeg_source);
-    const cloned_ffmpeg = ffmpeg_source.clone().input(inputPath);
+    const { start_time, end_time } = params;
+    // const inputPath = getInputPath(params.ffmpeg_source);
     const my_duration = end_time - start_time;
     
-    cloned_ffmpeg.seekInput(start_time).setDuration(my_duration);
-    
-    return {ffmpeg_source: cloned_ffmpeg}
+    return {ffmpeg_source: params.ffmpeg_source.seekInput(start_time).setDuration(my_duration)}
 };

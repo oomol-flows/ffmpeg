@@ -1,0 +1,14 @@
+nodes:
+  - node_id: intercept-video#1
+    title: "Intercept Video #1"
+    inputs_from:
+      - handle: video_source
+      - handle: start_time
+      - handle: end_time
+      - handle: file_name
+        value: null
+      - handle: format
+        value: null
+      - handle: save_address
+        value: /oomol-driver/desktop/table
+    subflow: self::intercept-video

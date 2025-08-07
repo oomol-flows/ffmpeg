@@ -29,3 +29,4 @@ executor:
     spawn: false
 title: Media Intercept
 icon: ":carbon:cut:"
+tool: true
