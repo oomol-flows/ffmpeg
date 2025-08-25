@@ -24,3 +24,4 @@ outputs_def:
 title: Mac Arm GPU
 icon: ":simple-icons:apple:"
 tool: true
+private: true

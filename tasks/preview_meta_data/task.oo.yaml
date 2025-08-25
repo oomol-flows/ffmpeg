@@ -20,3 +20,4 @@ executor:
     entry: main.ts
 title: Preview Meta Data
 icon: ":carbon:identification:"
+private: true

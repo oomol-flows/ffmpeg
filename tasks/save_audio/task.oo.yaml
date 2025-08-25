@@ -31,3 +31,4 @@ executor:
     spawn: false
     entry: main.ts
 title: Save Audio
+private: true

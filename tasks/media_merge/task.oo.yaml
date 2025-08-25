@@ -1,3 +1,5 @@
+description: 将视频文件、音频文件和字幕文件合并成指定格式的媒体文件。支持多种输出格式包括 MP4、WMV、MOV、GIF、FLV 和
+  AVI，可自定义输出文件名和保存位置。
 inputs_def:
   - handle: video_file
     description: Input

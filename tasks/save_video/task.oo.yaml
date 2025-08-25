@@ -49,3 +49,4 @@ executor:
     entry: main.ts
 title: Save Video
 icon: ":carbon:document-video:"
+private: true

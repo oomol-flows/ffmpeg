@@ -23,3 +23,4 @@ outputs_def:
       type: string
 title: Windows Nvidia
 icon: ":simple-icons:nvidia:"
+private: true

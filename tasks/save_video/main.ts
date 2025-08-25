@@ -17,7 +17,14 @@ export default async function (params: Inputs, context: Context): Promise<Output
 
   const inputPath = getInputPath(params.video_source);
   const origin_file_name = extractBaseName(inputPath);
-  let file_name = params.file_name ? params.file_name : origin_file_name;
+  let file_name: string;
+  if (params.file_name) {
+    file_name = params.file_name;
+  } else {
+    // 生成6位随机数
+    const randomNum = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+    file_name = `${origin_file_name}_${randomNum}`;
+  }
   const formate = params.format ? params.format : "mp4";
 
   if (file_name && /\.[a-zA-Z0-9]+$/.test(file_name)) {

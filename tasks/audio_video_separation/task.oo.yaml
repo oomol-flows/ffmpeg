@@ -48,3 +48,4 @@ executor:
     spawn: false
     entry: main.ts
 title: Audio Video Separation
+private: true

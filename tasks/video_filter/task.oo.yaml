@@ -20,3 +20,4 @@ executor:
     spawn: false
 title: Video Filter
 icon: ":carbon:filter:"
+private: true
