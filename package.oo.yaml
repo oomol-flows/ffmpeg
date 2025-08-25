@@ -10,8 +10,8 @@ scripts:
 dependencies:
   oomol-file: 0.0.9
 name: ffmpeg
-version: 0.1.14
+version: 0.1.15
 description: Video processing library based on fluent-ffmpeg package
 displayName: FFmpeg
-releaseNotes: fix bug
+releaseNotes: fix cut video bug
 repository: https://github.com/oomol-flows/ffmpeg
