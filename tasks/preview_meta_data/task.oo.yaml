@@ -1,14 +1,21 @@
+description: Extract and display comprehensive metadata information from media
+  files including format details, codec information, duration, bitrate,
+  resolution, and other technical specifications
+title: Preview Meta Data
+icon: ":carbon:identification:"
+private: true
 inputs_def:
   - handle: ffmpeg_source
-    description: Input
+    description: FFmpeg source object to extract metadata from
     json_schema:
       contentMediaType: oomol/var
 outputs_def:
   - handle: ffmpeg_source
-    description: Output
+    description: Original FFmpeg source object (pass-through)
     json_schema:
       contentMediaType: oomol/var
   - handle: meta_data
+    description: Comprehensive metadata information as formatted text
     json_schema:
       type: string
 ui:
@@ -18,6 +25,3 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Preview Meta Data
-icon: ":carbon:identification:"
-private: true

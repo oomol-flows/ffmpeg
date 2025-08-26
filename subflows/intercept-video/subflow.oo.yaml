@@ -110,6 +110,7 @@ outputs_from:
     from_node:
       - node_id: save_video#1
         output_handle: file_adress
-description: 输入视频文件地址，截取开始时间，截取结束时间，输出处理后的视频文件
+description: Extract specific video segments by defining start and end
+  timestamps, creating trimmed video clips from source files
 title: Intercept Video
 icon: ":carbon:cut-out:"

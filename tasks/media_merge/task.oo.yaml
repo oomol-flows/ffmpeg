@@ -1,18 +1,21 @@
-description: 将视频文件、音频文件和字幕文件合并成指定格式的媒体文件。支持多种输出格式包括 MP4、WMV、MOV、GIF、FLV 和
-  AVI，可自定义输出文件名和保存位置。
+description: Merge video, audio, and subtitle files into a single media file
+  with customizable output format and quality settings
+title: Media Merge
 inputs_def:
   - handle: video_file
-    description: Input
+    description: Primary video file to merge with audio and subtitles
     json_schema:
       type: string
       ui:widget: file
   - handle: audio_file
+    description: Audio file to merge with the video (optional)
     json_schema:
       type: string
       ui:widget: file
     value:
     nullable: true
   - handle: srt
+    description: Subtitle file in SRT format to embed in the output (optional)
     json_schema:
       type: string
       ui:widget: file
@@ -61,5 +64,4 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Media Merge
 icon: ":carbon:merge:"

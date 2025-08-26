@@ -22,7 +22,7 @@ inputs_def:
       type: string
       ui:widget: file
     nullable: false
-    description: Input
+    description: Input video file path for metadata extraction
     executor_name: nodejs
 outputs_def:
   - handle: meta_data
@@ -35,6 +35,7 @@ outputs_from:
     from_node:
       - node_id: preview_meta_data#1
         output_handle: meta_data
-description: 输入一个媒体文件地址，输出元信息的 json
+description: Extract and display comprehensive metadata information from video
+  files including format, codec, duration, bitrate, and other technical details
 icon: ":carbon:ibm-knowledge-catalog-premium:"
 title: Get Media Metadata

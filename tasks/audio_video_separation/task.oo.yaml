@@ -1,5 +1,10 @@
+description: Separate audio and video streams from multimedia files, creating
+  independent audio-only and video-only outputs for individual processing needs
+title: Audio Video Separation
 inputs_def:
   - handle: ffmpeg_source
+    description: FFmpeg source object containing both audio and video streams to be
+      separated
     json_schema:
       contentMediaType: oomol/var
       type:
@@ -13,7 +18,7 @@ inputs_def:
       ui:widget: any
 outputs_def:
   - handle: only_video
-    description: Output
+    description: Video-only stream without audio
     json_schema:
       contentMediaType: oomol/var
       type:
@@ -27,6 +32,7 @@ outputs_def:
       ui:widget: any
     kind: video
   - handle: only_audio
+    description: Audio-only stream without video
     json_schema:
       contentMediaType: oomol/var
       type:
@@ -47,5 +53,4 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Audio Video Separation
 private: true

@@ -1,20 +1,25 @@
+description: Read and load video files into FFmpeg format for processing,
+  supporting various video formats and codecs
+title: Read Media To FFmpeg
 inputs_def:
   - handle: video_source
-    description: Input
+    description: Path to the video file to be loaded into FFmpeg
     json_schema:
       type: string
       ui:widget: file
 outputs_def:
   - handle: ffmpeg_source
-    description: Output
+    description: FFmpeg-compatible source object ready for processing
     json_schema:
       contentMediaType: oomol/var
   - handle: file_address
+    description: Absolute file path of the loaded video
     json_schema:
       type: string
       minLength: 1
       ui:widget: file
   - handle: file_name
+    description: Original filename of the loaded video
     json_schema:
       type: string
 icon: ":carbon:port-input:"
@@ -25,5 +30,4 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Read Media To FFmpeg
 private: true

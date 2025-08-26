@@ -1,12 +1,17 @@
+description: Optimize video encoding for Apple Silicon Macs using
+  hardware-accelerated GPU encoding for improved performance and efficiency
+title: Mac ARM GPU
 executor:
   name: nodejs
   options:
     entry: main.ts
 inputs_def:
   - handle: ffmpeg_source
+    description: FFmpeg source object to be encoded with Mac ARM GPU acceleration
     json_schema:
       contentMediaType: oomol/var
   - handle: encodeType
+    description: Video codec type for Mac ARM GPU encoding
     json_schema:
       enum:
         - h264
@@ -19,9 +24,7 @@ inputs_def:
     nullable: true
 outputs_def:
   - handle: ffmpeg_source
-    json_schema:
-      contentMediaType: oomol/var
-title: Mac Arm GPU
+    description: FFmpeg source optimized for Mac ARM GPU processing
 icon: ":simple-icons:apple:"
 tool: true
 private: true

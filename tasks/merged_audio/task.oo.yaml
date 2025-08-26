@@ -1,16 +1,22 @@
+description: Merge multiple audio files into a single audio track with
+  customizable output format and filename
+title: Merged Audio
+icon: ":carbon:audio-console:"
 inputs_def:
   - handle: audio_files
-    description: Input
+    description: Array of audio file paths to be merged sequentially
     json_schema:
       type: array
       items:
         type: string
   - handle: name
+    description: Custom filename for the merged audio output (optional)
     json_schema:
       type: string
     value:
     nullable: true
   - handle: format
+    description: Output audio format selection
     json_schema:
       enum:
         - mp3
@@ -38,5 +44,3 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Merged Audio
-icon: ":carbon:audio-console:"

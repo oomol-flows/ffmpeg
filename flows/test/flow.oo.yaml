@@ -1,8 +1,2 @@
 nodes:
-  - node_id: get_audio_from_video#1
-    title: "Get Audio from Video #1"
-    inputs_from:
-      - handle: video_source
-      - handle: save_address
-        value:
-    subflow: self::get_audio_from_video
+  []

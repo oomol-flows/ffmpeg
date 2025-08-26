@@ -1,11 +1,14 @@
+description: Create a deep copy of FFmpeg source object to enable independent
+  processing without affecting the original source
+title: Cloned FFmpeg
 inputs_def:
   - handle: ffmpeg_source
-    description: Input
+    description: Original FFmpeg source object to be cloned
     json_schema:
       contentMediaType: oomol/var
 outputs_def:
   - handle: cloned_ffmpeg
-    description: Output
+    description: Independent copy of the FFmpeg source object
     json_schema:
       contentMediaType: oomol/var
 ui:
@@ -15,6 +18,5 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Cloned FFmpeg
 icon: ":carbon:copy:"
 private: true

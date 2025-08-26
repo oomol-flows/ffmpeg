@@ -1,17 +1,22 @@
+description: Extract specific video segments by defining precise start and end
+  timestamps, creating trimmed clips from source media
+title: Media Intercept
 ui:
   default_width: 450
 inputs_def:
   - handle: ffmpeg_source
-    description: Input
+    description: FFmpeg source object to extract segments from
     json_schema:
       contentMediaType: oomol/var
   - handle: start_time
+    description: Start time in seconds for the segment extraction
     json_schema:
       type: number
       ui:options:
         step: 1
       minimum: 0
   - handle: end_time
+    description: End time in seconds for the segment extraction
     json_schema:
       type: number
       ui:options:
@@ -19,7 +24,7 @@ inputs_def:
       minimum: 0
 outputs_def:
   - handle: ffmpeg_source
-    description: Output
+    description: Trimmed FFmpeg source containing the extracted segment
     json_schema:
       contentMediaType: oomol/var
 executor:
@@ -27,7 +32,6 @@ executor:
   options:
     entry: main.ts
     spawn: false
-title: Media Intercept
 icon: ":carbon:cut:"
 tool: true
 private: true

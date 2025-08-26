@@ -1,10 +1,14 @@
+description: Save processed audio data to file system with customizable output
+  format, quality settings, and destination path
+title: Save Audio
 inputs_def:
   - handle: audio_source
-    description: Input
+    description: Processed audio source to be saved
     json_schema:
       contentMediaType: oomol/var
     kind: audio
   - handle: save_address
+    description: Destination file path for saving the audio file
     json_schema:
       type: string
       ui:widget: save
@@ -18,7 +22,7 @@ inputs_def:
     nullable: true
 outputs_def:
   - handle: file_adress
-    description: Output
+    description: Absolute path of the saved audio file
     json_schema:
       type: string
       ui:widget: file
@@ -30,5 +34,4 @@ executor:
   options:
     spawn: false
     entry: main.ts
-title: Save Audio
 private: true

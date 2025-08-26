@@ -1,12 +1,18 @@
+description: Optimize video encoding for Windows systems with NVIDIA GPUs using
+  hardware-accelerated NVENC encoding for faster processing and better
+  performance
+title: Windows NVIDIA
 executor:
   name: nodejs
   options:
     entry: main.ts
 inputs_def:
   - handle: ffmpeg_source
+    description: FFmpeg source object to be encoded with NVIDIA GPU acceleration
     json_schema:
       contentMediaType: oomol/var
   - handle: encodeType
+    description: Video codec type for NVIDIA GPU encoding
     json_schema:
       enum:
         - h264
@@ -19,8 +25,6 @@ inputs_def:
     value:
 outputs_def:
   - handle: output
-    json_schema:
-      type: string
-title: Windows Nvidia
+    description: FFmpeg source optimized for Windows NVIDIA GPU processing
 icon: ":simple-icons:nvidia:"
 private: true
