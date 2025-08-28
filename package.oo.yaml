@@ -5,7 +5,7 @@ scripts:
   bootstrap: |
     pnpm install 
     apt update && apt install -y openssh-client
-    wget https://static.oomol.com/sshexec/v1.0.10/installer.sh --output-document /tmp/installer.sh
+    wget https://static.oomol.com/sshexec/v1.0.12/installer.sh --output-document /tmp/installer.sh
     bash +x /tmp/installer.sh
 dependencies:
   oomol-file: 0.0.9
