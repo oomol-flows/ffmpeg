@@ -1,0 +1,78 @@
+inputs_def:
+  - handle: audio_file
+    description: "Input audio file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+              - wma
+        excludeAll: true
+    nullable: false
+
+  - handle: start_time
+    description: "Start time in seconds"
+    json_schema:
+      type: number
+      minimum: 0
+    value: 0
+    nullable: false
+
+  - handle: duration
+    description: "Duration in seconds (0 = to end of audio)"
+    json_schema:
+      type: number
+      minimum: 0
+    value: 30
+    nullable: false
+
+  - handle: output_format
+    description: "Output audio format"
+    json_schema:
+      type: string
+      enum: ["mp3", "wav", "aac", "flac", "ogg"]
+    value: "mp3"
+    nullable: false
+
+outputs_def:
+  - handle: trimmed_audio
+    description: "Trimmed audio file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP3 Files
+            extensions:
+              - mp3
+          - name: WAV Files
+            extensions:
+              - wav
+          - name: AAC Files
+            extensions:
+              - aac
+          - name: FLAC Files
+            extensions:
+              - flac
+          - name: OGG Files
+            extensions:
+              - ogg
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Trim Audio Segment"
+icon: ":carbon:cut:"
+description: "Extract a specific time segment from audio file"

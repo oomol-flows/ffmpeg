@@ -1,0 +1,99 @@
+inputs_def:
+  - handle: audio_file
+    description: "Input audio file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: noise_reduction_method
+    description: "Noise reduction method"
+    json_schema:
+      type: string
+      enum: ["highpass", "lowpass", "bandpass", "afftdn"]
+    value: "highpass"
+    nullable: false
+
+  - handle: highpass_frequency
+    description: "High-pass filter frequency in Hz (used when noise_reduction_method is highpass)"
+    json_schema:
+      type: number
+      minimum: 20
+      maximum: 2000
+    value: 80
+    nullable: true
+
+  - handle: lowpass_frequency
+    description: "Low-pass filter frequency in Hz (used when noise_reduction_method is lowpass)"
+    json_schema:
+      type: number
+      minimum: 1000
+      maximum: 20000
+    value: 8000
+    nullable: true
+
+  - handle: bandpass_low_frequency
+    description: "Band-pass low frequency in Hz (used when noise_reduction_method is bandpass)"
+    json_schema:
+      type: number
+      minimum: 20
+      maximum: 1000
+    value: 300
+    nullable: true
+
+  - handle: bandpass_high_frequency
+    description: "Band-pass high frequency in Hz (used when noise_reduction_method is bandpass)"
+    json_schema:
+      type: number
+      minimum: 1000
+      maximum: 20000
+    value: 3000
+    nullable: true
+
+  - handle: noise_reduction_strength
+    description: "Noise reduction strength (used when noise_reduction_method is afftdn, 0.01-0.97)"
+    json_schema:
+      type: number
+      minimum: 0.01
+      maximum: 0.97
+    value: 0.85
+    nullable: true
+
+outputs_def:
+  - handle: noise_reduced_audio
+    description: "Noise reduced audio file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Audio Noise Reduction"
+icon: ":carbon:clean:"
+description: "Reduce audio noise using various filtering methods: high-pass, low-pass, band-pass, or FFT denoising"

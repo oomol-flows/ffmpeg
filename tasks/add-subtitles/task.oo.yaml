@@ -1,0 +1,121 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: subtitle_file
+    description: "Subtitle file (SRT, VTT, or ASS format)"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Subtitle Files
+            extensions:
+              - srt
+              - vtt
+              - ass
+              - ssa
+        excludeAll: true
+    nullable: false
+
+  - handle: subtitle_style
+    description: "Subtitle rendering style"
+    json_schema:
+      type: string
+      enum: ["default", "custom"]
+    value: "default"
+    nullable: false
+
+  - handle: font_name
+    description: "Font name (used when subtitle_style is custom)"
+    json_schema:
+      type: string
+    value: "Arial"
+    nullable: true
+
+  - handle: font_size
+    description: "Font size (used when subtitle_style is custom)"
+    json_schema:
+      type: number
+      minimum: 12
+      maximum: 72
+    value: 20
+    nullable: true
+
+  - handle: font_color
+    description: "Font color (used when subtitle_style is custom)"
+    json_schema:
+      type: string
+      ui:widget: color
+      ui:options:
+        colorType: HEX
+    value: "#FFFFFF"
+    nullable: true
+
+  - handle: outline_color
+    description: "Outline color (used when subtitle_style is custom)"
+    json_schema:
+      type: string
+      ui:widget: color
+      ui:options:
+        colorType: HEX
+    value: "#000000"
+    nullable: true
+
+  - handle: subtitle_position
+    description: "Subtitle position"
+    json_schema:
+      type: string
+      enum: ["bottom", "top", "center"]
+    value: "bottom"
+    nullable: false
+
+  - handle: hard_subtitle
+    description: "Burn subtitles into video (hard subtitle) vs embed as stream (soft subtitle)"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+outputs_def:
+  - handle: subtitled_video
+    description: "Video with subtitles added"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: MKV Files
+            extensions:
+              - mkv
+          - name: AVI Files
+            extensions:
+              - avi
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Add Video Subtitles"
+icon: ":carbon:closed-caption:"
+description: "Add subtitle file to video with customizable styling and positioning"

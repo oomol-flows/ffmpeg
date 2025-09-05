@@ -1,0 +1,86 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: speed_method
+    description: "Speed change method"
+    json_schema:
+      type: string
+      enum: ["multiplier", "preset"]
+    value: "preset"
+    nullable: false
+
+  - handle: speed_preset
+    description: "Speed preset (used when speed_method is preset)"
+    json_schema:
+      type: string
+      enum: ["0.25x", "0.5x", "0.75x", "1.25x", "1.5x", "2x", "4x"]
+    value: "2x"
+    nullable: true
+
+  - handle: speed_multiplier
+    description: "Speed multiplier (used when speed_method is multiplier, >1 = faster, <1 = slower)"
+    json_schema:
+      type: number
+      minimum: 0.1
+      maximum: 10.0
+    value: 2.0
+    nullable: true
+
+  - handle: maintain_audio_pitch
+    description: "Maintain original audio pitch when changing speed"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: audio_handling
+    description: "How to handle audio when changing speed"
+    json_schema:
+      type: string
+      enum: ["speed_change", "preserve_pitch", "remove_audio"]
+    value: "preserve_pitch"
+    nullable: false
+
+outputs_def:
+  - handle: speed_changed_video
+    description: "Video with changed playback speed"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Change Video Speed"
+icon: ":carbon:play-filled-alt:"
+description: "Speed up or slow down video playback with audio handling options"

@@ -1,0 +1,98 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: start_time
+    description: "Start time in seconds"
+    json_schema:
+      type: number
+      minimum: 0
+    value: 0
+    nullable: false
+
+  - handle: duration
+    description: "Duration in seconds (0 = entire video)"
+    json_schema:
+      type: number
+      minimum: 0
+    value: 5
+    nullable: false
+
+  - handle: output_width
+    description: "Output GIF width (height will be calculated to maintain aspect ratio)"
+    json_schema:
+      type: number
+      minimum: 100
+      maximum: 1920
+    value: 480
+    nullable: false
+
+  - handle: framerate
+    description: "Output framerate (fps)"
+    json_schema:
+      type: number
+      minimum: 1
+      maximum: 30
+    value: 10
+    nullable: false
+
+  - handle: quality
+    description: "GIF quality optimization"
+    json_schema:
+      type: string
+      enum: ["high", "medium", "low"]
+    value: "medium"
+    nullable: false
+
+  - handle: dither
+    description: "Enable dithering for better color gradients"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: loop_count
+    description: "Number of loops (0 = infinite loop)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 100
+    value: 0
+    nullable: false
+
+outputs_def:
+  - handle: gif_file
+    description: "Generated GIF file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: GIF Files
+            extensions:
+              - gif
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Video to GIF Converter"
+icon: ":carbon:image:"
+description: "Convert video segment to optimized GIF with customizable quality and timing"

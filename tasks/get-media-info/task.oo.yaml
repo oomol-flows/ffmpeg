@@ -1,0 +1,78 @@
+inputs_def:
+  - handle: media_file
+    description: "Input media file (video or audio)"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Media Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: output_format
+    description: "Output format for media information"
+    json_schema:
+      type: string
+      enum: ["json", "text"]
+    value: "json"
+    nullable: false
+
+  - handle: include_streams
+    description: "Include detailed stream information"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: include_chapters
+    description: "Include chapter information (if available)"
+    json_schema:
+      type: boolean
+    value: false
+    nullable: false
+
+outputs_def:
+  - handle: media_info
+    description: "Media file information"
+    json_schema:
+      contentMediaType: oomol/var
+      type: object
+
+  - handle: info_file
+    description: "Media information saved as file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: JSON Files
+            extensions:
+              - json
+          - name: Text Files
+            extensions:
+              - txt
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Get Media Information"
+icon: ":carbon:information:"
+description: "Extract detailed information about video and audio files including format, duration, codecs, and metadata"

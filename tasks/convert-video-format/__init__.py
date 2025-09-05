@@ -1,0 +1,71 @@
+#region generated meta
+import typing
+class Inputs(typing.TypedDict):
+    video_file: str
+    output_format: typing.Literal["mp4", "avi", "mov", "mkv", "webm", "flv", "wmv"]
+    video_codec: typing.Literal["libx264", "libx265", "libvpx", "libvpx-vp9", "copy"]
+    audio_codec: typing.Literal["aac", "mp3", "libvorbis", "copy"]
+    quality_preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
+class Outputs(typing.TypedDict):
+    converted_video: str
+#endregion
+
+from oocana import Context
+import ffmpeg
+import os
+
+def main(params: Inputs, context: Context) -> Outputs:
+    """
+    Convert video to different format and codec
+    
+    Args:
+        params: Input parameters containing video file and conversion settings
+        context: OOMOL context object
+        
+    Returns:
+        Output converted video file path
+    """
+    video_file = params["video_file"]
+    output_format = params["output_format"]
+    video_codec = params["video_codec"]
+    audio_codec = params["audio_codec"]
+    quality_preset = params["quality_preset"]
+    
+    # Generate output filename
+    base_name = os.path.splitext(os.path.basename(video_file))[0]
+    output_file = f"/oomol-driver/oomol-storage/{base_name}_converted.{output_format}"
+    
+    try:
+        # Create FFmpeg input stream
+        input_stream = ffmpeg.input(video_file)
+        
+        # Configure conversion options
+        conversion_options = {
+            'vcodec': video_codec,
+            'acodec': audio_codec
+        }
+        
+        # Add preset for supported codecs
+        if video_codec in ['libx264', 'libx265']:
+            conversion_options['preset'] = quality_preset
+            
+        # Special handling for different formats
+        if output_format == 'webm':
+            if video_codec == 'libx264':
+                conversion_options['vcodec'] = 'libvpx-vp9'
+            if audio_codec == 'aac':
+                conversion_options['acodec'] = 'libvorbis'
+        
+        # Create output stream
+        output_stream = ffmpeg.output(input_stream, output_file, **conversion_options)
+        
+        # Run FFmpeg command
+        ffmpeg.run(output_stream, overwrite_output=True, quiet=True)
+        
+        return {"converted_video": output_file}
+        
+    except ffmpeg.Error as e:
+        error_msg = e.stderr.decode('utf-8') if e.stderr else str(e)
+        raise Exception(f"FFmpeg error during video conversion: {error_msg}")
+    except Exception as e:
+        raise Exception(f"Error converting video: {str(e)}")

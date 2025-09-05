@@ -1,0 +1,70 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: output_format
+    description: "Output audio format"
+    json_schema:
+      type: string
+      enum: ["mp3", "wav", "aac", "flac", "ogg"]
+    value: "mp3"
+    nullable: false
+
+  - handle: audio_quality
+    description: "Audio quality (bitrate in kbps)"
+    json_schema:
+      type: number
+      minimum: 64
+      maximum: 320
+    value: 192
+    nullable: false
+
+outputs_def:
+  - handle: audio_file
+    description: "Extracted audio file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP3 Files
+            extensions:
+              - mp3
+          - name: WAV Files
+            extensions:
+              - wav
+          - name: AAC Files
+            extensions:
+              - aac
+          - name: FLAC Files
+            extensions:
+              - flac
+          - name: OGG Files
+            extensions:
+              - ogg
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Extract Audio from Video"
+icon: ":carbon:volume-up:"
+description: "Extract audio track from video file and save as separate audio file"

@@ -1,0 +1,73 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: operation
+    description: "Rotation/flip operation to perform"
+    json_schema:
+      type: string
+      enum: ["rotate_90_cw", "rotate_90_ccw", "rotate_180", "flip_horizontal", "flip_vertical", "transpose", "custom_angle"]
+    value: "rotate_90_cw"
+    nullable: false
+
+  - handle: custom_angle
+    description: "Custom rotation angle in degrees (used when operation is custom_angle)"
+    json_schema:
+      type: number
+      minimum: -360
+      maximum: 360
+    value: 45
+    nullable: true
+
+  - handle: background_color
+    description: "Background color for custom rotation (hex color)"
+    json_schema:
+      type: string
+      ui:widget: color
+      ui:options:
+        colorType: HEX
+    value: "#000000"
+    nullable: true
+
+outputs_def:
+  - handle: rotated_video
+    description: "Rotated/flipped video file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Rotate and Flip Video"
+icon: ":carbon:rotate-clockwise:"
+description: "Rotate video by standard angles or flip horizontally/vertically"

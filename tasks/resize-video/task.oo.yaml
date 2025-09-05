@@ -1,0 +1,95 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: resize_method
+    description: "Resize method"
+    json_schema:
+      type: string
+      enum: ["preset", "custom", "scale_percentage"]
+    value: "preset"
+    nullable: false
+
+  - handle: preset_size
+    description: "Preset resolution (used when resize_method is preset)"
+    json_schema:
+      type: string
+      enum: ["1920x1080", "1280x720", "854x480", "640x360", "426x240"]
+    value: "1280x720"
+    nullable: true
+
+  - handle: custom_width
+    description: "Custom width (used when resize_method is custom)"
+    json_schema:
+      type: number
+      minimum: 1
+    value: 1280
+    nullable: true
+
+  - handle: custom_height
+    description: "Custom height (used when resize_method is custom)"
+    json_schema:
+      type: number
+      minimum: 1
+    value: 720
+    nullable: true
+
+  - handle: scale_percentage
+    description: "Scale percentage (used when resize_method is scale_percentage)"
+    json_schema:
+      type: number
+      minimum: 10
+      maximum: 500
+    value: 50
+    nullable: true
+
+  - handle: maintain_aspect_ratio
+    description: "Maintain aspect ratio"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+outputs_def:
+  - handle: resized_video
+    description: "Resized video file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Resize Video Resolution"
+icon: ":carbon:crop:"
+description: "Change video resolution using presets, custom dimensions, or percentage scaling"

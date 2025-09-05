@@ -1,0 +1,93 @@
+inputs_def:
+  - handle: audio_file
+    description: "Input audio file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: quality_method
+    description: "Quality adjustment method"
+    json_schema:
+      type: string
+      enum: ["bitrate", "quality", "compression"]
+    value: "bitrate"
+    nullable: false
+
+  - handle: target_bitrate
+    description: "Target bitrate in kbps (used when quality_method is bitrate)"
+    json_schema:
+      type: number
+      minimum: 32
+      maximum: 320
+    value: 128
+    nullable: true
+
+  - handle: quality_level
+    description: "Quality level 0-9 (used when quality_method is quality, 0=best, 9=worst)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 9
+    value: 4
+    nullable: true
+
+  - handle: compression_level
+    description: "Compression level 0-12 (used when quality_method is compression)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 12
+    value: 6
+    nullable: true
+
+  - handle: output_format
+    description: "Output audio format"
+    json_schema:
+      type: string
+      enum: ["mp3", "aac", "ogg", "flac"]
+    value: "mp3"
+    nullable: false
+
+outputs_def:
+  - handle: quality_adjusted_audio
+    description: "Quality adjusted audio file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP3 Files
+            extensions:
+              - mp3
+          - name: AAC Files
+            extensions:
+              - aac
+          - name: OGG Files
+            extensions:
+              - ogg
+          - name: FLAC Files
+            extensions:
+              - flac
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Adjust Audio Quality"
+icon: ":carbon:settings-adjust:"
+description: "Adjust audio quality using bitrate, quality level, or compression settings"

@@ -1,0 +1,99 @@
+inputs_def:
+  - handle: audio_file
+    description: "Input audio file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: volume_method
+    description: "Volume adjustment method"
+    json_schema:
+      type: string
+      enum: ["percentage", "decibels", "normalize"]
+    value: "percentage"
+    nullable: false
+
+  - handle: volume_percentage
+    description: "Volume percentage (100 = original, used when volume_method is percentage)"
+    json_schema:
+      type: number
+      minimum: 1
+      maximum: 500
+    value: 100
+    nullable: true
+
+  - handle: volume_decibels
+    description: "Volume change in decibels (0 = original, used when volume_method is decibels)"
+    json_schema:
+      type: number
+      minimum: -60
+      maximum: 20
+    value: 0
+    nullable: true
+
+  - handle: normalize_target
+    description: "Normalization target in dB (used when volume_method is normalize)"
+    json_schema:
+      type: number
+      minimum: -30
+      maximum: 0
+    value: -23
+    nullable: true
+
+  - handle: fade_in_duration
+    description: "Fade in duration in seconds (0 = no fade in)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 30
+    value: 0
+    nullable: false
+
+  - handle: fade_out_duration
+    description: "Fade out duration in seconds (0 = no fade out)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 30
+    value: 0
+    nullable: false
+
+outputs_def:
+  - handle: volume_adjusted_audio
+    description: "Volume adjusted audio file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Adjust Audio Volume"
+icon: ":carbon:volume-up:"
+description: "Adjust audio volume using percentage, decibels, or normalization with fade effects"

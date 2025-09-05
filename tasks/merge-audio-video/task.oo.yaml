@@ -1,0 +1,98 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file (can have or not have audio)"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: audio_file
+    description: "Input audio file to merge with video"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: audio_handling
+    description: "How to handle audio tracks"
+    json_schema:
+      type: string
+      enum: ["replace", "mix", "keep_both"]
+    value: "replace"
+    nullable: false
+
+  - handle: audio_volume
+    description: "New audio track volume (1.0 = original)"
+    json_schema:
+      type: number
+      minimum: 0.0
+      maximum: 3.0
+    value: 1.0
+    nullable: false
+
+  - handle: original_audio_volume
+    description: "Original audio volume when mixing (used when audio_handling is mix)"
+    json_schema:
+      type: number
+      minimum: 0.0
+      maximum: 3.0
+    value: 0.5
+    nullable: true
+
+  - handle: sync_method
+    description: "Audio synchronization method"
+    json_schema:
+      type: string
+      enum: ["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
+    value: "stretch_audio"
+    nullable: false
+
+outputs_def:
+  - handle: merged_video
+    description: "Video with merged audio track"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: MKV Files
+            extensions:
+              - mkv
+          - name: AVI Files
+            extensions:
+              - avi
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Merge Audio and Video"
+icon: ":carbon:audio-console:"
+description: "Combine separate audio and video files with various synchronization options"

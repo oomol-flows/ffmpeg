@@ -1,0 +1,64 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: target_framerate
+    description: "Target frame rate (fps)"
+    json_schema:
+      type: number
+      minimum: 1
+      maximum: 120
+    value: 30
+    nullable: false
+
+  - handle: frame_interpolation
+    description: "Frame interpolation method"
+    json_schema:
+      type: string
+      enum: ["fps", "minterpolate"]
+    value: "fps"
+    nullable: false
+
+outputs_def:
+  - handle: framerate_changed_video
+    description: "Video with changed frame rate"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Change Video Frame Rate"
+icon: ":carbon:timer:"
+description: "Change video frame rate with different interpolation methods"

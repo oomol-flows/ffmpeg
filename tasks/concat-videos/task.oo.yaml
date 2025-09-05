@@ -1,0 +1,84 @@
+inputs_def:
+  - handle: video_files
+    description: "List of video files to concatenate (in order)"
+    json_schema:
+      type: array
+      items:
+        type: string
+        ui:widget: file
+        ui:options:
+          filters:
+            - name: Video Files
+              extensions:
+                - mp4
+                - avi
+                - mov
+                - mkv
+                - webm
+          excludeAll: true
+      minItems: 2
+    nullable: false
+
+  - handle: transition_duration
+    description: "Transition duration between videos in seconds (0 = no transition)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 5
+    value: 0
+    nullable: false
+
+  - handle: transition_type
+    description: "Type of transition between videos"
+    json_schema:
+      type: string
+      enum: ["none", "fade", "dissolve", "slide"]
+    value: "none"
+    nullable: false
+
+  - handle: resize_to_first
+    description: "Resize all videos to match the first video's resolution"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: output_format
+    description: "Output video format"
+    json_schema:
+      type: string
+      enum: ["mp4", "avi", "mov", "mkv"]
+    value: "mp4"
+    nullable: false
+
+outputs_def:
+  - handle: concatenated_video
+    description: "Concatenated video file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+          - name: MKV Files
+            extensions:
+              - mkv
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Concatenate Videos"
+icon: ":carbon:connect:"
+description: "Join multiple video files into a single video with optional transitions"

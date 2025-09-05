@@ -1,0 +1,104 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: compression_method
+    description: "Compression method"
+    json_schema:
+      type: string
+      enum:
+        - "crf"
+        - "bitrate"
+        - "filesize"
+    value: "crf"
+    nullable: false
+
+  - handle: crf_value
+    description: "CRF value (0-51, lower = better quality, used when
+      compression_method is crf)"
+    json_schema:
+      type: number
+      minimum: 0
+      maximum: 51
+    value: 23
+    nullable: true
+
+  - handle: target_bitrate
+    description: "Target bitrate in kbps (used when compression_method is bitrate)"
+    json_schema:
+      type: number
+      minimum: 100
+    value: 1000
+    nullable: true
+
+  - handle: target_filesize_mb
+    description: "Target file size in MB (used when compression_method is filesize)"
+    json_schema:
+      type: number
+      minimum: 1
+    value: 50
+    nullable: true
+
+  - handle: preset
+    description: "Encoding preset (speed vs compression efficiency)"
+    json_schema:
+      type: string
+      enum:
+        - "ultrafast"
+        - "superfast"
+        - "veryfast"
+        - "faster"
+        - "fast"
+        - "medium"
+        - "slow"
+        - "slower"
+        - "veryslow"
+    value: "medium"
+    nullable: false
+
+  - handle: audio_bitrate
+    description: "Audio bitrate in kbps"
+    json_schema:
+      type: number
+      minimum: 32
+      maximum: 320
+    value: 128
+    nullable: false
+
+outputs_def:
+  - handle: compressed_video
+    description: "Compressed video file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Compress Video"
+icon: ":carbon:package:"
+description: "Compress video using different methods: CRF, bitrate, or target file size"

@@ -1,0 +1,87 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+              - wmv
+              - 3gp
+        excludeAll: true
+    nullable: false
+
+  - handle: output_format
+    description: "Target video format"
+    json_schema:
+      type: string
+      enum: ["mp4", "avi", "mov", "mkv", "webm", "flv", "wmv"]
+    value: "mp4"
+    nullable: false
+
+  - handle: video_codec
+    description: "Video codec"
+    json_schema:
+      type: string
+      enum: ["libx264", "libx265", "libvpx", "libvpx-vp9", "copy"]
+    value: "libx264"
+    nullable: false
+
+  - handle: audio_codec
+    description: "Audio codec"
+    json_schema:
+      type: string
+      enum: ["aac", "mp3", "libvorbis", "copy"]
+    value: "aac"
+    nullable: false
+
+  - handle: quality_preset
+    description: "Encoding quality preset"
+    json_schema:
+      type: string
+      enum: ["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
+    value: "medium"
+    nullable: false
+
+outputs_def:
+  - handle: converted_video
+    description: "Converted video file"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+          - name: MKV Files
+            extensions:
+              - mkv
+          - name: WebM Files
+            extensions:
+              - webm
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Convert Video Format"
+icon: ":carbon:data-format:"
+description: "Convert video between different formats and codecs"
