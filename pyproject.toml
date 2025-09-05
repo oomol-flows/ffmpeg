@@ -9,6 +9,7 @@ readme = "README.md"
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "ffmpeg-python>=0.2.0",
+    "oocana (>=0.18.7,<0.19.0)",
 ]
 
 [tool.poetry]

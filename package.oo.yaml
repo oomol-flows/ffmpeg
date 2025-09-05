@@ -1,4 +1,4 @@
-version: 0.2.3
+version: 0.2.4
 scripts:
   bootstrap: >+
     npm install
@@ -14,5 +14,8 @@ scripts:
 icon: ./icon.png
 name: ffmpeg
 repository: https://github.com/oomol-flows/ffmpeg.git
-releaseNotes: init
 displayName: FFmpeg
+description: A comprehensive video and audio processing toolkit for OOMOL
+  platform, providing a collection of reusable blocks for multimedia
+  manipulation powered by FFmpeg.
+releaseNotes: add video filter

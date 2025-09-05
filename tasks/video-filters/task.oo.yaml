@@ -1,0 +1,127 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: filter_type
+    description: "Type of video filter to apply"
+    json_schema:
+      type: string
+      enum: ["blur", "sharpen", "brightness", "contrast", "saturation", "hue", "sepia", "grayscale", "vintage", "noise", "vignette"]
+    value: "blur"
+    nullable: false
+
+  - handle: blur_strength
+    description: "Blur strength (used when filter_type is blur)"
+    json_schema:
+      type: number
+      minimum: 0.5
+      maximum: 20.0
+    value: 2.0
+    nullable: true
+
+  - handle: sharpen_strength
+    description: "Sharpen strength (used when filter_type is sharpen)"
+    json_schema:
+      type: number
+      minimum: 0.1
+      maximum: 5.0
+    value: 1.0
+    nullable: true
+
+  - handle: brightness_level
+    description: "Brightness adjustment (-1.0 to 1.0, used when filter_type is brightness)"
+    json_schema:
+      type: number
+      minimum: -1.0
+      maximum: 1.0
+    value: 0.2
+    nullable: true
+
+  - handle: contrast_level
+    description: "Contrast adjustment (0.5 to 3.0, used when filter_type is contrast)"
+    json_schema:
+      type: number
+      minimum: 0.5
+      maximum: 3.0
+    value: 1.5
+    nullable: true
+
+  - handle: saturation_level
+    description: "Saturation adjustment (0.0 to 3.0, used when filter_type is saturation)"
+    json_schema:
+      type: number
+      minimum: 0.0
+      maximum: 3.0
+    value: 1.5
+    nullable: true
+
+  - handle: hue_shift
+    description: "Hue shift in degrees (-180 to 180, used when filter_type is hue)"
+    json_schema:
+      type: number
+      minimum: -180
+      maximum: 180
+    value: 30
+    nullable: true
+
+  - handle: noise_strength
+    description: "Noise strength (used when filter_type is noise)"
+    json_schema:
+      type: number
+      minimum: 1
+      maximum: 100
+    value: 20
+    nullable: true
+
+  - handle: vignette_strength
+    description: "Vignette strength (used when filter_type is vignette)"
+    json_schema:
+      type: number
+      minimum: 0.1
+      maximum: 1.0
+    value: 0.5
+    nullable: true
+
+outputs_def:
+  - handle: filtered_video
+    description: "Video with applied filter"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Apply Video Filters"
+icon: ":carbon:camera-action:"
+description: "Apply various visual filters to video including blur, sharpen, color adjustments, and artistic effects"
