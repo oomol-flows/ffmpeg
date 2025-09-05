@@ -1,11 +1,18 @@
-version: 0.0.1
+version: 0.2.3
 scripts:
-  # Script executed when the container is first loaded
-  # eg: bootstrap: poetry add pandas
-  bootstrap: |+
+  bootstrap: >+
     npm install
+
     poetry install --no-root
+
     apt update && apt install -y openssh-client
+
     wget https://static.oomol.com/sshexec/v1.0.12/installer.sh --output-document /tmp/installer.sh
+
     bash +x /tmp/installer.sh
 
+icon: ./icon.png
+name: ffmpeg
+repository: https://github.com/oomol-flows/ffmpeg.git
+releaseNotes: init
+displayName: FFmpeg
