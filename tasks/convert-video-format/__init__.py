@@ -13,6 +13,9 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import sys
+sys.path.append('/app/workspace')
+from utils.ffmpeg_encoder import create_encoder
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -36,18 +39,33 @@ def main(params: Inputs, context: Context) -> Outputs:
     output_file = f"/oomol-driver/oomol-storage/{base_name}_converted.{output_format}"
     
     try:
+        # Create GPU-aware encoder
+        encoder = create_encoder(context)
+        
         # Create FFmpeg input stream
         input_stream = ffmpeg.input(video_file)
         
-        # Configure conversion options
-        conversion_options = {
-            'vcodec': video_codec,
-            'acodec': audio_codec
-        }
-        
-        # Add preset for supported codecs
-        if video_codec in ['libx264', 'libx265']:
-            conversion_options['preset'] = quality_preset
+        # Determine codec type and get optimized options
+        if video_codec in ['libx264', 'h264_nvenc', 'h264_videotoolbox'] or video_codec == 'copy':
+            if video_codec == 'copy':
+                conversion_options = {'vcodec': 'copy', 'acodec': audio_codec}
+            else:
+                profile = "fast" if quality_preset in ["ultrafast", "superfast", "veryfast"] else "balanced" if quality_preset in ["faster", "fast", "medium"] else "quality"
+                conversion_options = encoder.get_encoding_options("h264", profile)
+                conversion_options['acodec'] = audio_codec
+        elif video_codec in ['libx265', 'hevc_nvenc', 'hevc_videotoolbox']:
+            profile = "fast" if quality_preset in ["ultrafast", "superfast", "veryfast"] else "balanced" if quality_preset in ["faster", "fast", "medium"] else "quality"
+            conversion_options = encoder.get_encoding_options("h265", profile)
+            conversion_options['acodec'] = audio_codec
+        else:
+            # Fallback to original codec selection
+            conversion_options = {
+                'vcodec': video_codec,
+                'acodec': audio_codec
+            }
+            # Add preset for supported codecs
+            if video_codec in ['libx264', 'libx265']:
+                conversion_options['preset'] = quality_preset
             
         # Special handling for different formats
         if output_format == 'webm':

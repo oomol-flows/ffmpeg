@@ -11,6 +11,9 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import sys
+sys.path.append('/app/workspace')
+from utils.ffmpeg_encoder import create_encoder
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -49,13 +52,18 @@ def main(params: Inputs, context: Context) -> Outputs:
         else:
             raise ValueError(f"Invalid frame interpolation method: {frame_interpolation}")
         
+        # Create GPU-aware encoder
+        encoder = create_encoder(context)
+        
+        # Get GPU-optimized encoding options
+        encoding_options = encoder.get_encoding_options("h264", "balanced")
+        
         # Create output stream
         output_stream = ffmpeg.output(
             video_stream, 
             input_stream.audio, 
             output_file,
-            vcodec='libx264',
-            acodec='aac'
+            **encoding_options
         )
         
         # Run FFmpeg command

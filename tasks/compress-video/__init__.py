@@ -15,6 +15,9 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import sys
+sys.path.append('/app/workspace')
+from utils.ffmpeg_encoder import create_encoder
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -37,16 +40,16 @@ def main(params: Inputs, context: Context) -> Outputs:
     output_file = f"/oomol-driver/oomol-storage/{base_name}_compressed.mp4"
     
     try:
+        # Create GPU-aware encoder
+        encoder = create_encoder(context)
+        
         # Create FFmpeg input stream
         input_stream = ffmpeg.input(video_file)
         
-        # Base encoding options
-        encoding_options = {
-            'vcodec': 'libx264',
-            'preset': preset,
-            'acodec': 'aac',
-            'audio_bitrate': f'{audio_bitrate}k'
-        }
+        # Get GPU-optimized encoding options
+        profile = "fast" if preset in ["ultrafast", "superfast", "veryfast"] else "balanced" if preset in ["faster", "fast", "medium"] else "quality"
+        encoding_options = encoder.get_encoding_options("h264", profile)
+        encoding_options['audio_bitrate'] = f'{audio_bitrate}k'
         
         # Configure compression based on method
         if compression_method == "crf":

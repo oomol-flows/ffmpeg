@@ -15,6 +15,9 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import sys
+sys.path.append('/app/workspace')
+from utils.ffmpeg_encoder import create_encoder
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -67,12 +70,18 @@ def main(params: Inputs, context: Context) -> Outputs:
             # Force exact dimensions
             scale_filter = f"scale={target_width}:{target_height}"
         
+        # Create GPU-aware encoder
+        encoder = create_encoder(context)
+        
+        # Get GPU-optimized encoding options
+        encoding_options = encoder.get_encoding_options("h264", "balanced")
+        
         # Apply video filter and create output
         output_stream = (
             input_stream
             .video
             .filter('scale', target_width, target_height)
-            .output(input_stream.audio, output_file, vcodec='libx264', acodec='aac')
+            .output(input_stream.audio, output_file, **encoding_options)
         )
         
         # Run FFmpeg command

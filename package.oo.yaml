@@ -1,4 +1,4 @@
-version: 0.2.4
+version: 0.2.5
 scripts:
   bootstrap: >+
     npm install
@@ -18,6 +18,6 @@ displayName: FFmpeg
 description: A comprehensive video and audio processing toolkit for OOMOL
   platform, providing a collection of reusable blocks for multimedia
   manipulation powered by FFmpeg.
-releaseNotes: add video filter
 dependencies:
   {}
+releaseNotes: 支持 GPU 编码
