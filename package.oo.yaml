@@ -1,4 +1,4 @@
-version: 0.2.5
+version: 0.2.6
 scripts:
   bootstrap: >+
     npm install
@@ -20,4 +20,4 @@ description: A comprehensive video and audio processing toolkit for OOMOL
   manipulation powered by FFmpeg.
 dependencies:
   {}
-releaseNotes: 支持 GPU 编码
+releaseNotes: remove layer ci
