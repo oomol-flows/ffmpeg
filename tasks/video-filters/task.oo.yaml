@@ -21,7 +21,18 @@ inputs_def:
     description: "Type of video filter to apply"
     json_schema:
       type: string
-      enum: ["blur", "sharpen", "brightness", "contrast", "saturation", "hue", "sepia", "grayscale", "vintage", "noise", "vignette"]
+      enum:
+        - "blur"
+        - "sharpen"
+        - "brightness"
+        - "contrast"
+        - "saturation"
+        - "hue"
+        - "sepia"
+        - "grayscale"
+        - "vintage"
+        - "noise"
+        - "vignette"
     value: "blur"
     nullable: false
 
@@ -31,7 +42,7 @@ inputs_def:
       type: number
       minimum: 0.5
       maximum: 20.0
-    value: 2.0
+    value: null
     nullable: true
 
   - handle: sharpen_strength
@@ -40,16 +51,16 @@ inputs_def:
       type: number
       minimum: 0.1
       maximum: 5.0
-    value: 1.0
+    value: null
     nullable: true
 
   - handle: brightness_level
     description: "Brightness adjustment (-1.0 to 1.0, used when filter_type is brightness)"
     json_schema:
       type: number
-      minimum: -1.0
+      minimum: -1
       maximum: 1.0
-    value: 0.2
+    value: null
     nullable: true
 
   - handle: contrast_level
@@ -58,7 +69,7 @@ inputs_def:
       type: number
       minimum: 0.5
       maximum: 3.0
-    value: 1.5
+    value: null
     nullable: true
 
   - handle: saturation_level
@@ -67,7 +78,7 @@ inputs_def:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: 1.5
+    value: null
     nullable: true
 
   - handle: hue_shift
@@ -76,7 +87,7 @@ inputs_def:
       type: number
       minimum: -180
       maximum: 180
-    value: 30
+    value: null
     nullable: true
 
   - handle: noise_strength
@@ -85,7 +96,7 @@ inputs_def:
       type: number
       minimum: 1
       maximum: 100
-    value: 20
+    value: null
     nullable: true
 
   - handle: vignette_strength
@@ -94,7 +105,7 @@ inputs_def:
       type: number
       minimum: 0.1
       maximum: 1.0
-    value: 0.5
+    value: null
     nullable: true
 
 outputs_def:
@@ -124,4 +135,5 @@ executor:
 
 title: "Apply Video Filters"
 icon: ":carbon:camera-action:"
-description: "Apply various visual filters to video including blur, sharpen, color adjustments, and artistic effects"
+description: "Apply various visual filters to video including blur, sharpen,
+  color adjustments, and artistic effects"

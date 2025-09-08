@@ -19,41 +19,69 @@ inputs_def:
       minItems: 2
     nullable: false
 
-  - handle: transition_duration
-    description: "Transition duration between videos in seconds (0 = no transition)"
+  - handle: concat_method
+    description: "Concatenation method to use"
+    json_schema:
+      type: string
+      enum:
+        - "filter"
+        - "demuxer"
+    value: "filter"
+    nullable: false
+
+  - handle: audio_handling
+    description: "How to handle audio tracks from multiple videos"
+    json_schema:
+      type: string
+      enum:
+        - "first_only"
+        - "mix_all"
+        - "keep_all"
+        - "silence"
+    value: "first_only"
+    nullable: false
+
+  - handle: resolution_handling
+    description: "How to handle different video resolutions"
+    json_schema:
+      type: string
+      enum:
+        - "auto"
+        - "match_first"
+        - "custom"
+    value: "auto"
+    nullable: false
+
+  - handle: custom_width
+    description: "Custom output width (used when resolution_handling is custom)"
     json_schema:
       type: number
-      minimum: 0
-      maximum: 5
-    value: 0
-    nullable: false
+      minimum: 1
+      maximum: 7680
+    value: null
+    nullable: true
 
-  - handle: transition_type
-    description: "Type of transition between videos"
+  - handle: custom_height
+    description: "Custom output height (used when resolution_handling is custom)"
     json_schema:
-      type: string
-      enum: ["none", "fade", "dissolve", "slide"]
-    value: "none"
-    nullable: false
+      type: number
+      minimum: 1
+      maximum: 4320
+    value: null
+    nullable: true
 
-  - handle: resize_to_first
-    description: "Resize all videos to match the first video's resolution"
+  - handle: transition_duration
+    description: "Transition duration between videos (seconds, 0 for no transition)"
     json_schema:
-      type: boolean
-    value: true
-    nullable: false
-
-  - handle: output_format
-    description: "Output video format"
-    json_schema:
-      type: string
-      enum: ["mp4", "avi", "mov", "mkv"]
-    value: "mp4"
+      type: number
+      minimum: 0.0
+      maximum: 10.0
+    value: 0.0
     nullable: false
 
 outputs_def:
   - handle: concatenated_video
-    description: "Concatenated video file"
+    description: "The concatenated output video"
     json_schema:
       type: string
       ui:widget: save
@@ -62,15 +90,12 @@ outputs_def:
           - name: MP4 Files
             extensions:
               - mp4
-          - name: AVI Files
-            extensions:
-              - avi
-          - name: MOV Files
-            extensions:
-              - mov
           - name: MKV Files
             extensions:
               - mkv
+          - name: AVI Files
+            extensions:
+              - avi
         excludeAll: true
 
 executor:
@@ -80,5 +105,6 @@ executor:
     spawn: false
 
 title: "Concatenate Videos"
-icon: ":carbon:connect:"
-description: "Join multiple video files into a single video with optional transitions"
+icon: ":carbon:video:"
+description: "Combine multiple video files into a single output video with
+  various concatenation options"

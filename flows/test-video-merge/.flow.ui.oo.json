@@ -1,0 +1,12 @@
+{
+  "nodes": {
+    "concat_videos#1": {
+      "rfNode": {
+        "position": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    }
+  }
+}

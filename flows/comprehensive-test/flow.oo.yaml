@@ -1,0 +1,65 @@
+title: "Comprehensive Task Test"
+nodes:
+  # Test trim-video task  
+  - node_id: trim_video#1
+    task: self::trim-video
+    inputs_from:
+      - handle: video_file
+        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
+      - handle: start_time
+        value: 0
+      - handle: duration
+        value: 5
+      - handle: output_format
+        value: "mp4"
+
+  # Test resize-video task
+  - node_id: resize_video#1
+    task: self::resize-video
+    inputs_from:
+      - handle: video_file
+        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
+      - handle: resize_method
+        value: "custom"
+      - handle: preset_size
+        value: null
+      - handle: custom_width
+        value: 640
+      - handle: custom_height
+        value: 480
+      - handle: scale_percentage
+        value: null
+      - handle: maintain_aspect_ratio
+        value: true
+
+  # Test extract-audio task
+  - node_id: extract_audio#1
+    task: self::extract-audio
+    inputs_from:
+      - handle: video_file
+        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
+      - handle: output_format
+        value: "mp3"
+      - handle: audio_quality
+        value: 192
+
+  # Test compress-video task
+  - node_id: compress_video#1
+    task: self::compress-video
+    inputs_from:
+      - handle: video_file
+        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
+      - handle: compression_method
+        value: "crf"
+      - handle: crf_value
+        value: 23
+      - handle: target_bitrate
+        value: null
+      - handle: target_filesize_mb
+        value: null
+      - handle: preset
+        value: "medium"
+      - handle: audio_bitrate
+        value: 128
+      - handle: output_format
+        value: "mp4"

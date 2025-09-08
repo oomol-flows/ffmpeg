@@ -5,7 +5,11 @@
       "Bash(poetry install:*)",
       "Bash(poetry lock:*)",
       "Bash(mkdir:*)",
-      "Bash(poetry show:*)"
+      "Bash(poetry show:*)",
+      "Read(//oomol-driver/oomol-storage/**)",
+      "Bash(poetry run python:*)",
+      "mcp__oomol__runFlow",
+      "mcp__oomol__getTaskResult"
     ],
     "deny": [],
     "ask": []

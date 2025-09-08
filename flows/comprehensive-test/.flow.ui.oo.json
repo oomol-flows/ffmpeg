@@ -1,0 +1,36 @@
+{
+  "nodes": {
+    "trim_video#1": {
+      "rfNode": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "resize_video#1": {
+      "rfNode": {
+        "position": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    "extract_audio#1": {
+      "rfNode": {
+        "position": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    },
+    "compress_video#1": {
+      "rfNode": {
+        "position": {
+          "x": 1800,
+          "y": 0
+        }
+      }
+    }
+  }
+}

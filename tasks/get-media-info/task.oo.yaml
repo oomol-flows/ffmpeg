@@ -1,5 +1,5 @@
 inputs_def:
-  - handle: media_file
+  - handle: input_file
     description: "Input media file (video or audio)"
     json_schema:
       type: string
@@ -27,7 +27,9 @@ inputs_def:
     description: "Output format for media information"
     json_schema:
       type: string
-      enum: ["json", "text"]
+      enum:
+        - "json"
+        - "text"
     value: "json"
     nullable: false
 
@@ -75,4 +77,5 @@ executor:
 
 title: "Get Media Information"
 icon: ":carbon:information:"
-description: "Extract detailed information about video and audio files including format, duration, codecs, and metadata"
+description: "Extract detailed information about video and audio files including
+  format, duration, codecs, and metadata"

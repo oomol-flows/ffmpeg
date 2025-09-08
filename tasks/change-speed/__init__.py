@@ -29,7 +29,6 @@ def main(params: Inputs, context: Context) -> Outputs:
     video_file = params["video_file"]
     speed_method = params["speed_method"]
     audio_handling = params["audio_handling"]
-    
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
     output_file = f"/oomol-driver/oomol-storage/{base_name}_speed_changed.mp4"

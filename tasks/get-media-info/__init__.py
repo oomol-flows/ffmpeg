@@ -1,7 +1,7 @@
 #region generated meta
 import typing
 class Inputs(typing.TypedDict):
-    media_file: str
+    input_file: str
     output_format: typing.Literal["json", "text"]
     include_streams: bool
     include_chapters: bool
@@ -26,7 +26,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     Returns:
         Media information as structured data and file
     """
-    media_file = params["media_file"]
+    media_file = params["input_file"]
     output_format = params["output_format"]
     include_streams = params["include_streams"]
     include_chapters = params["include_chapters"]
