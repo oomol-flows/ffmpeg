@@ -21,7 +21,6 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 0
     nullable: false
 
   - handle: duration
@@ -29,7 +28,6 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 5
     nullable: false
 
   - handle: output_width
@@ -38,7 +36,6 @@ inputs_def:
       type: number
       minimum: 100
       maximum: 1920
-    value: 480
     nullable: false
 
   - handle: framerate
@@ -47,15 +44,17 @@ inputs_def:
       type: number
       minimum: 1
       maximum: 30
-    value: 10
     nullable: false
 
   - handle: quality
     description: "GIF quality optimization"
     json_schema:
       type: string
-      enum: ["high", "medium", "low"]
-    value: "medium"
+      enum:
+        - "high"
+        - "medium"
+        - "low"
+    value: medium
     nullable: false
 
   - handle: dither
@@ -71,7 +70,6 @@ inputs_def:
       type: number
       minimum: 0
       maximum: 100
-    value: 0
     nullable: false
 
 outputs_def:

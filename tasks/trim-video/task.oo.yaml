@@ -22,7 +22,6 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 0
     nullable: false
 
   - handle: duration
@@ -30,15 +29,19 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 10
     nullable: false
 
   - handle: output_format
     description: "Output video format"
     json_schema:
       type: string
-      enum: ["mp4", "avi", "mov", "mkv", "webm"]
-    value: "mp4"
+      enum:
+        - "mp4"
+        - "avi"
+        - "mov"
+        - "mkv"
+        - "webm"
+    value: mp4
     nullable: false
 
 outputs_def:

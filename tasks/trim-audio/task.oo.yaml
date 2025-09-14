@@ -23,7 +23,6 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 0
     nullable: false
 
   - handle: duration
@@ -31,15 +30,19 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    value: 30
     nullable: false
 
   - handle: output_format
     description: "Output audio format"
     json_schema:
       type: string
-      enum: ["mp3", "wav", "aac", "flac", "ogg"]
-    value: "mp3"
+      enum:
+        - "mp3"
+        - "wav"
+        - "aac"
+        - "flac"
+        - "ogg"
+    value: mp3
     nullable: false
 
 outputs_def:

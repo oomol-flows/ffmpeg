@@ -20,8 +20,15 @@ inputs_def:
     description: "Rotation/flip operation to perform"
     json_schema:
       type: string
-      enum: ["rotate_90_cw", "rotate_90_ccw", "rotate_180", "flip_horizontal", "flip_vertical", "transpose", "custom_angle"]
-    value: "rotate_90_cw"
+      enum:
+        - "rotate_90_cw"
+        - "rotate_90_ccw"
+        - "rotate_180"
+        - "flip_horizontal"
+        - "flip_vertical"
+        - "transpose"
+        - "custom_angle"
+    value: rotate_90_cw
     nullable: false
 
   - handle: custom_angle
@@ -30,7 +37,7 @@ inputs_def:
       type: number
       minimum: -360
       maximum: 360
-    value: 45
+    value:
     nullable: true
 
   - handle: background_color
