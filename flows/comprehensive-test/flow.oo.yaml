@@ -18,7 +18,6 @@ nodes:
     task: self::resize-video
     inputs_from:
       - handle: video_file
-        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
       - handle: resize_method
         value: "custom"
       - handle: preset_size
@@ -63,3 +62,24 @@ nodes:
         value: 128
       - handle: output_format
         value: "mp4"
+  - node_id: add-watermark#1
+    title: "Add Video Watermark #1"
+    inputs_from:
+      - handle: video_file
+      - handle: watermark_type
+        value: text
+      - handle: watermark_text
+        value: WATERMARK
+      - handle: watermark_image
+        value:
+      - handle: position
+        value: bottom-right
+      - handle: opacity
+        value: 0.8
+      - handle: font_size
+        value: 24
+      - handle: font_color
+        value: "#FFFFFF"
+      - handle: padding
+        value: 20
+    task: self::add-watermark
