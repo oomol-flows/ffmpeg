@@ -11,7 +11,7 @@ class Inputs(typing.TypedDict):
     font_color: str | None
     padding: float
 class Outputs(typing.TypedDict):
-    watermarked_video: str
+    watermarked_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

@@ -6,8 +6,8 @@ class Inputs(typing.TypedDict):
     include_streams: bool
     include_chapters: bool
 class Outputs(typing.TypedDict):
-    media_info: typing.Any
-    info_file: str
+    media_info: typing.NotRequired[typing.Any]
+    info_file: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

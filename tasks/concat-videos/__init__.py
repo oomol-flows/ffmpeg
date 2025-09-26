@@ -9,7 +9,7 @@ class Inputs(typing.TypedDict):
     custom_height: float | None
     transition_duration: float
 class Outputs(typing.TypedDict):
-    concatenated_video: str
+    concatenated_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

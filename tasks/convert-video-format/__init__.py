@@ -7,7 +7,7 @@ class Inputs(typing.TypedDict):
     audio_codec: typing.Literal["aac", "mp3", "libvorbis", "copy"]
     quality_preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
 class Outputs(typing.TypedDict):
-    converted_video: str
+    converted_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

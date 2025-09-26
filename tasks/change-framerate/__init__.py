@@ -5,7 +5,7 @@ class Inputs(typing.TypedDict):
     target_framerate: float
     frame_interpolation: typing.Literal["fps", "minterpolate"]
 class Outputs(typing.TypedDict):
-    framerate_changed_video: str
+    framerate_changed_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

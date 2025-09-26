@@ -6,7 +6,7 @@ class Inputs(typing.TypedDict):
     duration: float
     output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg"]
 class Outputs(typing.TypedDict):
-    trimmed_audio: str
+    trimmed_audio: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

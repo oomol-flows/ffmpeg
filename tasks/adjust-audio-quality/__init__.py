@@ -8,7 +8,7 @@ class Inputs(typing.TypedDict):
     compression_level: float | None
     output_format: typing.Literal["mp3", "aac", "ogg", "flac"]
 class Outputs(typing.TypedDict):
-    quality_adjusted_audio: str
+    quality_adjusted_audio: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

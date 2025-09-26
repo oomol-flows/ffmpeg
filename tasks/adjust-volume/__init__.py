@@ -9,7 +9,7 @@ class Inputs(typing.TypedDict):
     fade_in_duration: float
     fade_out_duration: float
 class Outputs(typing.TypedDict):
-    volume_adjusted_audio: str
+    volume_adjusted_audio: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

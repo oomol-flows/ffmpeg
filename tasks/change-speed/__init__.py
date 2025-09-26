@@ -8,7 +8,7 @@ class Inputs(typing.TypedDict):
     maintain_audio_pitch: bool
     audio_handling: typing.Literal["speed_change", "preserve_pitch", "remove_audio"]
 class Outputs(typing.TypedDict):
-    speed_changed_video: str
+    speed_changed_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

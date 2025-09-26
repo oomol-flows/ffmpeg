@@ -9,7 +9,7 @@ class Inputs(typing.TypedDict):
     preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
     audio_bitrate: float
 class Outputs(typing.TypedDict):
-    compressed_video: str
+    compressed_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

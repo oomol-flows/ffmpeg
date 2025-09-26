@@ -12,7 +12,7 @@ class Inputs(typing.TypedDict):
     noise_strength: float | None
     vignette_strength: float | None
 class Outputs(typing.TypedDict):
-    filtered_video: str
+    filtered_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

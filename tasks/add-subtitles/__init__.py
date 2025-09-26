@@ -11,7 +11,7 @@ class Inputs(typing.TypedDict):
     subtitle_position: typing.Literal["bottom", "top", "center"]
     hard_subtitle: bool
 class Outputs(typing.TypedDict):
-    subtitled_video: str
+    subtitled_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

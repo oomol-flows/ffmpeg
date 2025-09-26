@@ -10,7 +10,7 @@ class Inputs(typing.TypedDict):
     dither: bool
     loop_count: float
 class Outputs(typing.TypedDict):
-    gif_file: str
+    gif_file: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

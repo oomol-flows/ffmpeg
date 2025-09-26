@@ -9,7 +9,7 @@ class Inputs(typing.TypedDict):
     scale_percentage: float | None
     maintain_aspect_ratio: bool
 class Outputs(typing.TypedDict):
-    resized_video: str
+    resized_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

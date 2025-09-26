@@ -8,7 +8,7 @@ class Inputs(typing.TypedDict):
     original_audio_volume: float | None
     sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
 class Outputs(typing.TypedDict):
-    merged_video: str
+    merged_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

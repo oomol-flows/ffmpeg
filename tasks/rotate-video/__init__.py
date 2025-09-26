@@ -6,7 +6,7 @@ class Inputs(typing.TypedDict):
     custom_angle: float | None
     background_color: str | None
 class Outputs(typing.TypedDict):
-    rotated_video: str
+    rotated_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

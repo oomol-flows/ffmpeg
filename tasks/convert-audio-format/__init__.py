@@ -7,7 +7,7 @@ class Inputs(typing.TypedDict):
     sample_rate: typing.Literal[0, 8000, 16000, 22050, 44100, 48000, 96000]
     channels: typing.Literal[0, 1, 2]
 class Outputs(typing.TypedDict):
-    converted_audio: str
+    converted_audio: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

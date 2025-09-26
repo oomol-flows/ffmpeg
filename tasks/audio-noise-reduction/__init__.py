@@ -9,7 +9,7 @@ class Inputs(typing.TypedDict):
     bandpass_high_frequency: float | None
     noise_reduction_strength: float | None
 class Outputs(typing.TypedDict):
-    noise_reduced_audio: str
+    noise_reduced_audio: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

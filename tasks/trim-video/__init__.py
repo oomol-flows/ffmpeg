@@ -6,7 +6,7 @@ class Inputs(typing.TypedDict):
     duration: float
     output_format: typing.Literal["mp4", "avi", "mov", "mkv", "webm"]
 class Outputs(typing.TypedDict):
-    trimmed_video: str
+    trimmed_video: typing.NotRequired[str]
 #endregion
 
 from oocana import Context
