@@ -1,36 +1,19 @@
 {
   "nodes": {
-    "trim_video#1": {
-      "rfNode": {
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      }
-    },
-    "resize_video#1": {
-      "rfNode": {
-        "position": {
-          "x": 600,
-          "y": 0
-        }
-      }
-    },
-    "add-watermark#1": {
-      "contentWidth": 689.1683828813901,
-      "rfNode": {
-        "position": {
-          "x": 365.7176267903462,
-          "y": 537.285603952123
-        }
-      }
-    },
     "add-watermark#2": {
       "contentWidth": 772.3828199355523,
       "rfNode": {
         "position": {
           "x": 1268.945206920948,
           "y": 100.70636386771835
+        }
+      }
+    },
+    "extract-audio#1": {
+      "rfNode": {
+        "position": {
+          "x": -154.13216281995147,
+          "y": 524.789236095544
         }
       }
     }

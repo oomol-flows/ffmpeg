@@ -1,56 +1,6 @@
 title: "Comprehensive Task Test"
 nodes:
   # Test trim-video task  
-  - node_id: trim_video#1
-    task: self::trim-video
-    inputs_from:
-      - handle: video_file
-        value: "/oomol-driver/oomol-storage/oomol_video_trimmed.mp4"
-      - handle: start_time
-        value: 0
-      - handle: duration
-        value: 5
-      - handle: output_format
-        value: "mp4"
-
-  # Test resize-video task
-  - node_id: resize_video#1
-    task: self::resize-video
-    inputs_from:
-      - handle: video_file
-      - handle: resize_method
-        value: "custom"
-      - handle: preset_size
-        value: null
-      - handle: custom_width
-        value: 640
-      - handle: custom_height
-        value: 480
-      - handle: scale_percentage
-        value: null
-      - handle: maintain_aspect_ratio
-        value: true
-  - node_id: add-watermark#1
-    title: "Add Video Watermark #1"
-    inputs_from:
-      - handle: video_file
-      - handle: watermark_type
-        value: text
-      - handle: watermark_text
-        value: WATERMARK
-      - handle: watermark_image
-        value:
-      - handle: position
-        value: bottom-right
-      - handle: opacity
-        value: 0.8
-      - handle: font_size
-        value: 24
-      - handle: font_color
-        value: "#FFFFFF"
-      - handle: padding
-        value: 20
-    task: self::add-watermark
   - node_id: add-watermark#2
     title: "Add Video Watermark #2"
     inputs_from:
@@ -74,3 +24,13 @@ nodes:
         value: 20
     task: self::add-watermark
     description: dasdsdas
+  - node_id: extract-audio#1
+    title: "Extract Audio from Video #1"
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/downloads/KUN - Jasmine (Official Video).mp4
+      - handle: output_format
+        value: mp3
+      - handle: audio_quality
+        value: 192
+    task: self::extract-audio
