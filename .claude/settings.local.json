@@ -11,7 +11,8 @@
       "mcp__oomol__runFlow",
       "mcp__oomol__getTaskResult",
       "Bash(python:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

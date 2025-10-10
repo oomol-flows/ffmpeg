@@ -1,0 +1,81 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file with original audio"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+        excludeAll: true
+    nullable: false
+
+  - handle: audio_file
+    description: "New audio file to replace the original audio"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Audio Files
+            extensions:
+              - mp3
+              - wav
+              - aac
+              - flac
+              - ogg
+              - m4a
+        excludeAll: true
+    nullable: false
+
+  - handle: sync_method
+    description: "Method to synchronize audio with video duration"
+    json_schema:
+      type: string
+      enum: ["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
+    value: "stretch_audio"
+    nullable: false
+
+  - handle: audio_volume
+    description: "Volume level for the new audio (1.0 = original)"
+    json_schema:
+      type: number
+      minimum: 0.0
+      maximum: 3.0
+    value: 1.0
+    nullable: false
+
+outputs_def:
+  - handle: output_video
+    description: "Video with replaced audio track"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: MKV Files
+            extensions:
+              - mkv
+          - name: AVI Files
+            extensions:
+              - avi
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Replace Audio"
+icon: ":carbon:audio-console:"
+description: "Replace video's audio track with a new audio file, with synchronization options"
