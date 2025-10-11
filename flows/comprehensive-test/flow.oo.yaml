@@ -34,3 +34,15 @@ nodes:
       - handle: audio_quality
         value: 192
     task: self::extract-audio
+  - node_id: replace-audio#1
+    title: "Replace Audio #1"
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/oomol-storage/test/Area22211.MP4
+      - handle: audio_file
+        value: /oomol-driver/oomol-storage/飞书20251009-112957_converted_audio_trimmed.mp3
+      - handle: sync_method
+        value: stretch_audio
+      - handle: audio_volume
+        value: 1
+    task: self::replace-audio
