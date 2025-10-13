@@ -38,8 +38,11 @@ inputs_def:
     description: "How to handle audio tracks"
     json_schema:
       type: string
-      enum: ["replace", "mix", "keep_both"]
-    value: "replace"
+      enum:
+        - "replace"
+        - "mix"
+        - "keep_both"
+    value: replace
     nullable: false
 
   - handle: audio_volume
@@ -48,7 +51,7 @@ inputs_def:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: 1.0
+    value: 1
     nullable: false
 
   - handle: original_audio_volume
@@ -57,16 +60,36 @@ inputs_def:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: 0.5
+    value:
     nullable: true
 
   - handle: sync_method
     description: "Audio synchronization method"
     json_schema:
       type: string
-      enum: ["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
-    value: "stretch_audio"
+      enum:
+        - "stretch_audio"
+        - "loop_audio"
+        - "trim_audio"
+        - "trim_video"
+    value: stretch_audio
     nullable: false
+
+  - handle: subtitle_file
+    description: "Optional subtitle file to burn into video"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Subtitle Files
+            extensions:
+              - srt
+              - ass
+              - vtt
+        excludeAll: true
+    value:
+    nullable: true
 
 outputs_def:
   - handle: merged_video
@@ -96,3 +119,5 @@ executor:
 title: "Merge Audio and Video"
 icon: ":carbon:audio-console:"
 description: "Combine separate audio and video files with various synchronization options"
+ui:
+  default_width: 596.9659051446632

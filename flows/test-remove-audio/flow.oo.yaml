@@ -1,0 +1,10 @@
+title: "Test Remove Audio"
+nodes:
+  - node_id: remove-audio#1
+    title: "Remove Audio #1"
+    task: self::remove-audio
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/oomol-storage/book/oomol-intro_trimmed_with_subtitles_watermarked.mp4
+      - handle: output_format
+        value: mp4

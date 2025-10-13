@@ -7,6 +7,7 @@ class Inputs(typing.TypedDict):
     audio_volume: float
     original_audio_volume: float | None
     sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
+    subtitle_file: str | None
 class Outputs(typing.TypedDict):
     merged_video: typing.NotRequired[str]
 #endregion
@@ -31,6 +32,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     audio_handling = params["audio_handling"]
     audio_volume = params["audio_volume"]
     sync_method = params["sync_method"]
+    subtitle_file = params.get("subtitle_file")
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
@@ -47,6 +49,13 @@ def main(params: Inputs, context: Context) -> Outputs:
         # Create input streams
         video_input = ffmpeg.input(video_file)
         audio_input = ffmpeg.input(audio_file)
+
+        # Get video stream and apply subtitle if provided
+        video_stream = video_input.video
+        if subtitle_file:
+            # Escape special characters in subtitle file path for FFmpeg
+            subtitle_path = subtitle_file.replace('\\', '/').replace(':', '\\:')
+            video_stream = video_stream.filter('subtitles', subtitle_path)
         
         # Handle audio synchronization
         if sync_method == "stretch_audio":
@@ -111,7 +120,7 @@ def main(params: Inputs, context: Context) -> Outputs:
             if has_audio:
                 # Create output with multiple audio streams
                 output_stream = ffmpeg.output(
-                    video_input.video,
+                    video_stream,
                     video_input.audio,  # Original audio
                     audio_stream,       # New audio
                     output_file,
@@ -124,7 +133,7 @@ def main(params: Inputs, context: Context) -> Outputs:
             else:
                 # No original audio, just add the new audio
                 output_stream = ffmpeg.output(
-                    video_input.video,
+                    video_stream,
                     audio_stream,
                     output_file,
                     vcodec='libx264',
@@ -136,7 +145,7 @@ def main(params: Inputs, context: Context) -> Outputs:
         # Create output stream (for replace and mix methods)
         if audio_handling != "keep_both":
             output_stream = ffmpeg.output(
-                video_input.video,
+                video_stream,
                 final_audio,
                 output_file,
                 vcodec='libx264',

@@ -1,0 +1,66 @@
+inputs_def:
+  - handle: video_file
+    description: "Input video file"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: output_format
+    description: "Output video format"
+    json_schema:
+      type: string
+      enum:
+        - "mp4"
+        - "avi"
+        - "mov"
+        - "mkv"
+        - "webm"
+    value: mp4
+    nullable: false
+
+outputs_def:
+  - handle: output_video
+    description: "Video file without audio"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4 Files
+            extensions:
+              - mp4
+          - name: AVI Files
+            extensions:
+              - avi
+          - name: MOV Files
+            extensions:
+              - mov
+          - name: MKV Files
+            extensions:
+              - mkv
+          - name: WebM Files
+            extensions:
+              - webm
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Remove Audio from Video"
+icon: ":carbon:volume-mute:"
+description: "Remove audio track from video file, keeping only the video stream"

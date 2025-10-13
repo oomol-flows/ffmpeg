@@ -12,7 +12,9 @@
       "mcp__oomol__getTaskResult",
       "Bash(python:*)",
       "Bash(find:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(poetry run python3:*)",
+      "Read(//root/.claude/**)"
     ],
     "deny": [],
     "ask": []
