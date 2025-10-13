@@ -1,12 +1,13 @@
 title: "Test Merge Audio Video with Subtitle"
 nodes:
   - node_id: merge_audio_video#1
-    task: self::merge-audio-video
+    task: self::merge-audio-video-subtitle
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/book/oomol-intro_trimmed_with_subtitles_watermarked.mp4
       - handle: audio_file
-        value: /oomol-driver/oomol-storage/audio/Oomol Practical Guide： Write Code INSIDE Your Workflow_audio.mp3
+        value: /oomol-driver/oomol-storage/audio/Oomol Practical Guide： Write Code
+          INSIDE Your Workflow_audio.mp3
       - handle: audio_handling
         value: "replace"
       - handle: audio_volume
