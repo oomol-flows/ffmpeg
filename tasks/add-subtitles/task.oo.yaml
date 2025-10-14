@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,7 +17,7 @@ inputs_def:
     nullable: false
 
   - handle: subtitle_file
-    description: "Subtitle file (SRT, VTT, or ASS format)"
+    description: "%subtitle-file-srt-vtt-or-ass-format%"
     json_schema:
       type: string
       ui:widget: file
@@ -33,22 +33,24 @@ inputs_def:
     nullable: false
 
   - handle: subtitle_style
-    description: "Subtitle rendering style"
+    description: "%subtitle-rendering-style%"
     json_schema:
       type: string
-      enum: ["default", "custom"]
-    value: "default"
+      enum:
+        - "default"
+        - "custom"
+    value: default
     nullable: false
 
   - handle: font_name
-    description: "Font name (used when subtitle_style is custom)"
+    description: "%font-name-used-when-subtitle_style-is-custom%"
     json_schema:
       type: string
-    value: "Arial"
+    value: Arial
     nullable: true
 
   - handle: font_size
-    description: "Font size (used when subtitle_style is custom)"
+    description: "%font-size-used-when-subtitle_style-is-custom%"
     json_schema:
       type: number
       minimum: 12
@@ -57,7 +59,7 @@ inputs_def:
     nullable: true
 
   - handle: font_color
-    description: "Font color (used when subtitle_style is custom)"
+    description: "%font-color-used-when-subtitle_style-is-custom%"
     json_schema:
       type: string
       ui:widget: color
@@ -67,7 +69,7 @@ inputs_def:
     nullable: true
 
   - handle: outline_color
-    description: "Outline color (used when subtitle_style is custom)"
+    description: "%outline-color-used-when-subtitle_style-is-custom%"
     json_schema:
       type: string
       ui:widget: color
@@ -77,15 +79,18 @@ inputs_def:
     nullable: true
 
   - handle: subtitle_position
-    description: "Subtitle position"
+    description: "%subtitle-position%"
     json_schema:
       type: string
-      enum: ["bottom", "top", "center"]
-    value: "bottom"
+      enum:
+        - "bottom"
+        - "top"
+        - "center"
+    value: bottom
     nullable: false
 
   - handle: hard_subtitle
-    description: "Burn subtitles into video (hard subtitle) vs embed as stream (soft subtitle)"
+    description: "%burn-subtitles-into-video-hard-subtitle-vs-embed-as-stream-soft%"
     json_schema:
       type: boolean
     value: true
@@ -116,6 +121,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Add Video Subtitles"
+title: "%add-video-subtitles%"
 icon: ":carbon:closed-caption:"
-description: "Add subtitle file to video with customizable styling and positioning"
+description: "%add-subtitle-file-to-video-with-customizable-styling-and-positio%"

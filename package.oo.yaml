@@ -14,7 +14,7 @@ scripts:
 icon: ./icon.png
 name: ffmpeg
 repository: https://github.com/oomol-flows/ffmpeg.git
-displayName: FFmpeg
+displayName: "%display-name%"
 description: "%a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla%"
 dependencies:
   {}

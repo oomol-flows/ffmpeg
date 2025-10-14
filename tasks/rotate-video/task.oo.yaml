@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file10%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,7 +17,7 @@ inputs_def:
     nullable: false
 
   - handle: operation
-    description: "Rotation/flip operation to perform"
+    description: "%rotation-flip-operation-to-perform%"
     json_schema:
       type: string
       enum:
@@ -32,7 +32,7 @@ inputs_def:
     nullable: false
 
   - handle: custom_angle
-    description: "Custom rotation angle in degrees (used when operation is custom_angle)"
+    description: "%custom-rotation-angle-in-degrees-used-when-operation-is-custom_a%"
     json_schema:
       type: number
       minimum: -360
@@ -41,7 +41,7 @@ inputs_def:
     nullable: true
 
   - handle: background_color
-    description: "Background color for custom rotation (hex color)"
+    description: "%background-color-for-custom-rotation-hex-color%"
     json_schema:
       type: string
       ui:widget: color
@@ -75,6 +75,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Rotate and Flip Video"
+title: "%rotate-and-flip-video%"
 icon: ":carbon:rotate-clockwise:"
-description: "Rotate video by standard angles or flip horizontally/vertically"
+description: "%rotate-video-by-standard-angles-or-flip-horizontally-vertically%"

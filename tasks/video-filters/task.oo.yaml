@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file12%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,7 +18,7 @@ inputs_def:
     nullable: false
 
   - handle: filter_type
-    description: "Type of video filter to apply"
+    description: "%type-of-video-filter-to-apply%"
     json_schema:
       type: string
       enum:
@@ -33,79 +33,79 @@ inputs_def:
         - "vintage"
         - "noise"
         - "vignette"
-    value: "blur"
+    value: blur
     nullable: false
 
   - handle: blur_strength
-    description: "Blur strength (used when filter_type is blur)"
+    description: "%blur-strength-used-when-filter_type-is-blur%"
     json_schema:
       type: number
       minimum: 0.5
       maximum: 20.0
-    value: null
+    value:
     nullable: true
 
   - handle: sharpen_strength
-    description: "Sharpen strength (used when filter_type is sharpen)"
+    description: "%sharpen-strength-used-when-filter_type-is-sharpen%"
     json_schema:
       type: number
       minimum: 0.1
       maximum: 5.0
-    value: null
+    value:
     nullable: true
 
   - handle: brightness_level
-    description: "Brightness adjustment (-1.0 to 1.0, used when filter_type is brightness)"
+    description: "%brightness-adjustment-1-0-to-1-0-used-when-filter_type-is-bright%"
     json_schema:
       type: number
       minimum: -1
       maximum: 1.0
-    value: null
+    value:
     nullable: true
 
   - handle: contrast_level
-    description: "Contrast adjustment (0.5 to 3.0, used when filter_type is contrast)"
+    description: "%contrast-adjustment-0-5-to-3-0-used-when-filter_type-is-contrast%"
     json_schema:
       type: number
       minimum: 0.5
       maximum: 3.0
-    value: null
+    value:
     nullable: true
 
   - handle: saturation_level
-    description: "Saturation adjustment (0.0 to 3.0, used when filter_type is saturation)"
+    description: "%saturation-adjustment-0-0-to-3-0-used-when-filter_type-is-satura%"
     json_schema:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: null
+    value:
     nullable: true
 
   - handle: hue_shift
-    description: "Hue shift in degrees (-180 to 180, used when filter_type is hue)"
+    description: "%hue-shift-in-degrees-180-to-180-used-when-filter_type-is-hue%"
     json_schema:
       type: number
       minimum: -180
       maximum: 180
-    value: null
+    value:
     nullable: true
 
   - handle: noise_strength
-    description: "Noise strength (used when filter_type is noise)"
+    description: "%noise-strength-used-when-filter_type-is-noise%"
     json_schema:
       type: number
       minimum: 1
       maximum: 100
-    value: null
+    value:
     nullable: true
 
   - handle: vignette_strength
-    description: "Vignette strength (used when filter_type is vignette)"
+    description: "%vignette-strength-used-when-filter_type-is-vignette%"
     json_schema:
       type: number
       minimum: 0.1
       maximum: 1.0
-    value: null
+    value:
     nullable: true
 
 outputs_def:
@@ -133,7 +133,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Apply Video Filters"
+title: "%apply-video-filters%"
 icon: ":carbon:camera-action:"
-description: "Apply various visual filters to video including blur, sharpen,
-  color adjustments, and artistic effects"
+description: "%apply-various-visual-filters-to-video-including-blur-sharpen-col%"

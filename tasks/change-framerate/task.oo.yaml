@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file3%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,7 +18,7 @@ inputs_def:
     nullable: false
 
   - handle: target_framerate
-    description: "Target frame rate (fps)"
+    description: "%target-frame-rate-fps%"
     json_schema:
       type: number
       minimum: 1
@@ -27,11 +27,13 @@ inputs_def:
     nullable: false
 
   - handle: frame_interpolation
-    description: "Frame interpolation method"
+    description: "%frame-interpolation-method%"
     json_schema:
       type: string
-      enum: ["fps", "minterpolate"]
-    value: "fps"
+      enum:
+        - "fps"
+        - "minterpolate"
+    value: fps
     nullable: false
 
 outputs_def:
@@ -59,6 +61,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Change Video Frame Rate"
+title: "%change-video-frame-rate%"
 icon: ":carbon:timer:"
-description: "Change video frame rate with different interpolation methods"
+description: "%change-video-frame-rate-with-different-interpolation-methods%"

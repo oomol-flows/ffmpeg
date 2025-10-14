@@ -1,4 +1,4 @@
-title: "Simple Task Test"
+title: "%simple-task-test%"
 nodes:
   # Test video-filters task
   - node_id: video_filters#1

@@ -1,7 +1,7 @@
-title: "Test Remove Audio"
+title: "%test-remove-audio%"
 nodes:
   - node_id: remove-audio#1
-    title: "Remove Audio #1"
+    title: "%remove-audio-1%"
     task: self::remove-audio
     inputs_from:
       - handle: video_file

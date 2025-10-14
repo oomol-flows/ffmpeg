@@ -1,4 +1,4 @@
-title: "Test Video Merge"
+title: "%test-video-merge%"
 nodes:
   # Test concat-videos task with direct file paths
   - node_id: concat_videos#1

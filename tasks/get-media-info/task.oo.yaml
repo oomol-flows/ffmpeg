@@ -1,6 +1,6 @@
 inputs_def:
   - handle: input_file
-    description: "Input media file (video or audio)"
+    description: "%input-media-file-video-or-audio%"
     json_schema:
       type: string
       ui:widget: file
@@ -24,24 +24,24 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Output format for media information"
+    description: "%output-format-for-media-information%"
     json_schema:
       type: string
       enum:
         - "json"
         - "text"
-    value: "json"
+    value: json
     nullable: false
 
   - handle: include_streams
-    description: "Include detailed stream information"
+    description: "%include-detailed-stream-information%"
     json_schema:
       type: boolean
     value: true
     nullable: false
 
   - handle: include_chapters
-    description: "Include chapter information (if available)"
+    description: "%include-chapter-information-if-available%"
     json_schema:
       type: boolean
     value: false
@@ -75,7 +75,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Get Media Information"
+title: "%get-media-information%"
 icon: ":carbon:information:"
-description: "Extract detailed information about video and audio files including
-  format, duration, codecs, and metadata"
+description: "%extract-detailed-information-about-video-and-audio-files-includi%"

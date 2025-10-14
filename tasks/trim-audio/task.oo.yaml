@@ -1,6 +1,6 @@
 inputs_def:
   - handle: audio_file
-    description: "Input audio file"
+    description: "%input-audio-file5%"
     json_schema:
       type: string
       ui:widget: file
@@ -19,21 +19,21 @@ inputs_def:
     nullable: false
 
   - handle: start_time
-    description: "Start time in seconds"
+    description: "%start-time-in-seconds%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: duration
-    description: "Duration in seconds (0 = to end of audio)"
+    description: "%duration-in-seconds-0-to-end-of-audio%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: output_format
-    description: "Output audio format"
+    description: "%output-audio-format3%"
     json_schema:
       type: string
       enum:
@@ -76,6 +76,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Trim Audio Segment"
+title: "%trim-audio-segment%"
 icon: ":carbon:cut:"
-description: "Extract a specific time segment from audio file"
+description: "%extract-a-specific-time-segment-from-audio-file%"

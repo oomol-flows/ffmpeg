@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file7%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,15 +18,20 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Output audio format"
+    description: "%output-audio-format2%"
     json_schema:
       type: string
-      enum: ["mp3", "wav", "aac", "flac", "ogg"]
-    value: "mp3"
+      enum:
+        - "mp3"
+        - "wav"
+        - "aac"
+        - "flac"
+        - "ogg"
+    value: mp3
     nullable: false
 
   - handle: audio_quality
-    description: "Audio quality (bitrate in kbps)"
+    description: "%audio-quality-bitrate-in-kbps%"
     json_schema:
       type: number
       minimum: 64
@@ -65,6 +70,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Extract Audio from Video"
+title: "%extract-audio-from-video%"
 icon: ":carbon:volume-up:"
-description: "Extract audio track from video file and save as separate audio file"
+description: "%extract-audio-track-from-video-file-and-save-as-separate-audio-f%"

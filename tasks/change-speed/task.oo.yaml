@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file4%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,43 +17,55 @@ inputs_def:
     nullable: false
 
   - handle: speed_method
-    description: "Speed change method"
+    description: "%speed-change-method%"
     json_schema:
       type: string
-      enum: ["multiplier", "preset"]
-    value: "preset"
+      enum:
+        - "multiplier"
+        - "preset"
+    value: preset
     nullable: false
 
   - handle: speed_preset
-    description: "Speed preset (used when speed_method is preset)"
+    description: "%speed-preset-used-when-speed_method-is-preset%"
     json_schema:
       type: string
-      enum: ["0.25x", "0.5x", "0.75x", "1.25x", "1.5x", "2x", "4x"]
-    value: "2x"
+      enum:
+        - "0.25x"
+        - "0.5x"
+        - "0.75x"
+        - "1.25x"
+        - "1.5x"
+        - "2x"
+        - "4x"
+    value: 2x
     nullable: true
 
   - handle: speed_multiplier
-    description: "Speed multiplier (used when speed_method is multiplier, >1 = faster, <1 = slower)"
+    description: "%speed-multiplier-used-when-speed_method-is-multiplier-1-faster-1%"
     json_schema:
       type: number
       minimum: 0.1
       maximum: 10.0
-    value: 2.0
+    value: 2
     nullable: true
 
   - handle: maintain_audio_pitch
-    description: "Maintain original audio pitch when changing speed"
+    description: "%maintain-original-audio-pitch-when-changing-speed%"
     json_schema:
       type: boolean
     value: true
     nullable: false
 
   - handle: audio_handling
-    description: "How to handle audio when changing speed"
+    description: "%how-to-handle-audio-when-changing-speed%"
     json_schema:
       type: string
-      enum: ["speed_change", "preserve_pitch", "remove_audio"]
-    value: "preserve_pitch"
+      enum:
+        - "speed_change"
+        - "preserve_pitch"
+        - "remove_audio"
+    value: preserve_pitch
     nullable: false
 
 outputs_def:
@@ -81,6 +93,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Change Video Speed"
+title: "%change-video-speed%"
 icon: ":carbon:play-filled-alt:"
-description: "Speed up or slow down video playback with audio handling options"
+description: "%speed-up-or-slow-down-video-playback-with-audio-handling-options%"

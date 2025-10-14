@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file11%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,21 +18,21 @@ inputs_def:
     nullable: false
 
   - handle: start_time
-    description: "Start time in seconds"
+    description: "%start-time-in-seconds2%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: duration
-    description: "Duration in seconds (0 = to end of video)"
+    description: "%duration-in-seconds-0-to-end-of-video%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: output_format
-    description: "Output video format"
+    description: "%output-video-format2%"
     json_schema:
       type: string
       enum:
@@ -75,6 +75,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Trim Video Segment"
+title: "%trim-video-segment%"
 icon: ":carbon:cut:"
-description: "Extract a specific time segment from video file"
+description: "%extract-a-specific-time-segment-from-video-file%"

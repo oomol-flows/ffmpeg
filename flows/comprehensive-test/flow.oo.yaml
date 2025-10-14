@@ -1,8 +1,8 @@
-title: "Comprehensive Task Test"
+title: "%comprehensive-task-test%"
 nodes:
   # Test trim-video task  
   - node_id: add-watermark#2
-    title: "Add Video Watermark #2"
+    title: "%add-video-watermark-2%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/Drag-and-Drop Manual Creation in OOMOL.mp4
@@ -23,9 +23,9 @@ nodes:
       - handle: padding
         value: 20
     task: self::add-watermark
-    description: dasdsdas
+    description: "%dasdsdas%"
   - node_id: extract-audio#1
-    title: "Extract Audio from Video #1"
+    title: "%extract-audio-from-video-1%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/test/Area22211.MP4
@@ -35,7 +35,7 @@ nodes:
         value: 192
     task: self::extract-audio
   - node_id: replace-audio#1
-    title: "Replace Audio #1"
+    title: "%replace-audio-1%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/test/Area22211.MP4

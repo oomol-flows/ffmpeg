@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file5%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,19 +18,18 @@ inputs_def:
     nullable: false
 
   - handle: compression_method
-    description: "Compression method"
+    description: "%compression-method%"
     json_schema:
       type: string
       enum:
         - "crf"
         - "bitrate"
         - "filesize"
-    value: "crf"
+    value: crf
     nullable: false
 
   - handle: crf_value
-    description: "CRF value (0-51, lower = better quality, used when
-      compression_method is crf)"
+    description: "%crf-value-0-51-lower-better-quality-used-when-compression_method%"
     json_schema:
       type: number
       minimum: 0
@@ -39,7 +38,7 @@ inputs_def:
     nullable: true
 
   - handle: target_bitrate
-    description: "Target bitrate in kbps (used when compression_method is bitrate)"
+    description: "%target-bitrate-in-kbps-used-when-compression_method-is-bitrate%"
     json_schema:
       type: number
       minimum: 100
@@ -47,7 +46,7 @@ inputs_def:
     nullable: true
 
   - handle: target_filesize_mb
-    description: "Target file size in MB (used when compression_method is filesize)"
+    description: "%target-file-size-in-mb-used-when-compression_method-is-filesize%"
     json_schema:
       type: number
       minimum: 1
@@ -55,7 +54,7 @@ inputs_def:
     nullable: true
 
   - handle: preset
-    description: "Encoding preset (speed vs compression efficiency)"
+    description: "%encoding-preset-speed-vs-compression-efficiency%"
     json_schema:
       type: string
       enum:
@@ -68,11 +67,11 @@ inputs_def:
         - "slow"
         - "slower"
         - "veryslow"
-    value: "medium"
+    value: medium
     nullable: false
 
   - handle: audio_bitrate
-    description: "Audio bitrate in kbps"
+    description: "%audio-bitrate-in-kbps%"
     json_schema:
       type: number
       minimum: 32
@@ -99,6 +98,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Compress Video"
+title: "%compress-video%"
 icon: ":carbon:package:"
-description: "Compress video using different methods: CRF, bitrate, or target file size"
+description: "%compress-video-using-different-methods-crf-bitrate-or-target-fil%"

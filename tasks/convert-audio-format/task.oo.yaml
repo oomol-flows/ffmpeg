@@ -1,6 +1,6 @@
 inputs_def:
   - handle: audio_file
-    description: "Input audio file"
+    description: "%input-audio-file4%"
     json_schema:
       type: string
       ui:widget: file
@@ -20,15 +20,21 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Target audio format"
+    description: "%target-audio-format%"
     json_schema:
       type: string
-      enum: ["mp3", "wav", "aac", "flac", "ogg", "m4a"]
-    value: "mp3"
+      enum:
+        - "mp3"
+        - "wav"
+        - "aac"
+        - "flac"
+        - "ogg"
+        - "m4a"
+    value: mp3
     nullable: false
 
   - handle: audio_quality
-    description: "Audio quality (bitrate in kbps for lossy formats)"
+    description: "%audio-quality-bitrate-in-kbps-for-lossy-formats%"
     json_schema:
       type: number
       minimum: 32
@@ -37,18 +43,28 @@ inputs_def:
     nullable: false
 
   - handle: sample_rate
-    description: "Sample rate in Hz (0 = keep original)"
+    description: "%sample-rate-in-hz-0-keep-original%"
     json_schema:
       type: number
-      enum: [0, 8000, 16000, 22050, 44100, 48000, 96000]
+      enum:
+        - 0
+        - 8000
+        - 16000
+        - 22050
+        - 44100
+        - 48000
+        - 96000
     value: 0
     nullable: false
 
   - handle: channels
-    description: "Audio channels (0 = keep original, 1 = mono, 2 = stereo)"
+    description: "%audio-channels-0-keep-original-1-mono-2-stereo%"
     json_schema:
       type: number
-      enum: [0, 1, 2]
+      enum:
+        - 0
+        - 1
+        - 2
     value: 0
     nullable: false
 
@@ -86,6 +102,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Convert Audio Format"
+title: "%convert-audio-format%"
 icon: ":carbon:data-format:"
-description: "Convert audio between different formats with quality and sample rate control"
+description: "%convert-audio-between-different-formats-with-quality-and-sample%"

@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_files
-    description: "List of video files to concatenate (in order)"
+    description: "%list-of-video-files-to-concatenate-in-order%"
     json_schema:
       type: array
       items:
@@ -20,17 +20,17 @@ inputs_def:
     nullable: false
 
   - handle: concat_method
-    description: "Concatenation method to use"
+    description: "%concatenation-method-to-use%"
     json_schema:
       type: string
       enum:
         - "filter"
         - "demuxer"
-    value: "filter"
+    value: filter
     nullable: false
 
   - handle: audio_handling
-    description: "How to handle audio tracks from multiple videos"
+    description: "%how-to-handle-audio-tracks-from-multiple-videos%"
     json_schema:
       type: string
       enum:
@@ -38,45 +38,45 @@ inputs_def:
         - "mix_all"
         - "keep_all"
         - "silence"
-    value: "first_only"
+    value: first_only
     nullable: false
 
   - handle: resolution_handling
-    description: "How to handle different video resolutions"
+    description: "%how-to-handle-different-video-resolutions%"
     json_schema:
       type: string
       enum:
         - "auto"
         - "match_first"
         - "custom"
-    value: "auto"
+    value: auto
     nullable: false
 
   - handle: custom_width
-    description: "Custom output width (used when resolution_handling is custom)"
+    description: "%custom-output-width-used-when-resolution_handling-is-custom%"
     json_schema:
       type: number
       minimum: 1
       maximum: 7680
-    value: null
+    value:
     nullable: true
 
   - handle: custom_height
-    description: "Custom output height (used when resolution_handling is custom)"
+    description: "%custom-output-height-used-when-resolution_handling-is-custom%"
     json_schema:
       type: number
       minimum: 1
       maximum: 4320
-    value: null
+    value:
     nullable: true
 
   - handle: transition_duration
-    description: "Transition duration between videos (seconds, 0 for no transition)"
+    description: "%transition-duration-between-videos-seconds-0-for-no-transition%"
     json_schema:
       type: number
       minimum: 0.0
       maximum: 10.0
-    value: 0.0
+    value: 0
     nullable: false
 
 outputs_def:
@@ -104,7 +104,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Concatenate Videos"
+title: "%concatenate-videos%"
 icon: ":carbon:video:"
-description: "Combine multiple video files into a single output video with
-  various concatenation options"
+description: "%combine-multiple-video-files-into-a-single-output-video-with-var%"

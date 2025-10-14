@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file13%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,21 +17,21 @@ inputs_def:
     nullable: false
 
   - handle: start_time
-    description: "Start time in seconds"
+    description: "%start-time-in-seconds3%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: duration
-    description: "Duration in seconds (0 = entire video)"
+    description: "%duration-in-seconds-0-entire-video%"
     json_schema:
       type: number
       minimum: 0
     nullable: false
 
   - handle: output_width
-    description: "Output GIF width (height will be calculated to maintain aspect ratio)"
+    description: "%output-gif-width-height-will-be-calculated-to-maintain-aspect-ra%"
     json_schema:
       type: number
       minimum: 100
@@ -39,7 +39,7 @@ inputs_def:
     nullable: false
 
   - handle: framerate
-    description: "Output framerate (fps)"
+    description: "%output-framerate-fps%"
     json_schema:
       type: number
       minimum: 1
@@ -47,7 +47,7 @@ inputs_def:
     nullable: false
 
   - handle: quality
-    description: "GIF quality optimization"
+    description: "%gif-quality-optimization%"
     json_schema:
       type: string
       enum:
@@ -58,14 +58,14 @@ inputs_def:
     nullable: false
 
   - handle: dither
-    description: "Enable dithering for better color gradients"
+    description: "%enable-dithering-for-better-color-gradients%"
     json_schema:
       type: boolean
     value: true
     nullable: false
 
   - handle: loop_count
-    description: "Number of loops (0 = infinite loop)"
+    description: "%number-of-loops-0-infinite-loop%"
     json_schema:
       type: number
       minimum: 0
@@ -91,6 +91,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Video to GIF Converter"
+title: "%video-to-gif-converter%"
 icon: ":carbon:image:"
-description: "Convert video segment to optimized GIF with customizable quality and timing"
+description: "%convert-video-segment-to-optimized-gif-with-customizable-quality%"

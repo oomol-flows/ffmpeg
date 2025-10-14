@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file6%"
     json_schema:
       type: string
       ui:widget: file
@@ -20,35 +20,60 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Target video format"
+    description: "%target-video-format%"
     json_schema:
       type: string
-      enum: ["mp4", "avi", "mov", "mkv", "webm", "flv", "wmv"]
-    value: "mp4"
+      enum:
+        - "mp4"
+        - "avi"
+        - "mov"
+        - "mkv"
+        - "webm"
+        - "flv"
+        - "wmv"
+    value: mp4
     nullable: false
 
   - handle: video_codec
-    description: "Video codec"
+    description: "%video-codec%"
     json_schema:
       type: string
-      enum: ["libx264", "libx265", "libvpx", "libvpx-vp9", "copy"]
-    value: "libx264"
+      enum:
+        - "libx264"
+        - "libx265"
+        - "libvpx"
+        - "libvpx-vp9"
+        - "copy"
+    value: libx264
     nullable: false
 
   - handle: audio_codec
-    description: "Audio codec"
+    description: "%audio-codec%"
     json_schema:
       type: string
-      enum: ["aac", "mp3", "libvorbis", "copy"]
-    value: "aac"
+      enum:
+        - "aac"
+        - "mp3"
+        - "libvorbis"
+        - "copy"
+    value: aac
     nullable: false
 
   - handle: quality_preset
-    description: "Encoding quality preset"
+    description: "%encoding-quality-preset%"
     json_schema:
       type: string
-      enum: ["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
-    value: "medium"
+      enum:
+        - "ultrafast"
+        - "superfast"
+        - "veryfast"
+        - "faster"
+        - "fast"
+        - "medium"
+        - "slow"
+        - "slower"
+        - "veryslow"
+    value: medium
     nullable: false
 
 outputs_def:
@@ -82,6 +107,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Convert Video Format"
+title: "%convert-video-format%"
 icon: ":carbon:data-format:"
-description: "Convert video between different formats and codecs"
+description: "%convert-video-between-different-formats-and-codecs%"

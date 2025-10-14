@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file8%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,7 +18,7 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Output video format"
+    description: "%output-video-format%"
     json_schema:
       type: string
       enum:
@@ -61,6 +61,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Remove Audio from Video"
+title: "%remove-audio-from-video%"
 icon: ":carbon:volume-mute:"
-description: "Remove audio track from video file, keeping only the video stream"
+description: "%remove-audio-track-from-video-file-keeping-only-the-video-stream%"

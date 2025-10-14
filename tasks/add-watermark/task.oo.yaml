@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file2%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,24 +17,24 @@ inputs_def:
     nullable: false
 
   - handle: watermark_type
-    description: "Type of watermark to add"
+    description: "%type-of-watermark-to-add%"
     json_schema:
       type: string
       enum:
         - "text"
         - "image"
-    value: "text"
+    value: text
     nullable: false
 
   - handle: watermark_text
-    description: "Watermark text (used when watermark_type is text)"
+    description: "%watermark-text-used-when-watermark_type-is-text%"
     json_schema:
       type: string
-    value: "WATERMARK"
+    value: WATERMARK
     nullable: true
 
   - handle: watermark_image
-    description: "Watermark image file (used when watermark_type is image)"
+    description: "%watermark-image-file-used-when-watermark_type-is-image%"
     json_schema:
       type: string
       ui:widget: file
@@ -51,7 +51,7 @@ inputs_def:
     nullable: true
 
   - handle: position
-    description: "Watermark position"
+    description: "%watermark-position%"
     json_schema:
       type: string
       enum:
@@ -60,11 +60,11 @@ inputs_def:
         - "bottom-left"
         - "bottom-right"
         - "center"
-    value: "bottom-right"
+    value: bottom-right
     nullable: false
 
   - handle: opacity
-    description: "Watermark opacity (0.0 = transparent, 1.0 = opaque)"
+    description: "%watermark-opacity-0-0-transparent-1-0-opaque%"
     json_schema:
       type: number
       minimum: 0.0
@@ -73,7 +73,7 @@ inputs_def:
     nullable: false
 
   - handle: font_size
-    description: "Text font size (used when watermark_type is text)"
+    description: "%text-font-size-used-when-watermark_type-is-text%"
     json_schema:
       type: number
       minimum: 12
@@ -82,7 +82,7 @@ inputs_def:
     nullable: true
 
   - handle: font_color
-    description: "Text font color (used when watermark_type is text)"
+    description: "%text-font-color-used-when-watermark_type-is-text%"
     json_schema:
       type: string
       ui:widget: color
@@ -92,7 +92,7 @@ inputs_def:
     nullable: true
 
   - handle: padding
-    description: "Padding from edges in pixels"
+    description: "%padding-from-edges-in-pixels%"
     json_schema:
       type: number
       minimum: 0
@@ -125,6 +125,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Add Video Watermark"
+title: "%add-video-watermark%"
 icon: ":carbon:stamp:"
-description: "Add text or image watermark to video with customizable position and opacity"
+description: "%add-text-or-image-watermark-to-video-with-customizable-position%"

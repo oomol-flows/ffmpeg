@@ -1,4 +1,4 @@
-title: "Test Merge Audio Video with Subtitle"
+title: "%test-merge-audio-video-with-subtitle%"
 nodes:
   - node_id: merge_audio_video#1
     task: self::merge-audio-video-subtitle

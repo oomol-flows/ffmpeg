@@ -1,6 +1,6 @@
 inputs_def:
   - handle: audio_file
-    description: "Input audio file"
+    description: "%input-audio-file%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,15 +18,18 @@ inputs_def:
     nullable: false
 
   - handle: quality_method
-    description: "Quality adjustment method"
+    description: "%quality-adjustment-method%"
     json_schema:
       type: string
-      enum: ["bitrate", "quality", "compression"]
-    value: "bitrate"
+      enum:
+        - "bitrate"
+        - "quality"
+        - "compression"
+    value: bitrate
     nullable: false
 
   - handle: target_bitrate
-    description: "Target bitrate in kbps (used when quality_method is bitrate)"
+    description: "%target-bitrate-in-kbps-used-when-quality_method-is-bitrate%"
     json_schema:
       type: number
       minimum: 32
@@ -35,7 +38,7 @@ inputs_def:
     nullable: true
 
   - handle: quality_level
-    description: "Quality level 0-9 (used when quality_method is quality, 0=best, 9=worst)"
+    description: "%quality-level-0-9-used-when-quality_method-is-quality-0-best-9-w%"
     json_schema:
       type: number
       minimum: 0
@@ -44,7 +47,7 @@ inputs_def:
     nullable: true
 
   - handle: compression_level
-    description: "Compression level 0-12 (used when quality_method is compression)"
+    description: "%compression-level-0-12-used-when-quality_method-is-compression%"
     json_schema:
       type: number
       minimum: 0
@@ -53,11 +56,15 @@ inputs_def:
     nullable: true
 
   - handle: output_format
-    description: "Output audio format"
+    description: "%output-audio-format%"
     json_schema:
       type: string
-      enum: ["mp3", "aac", "ogg", "flac"]
-    value: "mp3"
+      enum:
+        - "mp3"
+        - "aac"
+        - "ogg"
+        - "flac"
+    value: mp3
     nullable: false
 
 outputs_def:
@@ -88,6 +95,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Adjust Audio Quality"
+title: "%adjust-audio-quality%"
 icon: ":carbon:settings-adjust:"
-description: "Adjust audio quality using bitrate, quality level, or compression settings"
+description: "%adjust-audio-quality-using-bitrate-quality-level-or-compression%"

@@ -1,6 +1,6 @@
 inputs_def:
   - handle: audio_file
-    description: "Input audio file"
+    description: "%input-audio-file2%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,15 +18,18 @@ inputs_def:
     nullable: false
 
   - handle: volume_method
-    description: "Volume adjustment method"
+    description: "%volume-adjustment-method%"
     json_schema:
       type: string
-      enum: ["percentage", "decibels", "normalize"]
-    value: "percentage"
+      enum:
+        - "percentage"
+        - "decibels"
+        - "normalize"
+    value: percentage
     nullable: false
 
   - handle: volume_percentage
-    description: "Volume percentage (100 = original, used when volume_method is percentage)"
+    description: "%volume-percentage-100-original-used-when-volume_method-is-percen%"
     json_schema:
       type: number
       minimum: 1
@@ -35,7 +38,7 @@ inputs_def:
     nullable: true
 
   - handle: volume_decibels
-    description: "Volume change in decibels (0 = original, used when volume_method is decibels)"
+    description: "%volume-change-in-decibels-0-original-used-when-volume_method-is%"
     json_schema:
       type: number
       minimum: -60
@@ -44,7 +47,7 @@ inputs_def:
     nullable: true
 
   - handle: normalize_target
-    description: "Normalization target in dB (used when volume_method is normalize)"
+    description: "%normalization-target-in-db-used-when-volume_method-is-normalize%"
     json_schema:
       type: number
       minimum: -30
@@ -53,7 +56,7 @@ inputs_def:
     nullable: true
 
   - handle: fade_in_duration
-    description: "Fade in duration in seconds (0 = no fade in)"
+    description: "%fade-in-duration-in-seconds-0-no-fade-in%"
     json_schema:
       type: number
       minimum: 0
@@ -62,7 +65,7 @@ inputs_def:
     nullable: false
 
   - handle: fade_out_duration
-    description: "Fade out duration in seconds (0 = no fade out)"
+    description: "%fade-out-duration-in-seconds-0-no-fade-out%"
     json_schema:
       type: number
       minimum: 0
@@ -94,6 +97,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Adjust Audio Volume"
+title: "%adjust-audio-volume%"
 icon: ":carbon:volume-up:"
-description: "Adjust audio volume using percentage, decibels, or normalization with fade effects"
+description: "%adjust-audio-volume-using-percentage-decibels-or-normalization-w%"

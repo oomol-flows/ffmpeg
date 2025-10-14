@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file"
+    description: "%input-video-file9%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,23 +18,31 @@ inputs_def:
     nullable: false
 
   - handle: resize_method
-    description: "Resize method"
+    description: "%resize-method%"
     json_schema:
       type: string
-      enum: ["preset", "custom", "scale_percentage"]
-    value: "preset"
+      enum:
+        - "preset"
+        - "custom"
+        - "scale_percentage"
+    value: preset
     nullable: false
 
   - handle: preset_size
-    description: "Preset resolution (used when resize_method is preset)"
+    description: "%preset-resolution-used-when-resize_method-is-preset%"
     json_schema:
       type: string
-      enum: ["1920x1080", "1280x720", "854x480", "640x360", "426x240"]
-    value: "1280x720"
+      enum:
+        - "1920x1080"
+        - "1280x720"
+        - "854x480"
+        - "640x360"
+        - "426x240"
+    value: 1280x720
     nullable: true
 
   - handle: custom_width
-    description: "Custom width (used when resize_method is custom)"
+    description: "%custom-width-used-when-resize_method-is-custom%"
     json_schema:
       type: number
       minimum: 1
@@ -42,7 +50,7 @@ inputs_def:
     nullable: true
 
   - handle: custom_height
-    description: "Custom height (used when resize_method is custom)"
+    description: "%custom-height-used-when-resize_method-is-custom%"
     json_schema:
       type: number
       minimum: 1
@@ -50,7 +58,7 @@ inputs_def:
     nullable: true
 
   - handle: scale_percentage
-    description: "Scale percentage (used when resize_method is scale_percentage)"
+    description: "%scale-percentage-used-when-resize_method-is-scale_percentage%"
     json_schema:
       type: number
       minimum: 10
@@ -59,7 +67,7 @@ inputs_def:
     nullable: true
 
   - handle: maintain_aspect_ratio
-    description: "Maintain aspect ratio"
+    description: "%maintain-aspect-ratio%"
     json_schema:
       type: boolean
     value: true
@@ -90,6 +98,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Resize Video Resolution"
+title: "%resize-video-resolution%"
 icon: ":carbon:crop:"
-description: "Change video resolution using presets, custom dimensions, or percentage scaling"
+description: "%change-video-resolution-using-presets-custom-dimensions-or-perce%"

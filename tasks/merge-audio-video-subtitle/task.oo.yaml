@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file (can have or not have audio)"
+    description: "%input-video-file-can-have-or-not-have-audio%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,7 +17,7 @@ inputs_def:
     nullable: false
 
   - handle: audio_file
-    description: "Input audio file to merge with video"
+    description: "%input-audio-file-to-merge-with-video%"
     json_schema:
       type: string
       ui:widget: file
@@ -35,7 +35,7 @@ inputs_def:
     nullable: false
 
   - handle: audio_handling
-    description: "How to handle audio tracks"
+    description: "%how-to-handle-audio-tracks%"
     json_schema:
       type: string
       enum:
@@ -46,7 +46,7 @@ inputs_def:
     nullable: false
 
   - handle: audio_volume
-    description: "New audio track volume (1.0 = original)"
+    description: "%new-audio-track-volume-1-0-original%"
     json_schema:
       type: number
       minimum: 0.0
@@ -55,7 +55,7 @@ inputs_def:
     nullable: false
 
   - handle: original_audio_volume
-    description: "Original audio volume when mixing (used when audio_handling is mix)"
+    description: "%original-audio-volume-when-mixing-used-when-audio_handling-is-mi%"
     json_schema:
       type: number
       minimum: 0.0
@@ -64,7 +64,7 @@ inputs_def:
     nullable: true
 
   - handle: sync_method
-    description: "Audio synchronization method"
+    description: "%audio-synchronization-method%"
     json_schema:
       type: string
       enum:
@@ -76,7 +76,7 @@ inputs_def:
     nullable: false
 
   - handle: subtitle_file
-    description: "Optional subtitle file to burn into video"
+    description: "%optional-subtitle-file-to-burn-into-video%"
     json_schema:
       type: string
       ui:widget: file
@@ -116,8 +116,8 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Merge Audio Video Subtitle"
+title: "%merge-audio-video-subtitle%"
 icon: ":carbon:audio-console:"
-description: "Combine audio, video and subtitle files with various synchronization options"
+description: "%combine-audio-video-and-subtitle-files-with-various-synchronizat%"
 ui:
   default_width: 596.9659051446632

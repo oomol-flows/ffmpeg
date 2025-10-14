@@ -1,4 +1,4 @@
-title: "Test All Task Blocks"
+title: "%test-all-task-blocks%"
 nodes:
   # Test video-filters task
   - node_id: video_filters#1

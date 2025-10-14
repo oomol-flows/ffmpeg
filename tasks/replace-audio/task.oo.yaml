@@ -1,6 +1,6 @@
 inputs_def:
   - handle: video_file
-    description: "Input video file with original audio"
+    description: "%input-video-file-with-original-audio%"
     json_schema:
       type: string
       ui:widget: file
@@ -17,7 +17,7 @@ inputs_def:
     nullable: false
 
   - handle: audio_file
-    description: "New audio file to replace the original audio"
+    description: "%new-audio-file-to-replace-the-original-audio%"
     json_schema:
       type: string
       ui:widget: file
@@ -35,20 +35,24 @@ inputs_def:
     nullable: false
 
   - handle: sync_method
-    description: "Method to synchronize audio with video duration"
+    description: "%method-to-synchronize-audio-with-video-duration%"
     json_schema:
       type: string
-      enum: ["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
-    value: "stretch_audio"
+      enum:
+        - "stretch_audio"
+        - "loop_audio"
+        - "trim_audio"
+        - "trim_video"
+    value: stretch_audio
     nullable: false
 
   - handle: audio_volume
-    description: "Volume level for the new audio (1.0 = original)"
+    description: "%volume-level-for-the-new-audio-1-0-original%"
     json_schema:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: 1.0
+    value: 1
     nullable: false
 
 outputs_def:
@@ -76,6 +80,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Replace Audio"
+title: "%replace-audio%"
 icon: ":carbon:audio-console:"
-description: "Replace video's audio track with a new audio file, with synchronization options"
+description: "%replace-video-s-audio-track-with-a-new-audio-file-with-synchroni%"
