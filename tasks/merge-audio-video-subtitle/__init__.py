@@ -126,9 +126,7 @@ def main(params: Inputs, context: Context) -> Outputs:
                     output_file,
                     vcodec='libx264',
                     acodec='aac',
-                    map='0:v:0',  # Video from first input
-                    map='0:a:0',  # Audio from first input
-                    map='1:a:0'   # Audio from second input
+                    **{'map': ['0:v:0', '0:a:0', '1:a:0']}  # Map video and both audio streams
                 )
             else:
                 # No original audio, just add the new audio
