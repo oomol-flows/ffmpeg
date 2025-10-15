@@ -15,6 +15,8 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+from utils.video_utils import validate_and_probe_video
+from utils.ffmpeg_encoder import create_encoder
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -39,11 +41,12 @@ def main(params: Inputs, context: Context) -> Outputs:
     output_file = f"/oomol-driver/oomol-storage/{base_name}_with_audio.mp4"
     
     try:
-        # Get duration information
-        video_probe = ffmpeg.probe(video_file)
+        # Validate and probe video file
+        video_probe_result = validate_and_probe_video(video_file)
+        video_duration = video_probe_result.duration
+
+        # Probe audio file
         audio_probe = ffmpeg.probe(audio_file)
-        
-        video_duration = float(video_probe['format']['duration'])
         audio_duration = float(audio_probe['format']['duration'])
         
         # Create input streams
@@ -62,22 +65,26 @@ def main(params: Inputs, context: Context) -> Outputs:
             # Stretch audio to match video duration
             if audio_duration != video_duration:
                 tempo_factor = audio_duration / video_duration
+                # Clamp tempo_factor to valid range (0.5 to 2.0)
+                tempo_factor = max(0.5, min(2.0, tempo_factor))
                 audio_stream = audio_input.audio.filter('atempo', tempo_factor)
             else:
                 audio_stream = audio_input.audio
-                
+
         elif sync_method == "loop_audio":
             # Loop audio to match video duration
             if audio_duration < video_duration:
                 loop_count = int(video_duration / audio_duration) + 1
-                audio_stream = audio_input.audio.filter('aloop', loop=loop_count)
+                audio_stream = audio_input.audio.filter('aloop', loop=loop_count, size=2e9)
+                # Trim to exact duration
+                audio_stream = audio_stream.filter('atrim', duration=video_duration)
             else:
                 audio_stream = audio_input.audio
-                
+
         elif sync_method == "trim_audio":
             # Trim audio to match video duration
             audio_stream = audio_input.audio.filter('atrim', duration=video_duration)
-            
+
         elif sync_method == "trim_video":
             # Trim video to match audio duration
             video_input = ffmpeg.input(video_file, t=audio_duration)
@@ -88,7 +95,13 @@ def main(params: Inputs, context: Context) -> Outputs:
         # Apply volume adjustment
         if audio_volume != 1.0:
             audio_stream = audio_stream.filter('volume', audio_volume)
-        
+
+        # Create GPU-optimized encoder
+        encoder = create_encoder(context)
+
+        # Get GPU-optimized encoding options
+        encoding_options = encoder.get_encoding_options(codec_type="h264", profile="balanced")
+
         # Handle audio mixing/replacement
         if audio_handling == "replace":
             # Replace existing audio with new audio
@@ -99,8 +112,8 @@ def main(params: Inputs, context: Context) -> Outputs:
             original_audio_volume = params.get("original_audio_volume", 0.5)
             
             # Check if video has audio
-            has_audio = any(stream['codec_type'] == 'audio' for stream in video_probe['streams'])
-            
+            has_audio = video_probe_result.has_audio
+
             if has_audio:
                 # Adjust original audio volume
                 original_audio = video_input.audio.filter('volume', original_audio_volume)
@@ -113,10 +126,10 @@ def main(params: Inputs, context: Context) -> Outputs:
         elif audio_handling == "keep_both":
             # Keep both audio tracks as separate streams (works with MKV)
             output_file = f"/oomol-driver/oomol-storage/{base_name}_with_audio.mkv"
-            
+
             # Check if video has audio
-            has_audio = any(stream['codec_type'] == 'audio' for stream in video_probe['streams'])
-            
+            has_audio = video_probe_result.has_audio
+
             if has_audio:
                 # Create output with multiple audio streams
                 output_stream = ffmpeg.output(
@@ -124,8 +137,7 @@ def main(params: Inputs, context: Context) -> Outputs:
                     video_input.audio,  # Original audio
                     audio_stream,       # New audio
                     output_file,
-                    vcodec='libx264',
-                    acodec='aac',
+                    **encoding_options,
                     **{'map': ['0:v:0', '0:a:0', '1:a:0']}  # Map video and both audio streams
                 )
             else:
@@ -134,8 +146,7 @@ def main(params: Inputs, context: Context) -> Outputs:
                     video_stream,
                     audio_stream,
                     output_file,
-                    vcodec='libx264',
-                    acodec='aac'
+                    **encoding_options
                 )
         else:
             raise ValueError(f"Invalid audio handling method: {audio_handling}")
@@ -146,8 +157,7 @@ def main(params: Inputs, context: Context) -> Outputs:
                 video_stream,
                 final_audio,
                 output_file,
-                vcodec='libx264',
-                acodec='aac'
+                **encoding_options
             )
         
         # Run FFmpeg command
