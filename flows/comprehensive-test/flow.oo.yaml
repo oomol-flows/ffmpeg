@@ -28,7 +28,7 @@ nodes:
     title: "%extract-audio-from-video-1%"
     inputs_from:
       - handle: video_file
-        value: /oomol-driver/oomol-storage/test/Area22211.MP4
+        value: /oomol-driver/oomol-storage/video/Area22211.MP4
       - handle: output_format
         value: mp3
       - handle: audio_quality

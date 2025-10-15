@@ -1,0 +1,31 @@
+title: "Test Merge Multiple Audio"
+nodes:
+  - node_id: merge-multiple-audio#1
+    task: self::merge-multiple-audio
+    inputs_from:
+      - handle: main_audio
+        value: /oomol-driver/oomol-storage/mix_speech1.wav
+      - handle: background_audio
+        value: /oomol-driver/oomol-storage/Area22211_audio.mp3
+      - handle: merge_mode
+        value: overlay
+      - handle: main_volume
+        value: 1.0
+      - handle: background_volume
+        value: 1
+      - handle: background_sync_method
+        value: loop
+      - handle: fade_in_duration
+        value: 1.0
+      - handle: fade_out_duration
+        value: 1.0
+      - handle: output_format
+        value: mp3
+  - node_id: audio_preview#1
+    title: "音频预览 #1"
+    inputs_from:
+      - handle: audio_path
+        from_node:
+          - node_id: merge-multiple-audio#1
+            output_handle: merged_audio
+    task: oomol-preview::audio_preview
