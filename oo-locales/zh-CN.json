@@ -1,4 +1,6 @@
 {
+  "1": "获取媒体信息 #1",
+  "12": "音频预览 #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "一个面向 OOMOL 平台的综合视频和音频处理工具包，提供由 FFmpeg 驱动的多媒体操作可复用模块集合。",
   "display-name": "FFmpeg",
   "comprehensive-task-test": "综合任务测试",
@@ -183,5 +185,17 @@
   "output-framerate-fps": "输出帧率（fps）",
   "gif-quality-optimization": "GIF质量优化",
   "enable-dithering-for-better-color-gradients": "启用抖动以获得更好的色彩渐变",
-  "number-of-loops-0-infinite-loop": "循环次数（0 = 无限循环）"
+  "number-of-loops-0-infinite-loop": "循环次数（0 = 无限循环）",
+  "test-merge-multiple-audio": "测试合并多个音频",
+  "merge-multiple-audio": "合并多个音频",
+  "merge-multiple-audio-files-with-volume-control-supporting-overla": "合并多个音频文件并支持音量控制，支持叠加（混音）或顺序模式，非常适合将人声与背景音乐结合。",
+  "main-audio-file-e-g-voice-narration": "主音频文件（例如，语音、旁白）",
+  "background-audio-file-e-g-background-music": "背景音频文件（例如，背景音乐）",
+  "merge-mode-overlay-mix-together-or-sequential-one-after-another": "合并模式：叠加（混合在一起）或顺序（一个接一个）",
+  "main-audio-volume-1-0-original-0-5-half-volume-2-0-double-volume": "主音量（1.0 = 原始音量，0.5 = 一半音量，2.0 = 双倍音量）",
+  "background-audio-volume-1-0-original-recommended-0-3-0-5-for-bac": "背景 音频 音量（1.0 = 原始，建议 0.3-0.5 用于 背景 音乐）",
+  "how-to-sync-background-audio-with-main-audio-overlay-mode-only": "如何在仅叠加模式下同步背景音频与主音频",
+  "fade-in-duration-in-seconds-0-no-fade-in2": "淡入时长（秒）（0 = 无淡入）",
+  "fade-out-duration-in-seconds-0-no-fade-out2": "淡出时长（秒）（0 = 无淡出）",
+  "output-audio-format4": "输出音频格式"
 }

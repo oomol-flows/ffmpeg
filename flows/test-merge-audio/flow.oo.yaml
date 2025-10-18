@@ -1,4 +1,4 @@
-title: "Test Merge Multiple Audio"
+title: "%test-merge-multiple-audio%"
 nodes:
   - node_id: merge-multiple-audio#1
     task: self::merge-multiple-audio
@@ -22,7 +22,7 @@ nodes:
       - handle: output_format
         value: mp3
   - node_id: audio_preview#1
-    title: "音频预览 #1"
+    title: "%12%"
     inputs_from:
       - handle: audio_path
         from_node:

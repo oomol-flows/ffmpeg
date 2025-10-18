@@ -1,4 +1,6 @@
 {
+  "1": "Get media information #1",
+  "12": "Audio Preview #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "A comprehensive video and audio processing toolkit for OOMOL platform, providing a collection of reusable blocks for multimedia manipulation powered by FFmpeg.",
   "display-name": "FFmpeg",
   "comprehensive-task-test": "Comprehensive Task Test",
@@ -183,5 +185,17 @@
   "output-framerate-fps": "Output framerate (fps)",
   "gif-quality-optimization": "GIF quality optimization",
   "enable-dithering-for-better-color-gradients": "Enable dithering for better color gradients",
-  "number-of-loops-0-infinite-loop": "Number of loops (0 = infinite loop)"
+  "number-of-loops-0-infinite-loop": "Number of loops (0 = infinite loop)",
+  "test-merge-multiple-audio": "Test Merge Multiple Audio",
+  "merge-multiple-audio": "Merge Multiple Audio",
+  "merge-multiple-audio-files-with-volume-control-supporting-overla": "Merge multiple audio files with volume control, supporting overlay (mix) or sequential modes, perfect for combining voice with background music",
+  "main-audio-file-e-g-voice-narration": "Main audio file (e.g., voice, narration)",
+  "background-audio-file-e-g-background-music": "Background audio file (e.g., background music)",
+  "merge-mode-overlay-mix-together-or-sequential-one-after-another": "Merge mode: overlay (mix together) or sequential (one after another)",
+  "main-audio-volume-1-0-original-0-5-half-volume-2-0-double-volume": "Main audio volume (1.0 = original, 0.5 = half volume, 2.0 = double volume)",
+  "background-audio-volume-1-0-original-recommended-0-3-0-5-for-bac": "Background audio volume (1.0 = original, recommended 0.3-0.5 for background music)",
+  "how-to-sync-background-audio-with-main-audio-overlay-mode-only": "How to sync background audio with main audio (overlay mode only)",
+  "fade-in-duration-in-seconds-0-no-fade-in2": "Fade in duration in seconds (0 = no fade in)",
+  "fade-out-duration-in-seconds-0-no-fade-out2": "Fade out duration in seconds (0 = no fade out)",
+  "output-audio-format4": "Output audio format"
 }

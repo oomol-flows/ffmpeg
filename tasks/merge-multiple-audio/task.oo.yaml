@@ -1,6 +1,6 @@
 inputs_def:
   - handle: main_audio
-    description: "Main audio file (e.g., voice, narration)"
+    description: "%main-audio-file-e-g-voice-narration%"
     json_schema:
       type: string
       ui:widget: file
@@ -18,7 +18,7 @@ inputs_def:
     nullable: false
 
   - handle: background_audio
-    description: "Background audio file (e.g., background music)"
+    description: "%background-audio-file-e-g-background-music%"
     json_schema:
       type: string
       ui:widget: file
@@ -36,7 +36,7 @@ inputs_def:
     nullable: false
 
   - handle: merge_mode
-    description: "Merge mode: overlay (mix together) or sequential (one after another)"
+    description: "%merge-mode-overlay-mix-together-or-sequential-one-after-another%"
     json_schema:
       type: string
       enum:
@@ -46,16 +46,16 @@ inputs_def:
     nullable: false
 
   - handle: main_volume
-    description: "Main audio volume (1.0 = original, 0.5 = half volume, 2.0 = double volume)"
+    description: "%main-audio-volume-1-0-original-0-5-half-volume-2-0-double-volume%"
     json_schema:
       type: number
       minimum: 0.0
       maximum: 3.0
-    value: 1.0
+    value: 1
     nullable: false
 
   - handle: background_volume
-    description: "Background audio volume (1.0 = original, recommended 0.3-0.5 for background music)"
+    description: "%background-audio-volume-1-0-original-recommended-0-3-0-5-for-bac%"
     json_schema:
       type: number
       minimum: 0.0
@@ -64,7 +64,7 @@ inputs_def:
     nullable: false
 
   - handle: background_sync_method
-    description: "How to sync background audio with main audio (overlay mode only)"
+    description: "%how-to-sync-background-audio-with-main-audio-overlay-mode-only%"
     json_schema:
       type: string
       enum:
@@ -75,7 +75,7 @@ inputs_def:
     nullable: true
 
   - handle: fade_in_duration
-    description: "Fade in duration in seconds (0 = no fade in)"
+    description: "%fade-in-duration-in-seconds-0-no-fade-in2%"
     json_schema:
       type: number
       minimum: 0
@@ -84,7 +84,7 @@ inputs_def:
     nullable: false
 
   - handle: fade_out_duration
-    description: "Fade out duration in seconds (0 = no fade out)"
+    description: "%fade-out-duration-in-seconds-0-no-fade-out2%"
     json_schema:
       type: number
       minimum: 0
@@ -93,7 +93,7 @@ inputs_def:
     nullable: false
 
   - handle: output_format
-    description: "Output audio format"
+    description: "%output-audio-format4%"
     json_schema:
       type: string
       enum:
@@ -140,6 +140,6 @@ executor:
     entry: __init__.py
     spawn: false
 
-title: "Merge Multiple Audio"
+title: "%merge-multiple-audio%"
 icon: ":carbon:audio-console:"
-description: "Merge multiple audio files with volume control, supporting overlay (mix) or sequential modes, perfect for combining voice with background music"
+description: "%merge-multiple-audio-files-with-volume-control-supporting-overla%"

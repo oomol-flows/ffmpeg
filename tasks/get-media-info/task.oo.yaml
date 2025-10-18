@@ -49,9 +49,9 @@ inputs_def:
 
 outputs_def:
   - handle: media_info
-    description: "Media file information"
+    description: "Media file information as JSON"
     json_schema:
-      contentMediaType: oomol/var
+      contentMediaType: oomol/json
       type: object
 
   - handle: info_file

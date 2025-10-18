@@ -6,7 +6,7 @@ class Inputs(typing.TypedDict):
     include_streams: bool
     include_chapters: bool
 class Outputs(typing.TypedDict):
-    media_info: typing.NotRequired[typing.Any]
+    media_info: typing.NotRequired[dict]
     info_file: typing.NotRequired[str]
 #endregion
 
