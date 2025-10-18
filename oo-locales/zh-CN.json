@@ -197,5 +197,12 @@
   "how-to-sync-background-audio-with-main-audio-overlay-mode-only": "如何在仅叠加模式下同步背景音频与主音频",
   "fade-in-duration-in-seconds-0-no-fade-in2": "淡入时长（秒）（0 = 无淡入）",
   "fade-out-duration-in-seconds-0-no-fade-out2": "淡出时长（秒）（0 = 无淡出）",
-  "output-audio-format4": "输出音频格式"
+  "output-audio-format4": "输出音频格式",
+  "test-mux-subtitle": "测试 Mux 字幕",
+  "make-mkv-video": "制作 mkv 视频",
+  "mux-srt-subtitle-into-mkv-container-without-re-encoding-video-au": "将 SRT 字幕无重新编码视频 / 音频地封装进 MKV 容器。字幕作为外部轨道添加。",
+  "input-video-file-to-mux-no-re-encoding": "输入要复用（无需重新编码）的视频文件",
+  "srt-subtitle-file-to-mux-as-external-subtitle-track": "SRT 字幕文件作为外部字幕轨道进行混流",
+  "subtitle-language-code-e-g-eng-chi-jpn": "字幕语言代码（例如： eng， chi， jpn）",
+  "subtitle-track-title-optional": "字幕轨道标题（可选）"
 }

@@ -197,5 +197,12 @@
   "how-to-sync-background-audio-with-main-audio-overlay-mode-only": "How to sync background audio with main audio (overlay mode only)",
   "fade-in-duration-in-seconds-0-no-fade-in2": "Fade in duration in seconds (0 = no fade in)",
   "fade-out-duration-in-seconds-0-no-fade-out2": "Fade out duration in seconds (0 = no fade out)",
-  "output-audio-format4": "Output audio format"
+  "output-audio-format4": "Output audio format",
+  "test-mux-subtitle": "Test Mux Subtitle",
+  "make-mkv-video": "make mkv video",
+  "mux-srt-subtitle-into-mkv-container-without-re-encoding-video-au": "Mux SRT subtitle into MKV container without re-encoding video/audio. Subtitle is added as external track.",
+  "input-video-file-to-mux-no-re-encoding": "Input video file to mux (no re-encoding)",
+  "srt-subtitle-file-to-mux-as-external-subtitle-track": "SRT subtitle file to mux as external subtitle track",
+  "subtitle-language-code-e-g-eng-chi-jpn": "Subtitle language code (e.g., eng, chi, jpn)",
+  "subtitle-track-title-optional": "Subtitle track title (optional)"
 }

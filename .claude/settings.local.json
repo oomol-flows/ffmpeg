@@ -15,7 +15,8 @@
       "Bash(python3:*)",
       "Bash(poetry run python3:*)",
       "Read(//root/.claude/**)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(ffprobe:*)"
     ],
     "deny": [],
     "ask": []

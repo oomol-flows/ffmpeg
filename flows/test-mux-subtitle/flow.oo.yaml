@@ -1,0 +1,15 @@
+nodes:
+  - node_id: mux-video-subtitle#1
+    task: self::make-mkv-video
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/oomol-storage/视频1_trimmed.mp4
+      - handle: subtitle_file
+        value: /oomol-driver/oomol-storage/Area22211_audio.srt
+      - handle: subtitle_language
+        value:
+      - handle: subtitle_title
+        value:
+
+
+title: "%test-mux-subtitle%"

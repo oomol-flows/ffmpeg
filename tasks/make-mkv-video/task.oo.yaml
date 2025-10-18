@@ -1,0 +1,71 @@
+inputs_def:
+  - handle: video_file
+    description: "%input-video-file-to-mux-no-re-encoding%"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+              - wmv
+        excludeAll: true
+    nullable: false
+
+  - handle: subtitle_file
+    description: "%srt-subtitle-file-to-mux-as-external-subtitle-track%"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Subtitle Files
+            extensions:
+              - srt
+        excludeAll: true
+    nullable: false
+
+  - handle: subtitle_language
+    description: "%subtitle-language-code-e-g-eng-chi-jpn%"
+    json_schema:
+      type: string
+    value:
+    nullable: true
+
+  - handle: subtitle_title
+    description: "%subtitle-track-title-optional%"
+    json_schema:
+      type: string
+    value:
+    nullable: true
+
+outputs_def:
+  - handle: output_video
+    description: "MKV video file with muxed subtitle track"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MKV Files
+            extensions:
+              - mkv
+        excludeAll: true
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "%make-mkv-video%"
+icon: ":carbon:ibm-cloud-direct-link-1-exchange:"
+description: "%mux-srt-subtitle-into-mkv-container-without-re-encoding-video-au%"
+ui:
+  default_width: 500
