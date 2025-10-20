@@ -1,20 +1,31 @@
 title: "%test-extract-frames%"
 nodes:
+  - node_id: extract-audio#1
+    title: "从视频中提取音频 #1"
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/oomol-storage/video_compressed.mp4.mp4
+      - handle: output_format
+        value: mp3
+      - handle: audio_quality
+        value: 192
+    task: self::extract-audio
   - node_id: extract-video-frames#1
-    task: self::extract-video-frames
+    title: "提取视频帧 #1"
     inputs_from:
       - handle: input_file
       - handle: extraction_mode
         value: single
       - handle: timestamp
-        value: null
+        value: 0
       - handle: interval
-        value: 2.0
+        value: 1
       - handle: frame_count
-        value: null
+        value: 10
       - handle: output_format
-        value: "jpg"
+        value: jpg
       - handle: quality
         value: 95
       - handle: output_prefix
-        value: "frame"
+        value: frame
+    task: self::extract-video-frames

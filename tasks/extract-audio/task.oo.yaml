@@ -39,13 +39,6 @@ inputs_def:
     value: 192
     nullable: false
 
-  - handle: use_gpu
-    description: "%enable-gpu-acceleration-for-audio-processing%"
-    json_schema:
-      type: boolean
-    value: true
-    nullable: false
-
 outputs_def:
   - handle: audio_file
     description: "Extracted audio file"

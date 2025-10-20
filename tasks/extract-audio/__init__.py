@@ -4,7 +4,6 @@ class Inputs(typing.TypedDict):
     video_file: str
     output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg"]
     audio_quality: float
-    use_gpu: bool
 class Outputs(typing.TypedDict):
     audio_file: typing.NotRequired[str]
 #endregion
@@ -27,12 +26,11 @@ def main(params: Inputs, context: Context) -> Outputs:
     video_file = params["video_file"]
     output_format = params["output_format"]
     audio_quality = params["audio_quality"]
-    use_gpu = params["use_gpu"]
-    
+
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
     output_file = f"/oomol-driver/oomol-storage/{base_name}_audio.{output_format}"
-    
+
     try:
         # Create FFmpeg input stream
         input_stream = ffmpeg.input(video_file)
@@ -43,19 +41,8 @@ def main(params: Inputs, context: Context) -> Outputs:
             'audio_bitrate': f'{audio_quality}k'
         }
 
-        # Create output stream with GPU support if enabled
-        if use_gpu:
-            # Use GPU hardware acceleration for decoding
-            # This helps when extracting audio from high-resolution video files
-            output_stream = ffmpeg.output(
-                input_stream,
-                output_file,
-                **audio_options,
-                hwaccel='auto'
-            )
-        else:
-            # CPU-only processing
-            output_stream = ffmpeg.output(input_stream, output_file, **audio_options)
+        # Create output stream
+        output_stream = ffmpeg.output(input_stream, output_file, **audio_options)
 
         # Run FFmpeg command
         ffmpeg.run(output_stream, overwrite_output=True, quiet=True)

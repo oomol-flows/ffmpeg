@@ -3,17 +3,16 @@ import typing
 class Inputs(typing.TypedDict):
     input_file: str
     extraction_mode: typing.Literal["single", "interval", "count", "all"]
-    timestamp: typing.NotRequired[float]
-    interval: typing.NotRequired[float]
-    frame_count: typing.NotRequired[int]
+    timestamp: float | None
+    interval: float | None
+    frame_count: float | None
     output_format: typing.Literal["jpg", "png", "webp"]
-    quality: int
+    quality: float
     output_prefix: str
-
 class Outputs(typing.TypedDict):
-    output_frames: list[str]
-    output_directory: str
-    frame_info: dict
+    output_frames: typing.NotRequired[list[str]]
+    output_directory: typing.NotRequired[str]
+    frame_info: typing.NotRequired[dict]
 #endregion
 
 from oocana import Context
