@@ -4,9 +4,8 @@ nodes:
     task: self::extract-video-frames
     inputs_from:
       - handle: input_file
-        value: "/oomol-driver/oomol-storage/55NzKQYzgRU_clip.mp4"
       - handle: extraction_mode
-        value: "interval"
+        value: single
       - handle: timestamp
         value: null
       - handle: interval
