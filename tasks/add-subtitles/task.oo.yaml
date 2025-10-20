@@ -96,6 +96,21 @@ inputs_def:
     value: true
     nullable: false
 
+  - handle: use_gpu
+    description: "%enable-gpu-acceleration-for-video-encoding%"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: subtitle_language
+    description: "%subtitle-language-code-leave-empty-for-auto-detect%"
+    json_schema:
+      type: string
+      pattern: "^[a-z]{2,3}(-[A-Z]{2,4})?$"
+      value: ""
+    nullable: true
+
 outputs_def:
   - handle: subtitled_video
     description: "Video with subtitles added"

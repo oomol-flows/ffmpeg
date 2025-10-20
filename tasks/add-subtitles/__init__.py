@@ -10,6 +10,8 @@ class Inputs(typing.TypedDict):
     outline_color: str | None
     subtitle_position: typing.Literal["bottom", "top", "center"]
     hard_subtitle: bool
+    use_gpu: bool
+    subtitle_language: str | None
 class Outputs(typing.TypedDict):
     subtitled_video: typing.NotRequired[str]
 #endregion
@@ -17,6 +19,46 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import re
+from utils.ffmpeg_encoder import create_encoder
+
+def detect_subtitle_language(subtitle_file: str, custom_language: str = None) -> str:
+    """
+    Detect subtitle language from file name or use custom language
+
+    Args:
+        subtitle_file: Path to subtitle file
+        custom_language: Custom language code provided by user
+
+    Returns:
+        Language code (e.g., 'eng', 'chi', 'jpn')
+    """
+    if custom_language and custom_language.strip():
+        return custom_language.strip()
+
+    # Extract language from filename
+    filename = os.path.basename(subtitle_file).lower()
+
+    # Common language patterns in filenames
+    language_patterns = {
+        'eng': r'\b(eng|english|en)\b',
+        'chi': r'\b(chi|chinese|zh|cn)\b',
+        'jpn': r'\b(jpn|japanese|ja)\b',
+        'kor': r'\b(kor|korean|ko)\b',
+        'fre': r'\b(fre|french|fr)\b',
+        'ger': r'\b(ger|german|de)\b',
+        'spa': r'\b(spa|spanish|es)\b',
+        'rus': r'\b(rus|russian|ru)\b',
+        'por': r'\b(por|portuguese|pt)\b',
+        'ita': r'\b(ita|italian|it)\b',
+    }
+
+    for lang_code, pattern in language_patterns.items():
+        if re.search(pattern, filename):
+            return lang_code
+
+    # Default to English if no language detected
+    return 'eng'
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -34,6 +76,8 @@ def main(params: Inputs, context: Context) -> Outputs:
     subtitle_style = params["subtitle_style"]
     subtitle_position = params["subtitle_position"]
     hard_subtitle = params["hard_subtitle"]
+    use_gpu = params["use_gpu"]
+    subtitle_language = params.get("subtitle_language")
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
@@ -74,28 +118,58 @@ def main(params: Inputs, context: Context) -> Outputs:
                 # Default subtitle styling
                 video_stream = video_input.video.filter('subtitles', subtitle_file)
             
+            # Create GPU-optimized encoder
+            encoder = create_encoder(context)
+
+            # Get encoding options based on GPU availability
+            if use_gpu:
+                encoding_options = encoder.get_encoding_options(codec_type="h264", profile="balanced")
+            else:
+                encoding_options = {
+                    'vcodec': 'libx264',
+                    'acodec': 'aac'
+                }
+
             # Create output with burned-in subtitles
             output_stream = ffmpeg.output(
-                video_stream, 
-                video_input.audio, 
+                video_stream,
+                video_input.audio,
                 output_file,
-                vcodec='libx264',
-                acodec='aac'
+                **encoding_options
             )
         else:
             # Soft subtitles (embed as a separate stream)
             subtitle_input = ffmpeg.input(subtitle_file)
-            
+
+            # Detect subtitle language
+            detected_language = detect_subtitle_language(subtitle_file, subtitle_language)
+
+            # Create GPU-optimized encoder
+            encoder = create_encoder(context)
+
+            # Get encoding options based on GPU availability
+            if use_gpu:
+                encoding_options = encoder.get_encoding_options(codec_type="h264", profile="balanced")
+                # Add subtitle-specific options
+                encoding_options.update({
+                    'scodec': 'srt',
+                    'metadata:s:s:0': f'language={detected_language}'
+                })
+            else:
+                encoding_options = {
+                    'vcodec': 'libx264',
+                    'acodec': 'aac',
+                    'scodec': 'srt',
+                    'metadata:s:s:0': f'language={detected_language}'
+                }
+
             # Create output with embedded subtitle stream
             output_stream = ffmpeg.output(
                 video_input.video,
                 video_input.audio,
                 subtitle_input,
                 output_file,
-                vcodec='libx264',
-                acodec='aac',
-                scodec='srt',  # Subtitle codec
-                **{'metadata:s:s:0': 'language=eng'}  # Set subtitle language metadata
+                **encoding_options
             )
         
         # Run FFmpeg command
