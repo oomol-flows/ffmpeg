@@ -187,6 +187,7 @@
   "enable-dithering-for-better-color-gradients": "启用抖动以获得更好的色彩渐变",
   "number-of-loops-0-infinite-loop": "循环次数（0 = 无限循环）",
   "test-merge-multiple-audio": "测试合并多个音频",
+  "test-extract-frames": "测试提取帧",
   "merge-multiple-audio": "合并多个音频",
   "merge-multiple-audio-files-with-volume-control-supporting-overla": "合并多个音频文件并支持音量控制，支持叠加（混音）或顺序模式，非常适合将人声与背景音乐结合。",
   "main-audio-file-e-g-voice-narration": "主音频文件（例如，语音、旁白）",
@@ -204,5 +205,15 @@
   "input-video-file-to-mux-no-re-encoding": "输入要复用（无需重新编码）的视频文件",
   "srt-subtitle-file-to-mux-as-external-subtitle-track": "SRT 字幕文件作为外部字幕轨道进行混流",
   "subtitle-language-code-e-g-eng-chi-jpn": "字幕语言代码（例如： eng， chi， jpn）",
-  "subtitle-track-title-optional": "字幕轨道标题（可选）"
+  "subtitle-track-title-optional": "字幕轨道标题（可选）",
+  "extract-video-frames": "提取视频帧",
+  "extract-frames-from-video-at-specified-intervals-timestamps-or-cou": "从视频中以指定间隔、时间戳或数量提取帧，并可自定义质量",
+  "input-video-file-for-frame-extraction": "用于提取帧的输入视频文件",
+  "frame-extraction-mode": "帧提取模式",
+  "timestamp-in-seconds-for-single-frame-extraction": "单帧提取的时间戳（秒）",
+  "interval-in-seconds-between-frames": "帧之间的间隔（秒）",
+  "number-of-frames-to-extract-evenly": "均匀提取的帧数",
+  "output-image-format": "输出图像格式",
+  "image-quality-1-100-for-jpg-and-webp": "图像质量（JPG 和 WebP 为 1-100）",
+  "prefix-for-output-filenames": "输出文件名前缀"
 }

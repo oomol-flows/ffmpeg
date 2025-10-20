@@ -1,0 +1,106 @@
+inputs_def:
+  - handle: input_file
+    description: "%input-video-file-for-frame-extraction%"
+    json_schema:
+      type: string
+      ui:widget: file
+      ui:options:
+        filters:
+          - name: Video Files
+            extensions:
+              - mp4
+              - avi
+              - mov
+              - mkv
+              - webm
+              - flv
+        excludeAll: true
+    nullable: false
+
+  - handle: extraction_mode
+    description: "%frame-extraction-mode%"
+    json_schema:
+      type: string
+      enum:
+        - "single"
+        - "interval"
+        - "count"
+        - "all"
+    value: single
+    nullable: false
+
+  - handle: timestamp
+    description: "%timestamp-in-seconds-for-single-frame-extraction%"
+    json_schema:
+      type: number
+    value: 0
+    nullable: true
+
+  - handle: interval
+    description: "%interval-in-seconds-between-frames%"
+    json_schema:
+      type: number
+    value: 1.0
+    nullable: true
+
+  - handle: frame_count
+    description: "%number-of-frames-to-extract-evenly%"
+    json_schema:
+      type: number
+    value: 10
+    nullable: true
+
+  - handle: output_format
+    description: "%output-image-format%"
+    json_schema:
+      type: string
+      enum:
+        - "jpg"
+        - "png"
+        - "webp"
+    value: jpg
+    nullable: false
+
+  - handle: quality
+    description: "%image-quality-1-100-for-jpg-and-webp%"
+    json_schema:
+      type: number
+    value: 95
+    nullable: false
+
+  - handle: output_prefix
+    description: "%prefix-for-output-filenames%"
+    json_schema:
+      type: string
+    value: frame
+    nullable: false
+
+outputs_def:
+  - handle: output_frames
+    description: "List of extracted frame file paths"
+    json_schema:
+      type: array
+      items:
+        type: string
+
+  - handle: output_directory
+    description: "Directory containing extracted frames"
+    json_schema:
+      type: string
+      ui:widget: dir
+
+  - handle: frame_info
+    description: "Information about extracted frames"
+    json_schema:
+      contentMediaType: oomol/json
+      type: object
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "%extract-video-frames%"
+icon: ":carbon:image-copy:"
+description: "%extract-frames-from-video-at-specified-intervals-timestamps-or-cou%"

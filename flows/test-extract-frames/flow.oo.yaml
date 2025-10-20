@@ -1,0 +1,21 @@
+title: "%test-extract-frames%"
+nodes:
+  - node_id: extract-video-frames#1
+    task: self::extract-video-frames
+    inputs_from:
+      - handle: input_file
+        value: "/oomol-driver/oomol-storage/55NzKQYzgRU_clip.mp4"
+      - handle: extraction_mode
+        value: "interval"
+      - handle: timestamp
+        value: null
+      - handle: interval
+        value: 2.0
+      - handle: frame_count
+        value: null
+      - handle: output_format
+        value: "jpg"
+      - handle: quality
+        value: 95
+      - handle: output_prefix
+        value: "frame"
