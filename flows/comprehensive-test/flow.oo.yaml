@@ -58,3 +58,27 @@ nodes:
       - handle: include_chapters
         value: false
     task: self::get-media-info
+  - node_id: add-subtitles#1
+    title: "添加视频字幕 #1"
+    inputs_from:
+      - handle: video_file
+      - handle: subtitle_file
+      - handle: subtitle_style
+        value: default
+      - handle: font_name
+        value: Arial
+      - handle: font_size
+        value: 20
+      - handle: font_color
+        value: "#FFFFFF"
+      - handle: outline_color
+        value: "#000000"
+      - handle: subtitle_position
+        value: bottom
+      - handle: hard_subtitle
+        value: true
+      - handle: use_gpu
+        value: true
+      - handle: subtitle_language
+        value:
+    task: self::add-subtitles

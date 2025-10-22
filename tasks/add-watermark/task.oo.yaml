@@ -48,6 +48,7 @@ inputs_def:
               - gif
               - bmp
         excludeAll: true
+    value:
     nullable: true
 
   - handle: position

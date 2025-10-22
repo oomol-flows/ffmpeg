@@ -109,6 +109,7 @@ inputs_def:
       type: string
       pattern: "^[a-z]{2,3}(-[A-Z]{2,4})?$"
       value: ""
+    value:
     nullable: true
 
 outputs_def:
