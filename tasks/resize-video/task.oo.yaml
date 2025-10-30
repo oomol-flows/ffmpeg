@@ -66,6 +66,9 @@ inputs_def:
     value: 50
     nullable: true
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: maintain_aspect_ratio
     description: "%maintain-aspect-ratio%"
     json_schema:

@@ -32,6 +32,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Style Options
+    collapsed: true
+
   - handle: subtitle_style
     description: "%subtitle-rendering-style%"
     json_schema:
@@ -88,6 +91,9 @@ inputs_def:
         - "center"
     value: bottom
     nullable: false
+
+  - group: Advanced Options
+    collapsed: true
 
   - handle: hard_subtitle
     description: "%burn-subtitles-into-video-hard-subtitle-vs-embed-as-stream-soft%"

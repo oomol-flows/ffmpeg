@@ -46,6 +46,9 @@ inputs_def:
       maximum: 30
     nullable: false
 
+  - group: Quality Options
+    collapsed: true
+
   - handle: quality
     description: "%gif-quality-optimization%"
     json_schema:

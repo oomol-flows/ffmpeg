@@ -64,6 +64,9 @@ inputs_def:
     value: bottom-right
     nullable: false
 
+  - group: Style Options
+    collapsed: true
+
   - handle: opacity
     description: "%watermark-opacity-0-0-transparent-1-0-opaque%"
     json_schema:

@@ -34,6 +34,9 @@ inputs_def:
     value: mp4
     nullable: false
 
+  - group: Codec Options
+    collapsed: true
+
   - handle: video_codec
     description: "%video-codec%"
     json_schema:

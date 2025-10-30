@@ -53,6 +53,9 @@ inputs_def:
     value: 50
     nullable: true
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: preset
     description: "%encoding-preset-speed-vs-compression-efficiency%"
     json_schema:

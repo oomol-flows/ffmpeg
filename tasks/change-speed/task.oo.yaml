@@ -50,6 +50,9 @@ inputs_def:
     value: 2
     nullable: true
 
+  - group: Audio Options
+    collapsed: true
+
   - handle: maintain_audio_pitch
     description: "%maintain-original-audio-pitch-when-changing-speed%"
     json_schema:

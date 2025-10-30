@@ -55,6 +55,9 @@ inputs_def:
     value: -23
     nullable: true
 
+  - group: Fade Effects
+    collapsed: true
+
   - handle: fade_in_duration
     description: "%fade-in-duration-in-seconds-0-no-fade-in%"
     json_schema:

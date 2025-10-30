@@ -50,6 +50,9 @@ inputs_def:
     value: 10
     nullable: true
 
+  - group: Output Options
+    collapsed: true
+
   - handle: output_format
     description: "%output-image-format%"
     json_schema:
