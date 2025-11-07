@@ -31,6 +31,9 @@ inputs_def:
     value: rotate_90_cw
     nullable: false
 
+  - group: Custom Rotation Options
+    collapsed: true
+
   - handle: custom_angle
     description: "%custom-rotation-angle-in-degrees-used-when-operation-is-custom_a%"
     json_schema:

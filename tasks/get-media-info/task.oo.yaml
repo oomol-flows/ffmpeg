@@ -23,6 +23,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: output_format
     description: "%output-format-for-media-information%"
     json_schema:

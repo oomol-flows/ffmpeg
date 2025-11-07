@@ -34,6 +34,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Audio Options
+    collapsed: true
+
   - handle: sync_method
     description: "%method-to-synchronize-audio-with-video-duration%"
     json_schema:

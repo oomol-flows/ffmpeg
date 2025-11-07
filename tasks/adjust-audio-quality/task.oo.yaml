@@ -55,6 +55,9 @@ inputs_def:
     value: 6
     nullable: true
 
+  - group: Output Options
+    collapsed: true
+
   - handle: output_format
     description: "%output-audio-format%"
     json_schema:

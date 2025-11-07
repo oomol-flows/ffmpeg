@@ -32,6 +32,9 @@ inputs_def:
       minimum: 0
     nullable: false
 
+  - group: Output Options
+    collapsed: true
+
   - handle: output_format
     description: "%output-audio-format3%"
     json_schema:

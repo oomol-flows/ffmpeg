@@ -33,6 +33,9 @@ inputs_def:
     value: mp3
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: audio_quality
     description: "%audio-quality-bitrate-in-kbps-for-lossy-formats%"
     json_schema:

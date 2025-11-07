@@ -19,6 +19,9 @@ inputs_def:
       minItems: 2
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: concat_method
     description: "%concatenation-method-to-use%"
     json_schema:

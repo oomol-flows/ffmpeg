@@ -31,6 +31,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Subtitle Metadata
+    collapsed: true
+
   - handle: subtitle_language
     description: "%subtitle-language-code-e-g-eng-chi-jpn%"
     json_schema:

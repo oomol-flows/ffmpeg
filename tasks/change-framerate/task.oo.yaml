@@ -26,6 +26,9 @@ inputs_def:
     value: 30
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: frame_interpolation
     description: "%frame-interpolation-method%"
     json_schema:

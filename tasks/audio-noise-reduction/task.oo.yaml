@@ -29,6 +29,9 @@ inputs_def:
     value: highpass
     nullable: false
 
+  - group: Filter Parameters
+    collapsed: true
+
   - handle: highpass_frequency
     description: "%high-pass-filter-frequency-in-hz-used-when-noise_reduction_metho%"
     json_schema:

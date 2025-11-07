@@ -63,6 +63,9 @@ inputs_def:
     value: 0.4
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: background_sync_method
     description: "%how-to-sync-background-audio-with-main-audio-overlay-mode-only%"
     json_schema:

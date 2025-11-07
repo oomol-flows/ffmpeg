@@ -54,6 +54,9 @@ inputs_def:
     value: 1
     nullable: false
 
+  - group: Advanced Options
+    collapsed: true
+
   - handle: original_audio_volume
     description: "%original-audio-volume-when-mixing-used-when-audio_handling-is-mi%"
     json_schema:

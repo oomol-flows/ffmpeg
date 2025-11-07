@@ -31,6 +31,9 @@ inputs_def:
       minimum: 0
     nullable: false
 
+  - group: Output Options
+    collapsed: true
+
   - handle: output_format
     description: "%output-video-format2%"
     json_schema:
