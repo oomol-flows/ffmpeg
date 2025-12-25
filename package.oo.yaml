@@ -7,7 +7,7 @@ scripts:
 
     apt update && apt install -y openssh-client
 
-    wget https://static.oomol.com/sshexec/v1.0.12/installer.sh --output-document /tmp/installer.sh
+    wget https://static.oomol.com/sshexec/v1.0.13/installer.sh --output-document /tmp/installer.sh
 
     bash +x /tmp/installer.sh
 
