@@ -19,3 +19,30 @@ description: "%a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla%
 dependencies:
   oomol-preview: 0.2.0
 releaseNotes: remove layer ci
+ui:
+  blocks:
+    - add-subtitles
+    - add-watermark
+    - adjust-audio-quality
+    - adjust-volume
+    - audio-noise-reduction
+    - change-framerate
+    - change-speed
+    - compress-video
+    - convert-audio-format
+    - convert-video-format
+    - extract-audio
+    - extract-video-frames
+    - get-media-info
+    - make-mkv-video
+    - merge-multiple-audio
+    - merge-audio-video-subtitle
+    - merge-videos
+    - remove-audio
+    - replace-audio
+    - resize-video
+    - rotate-video
+    - trim-audio
+    - trim-video
+    - video-filters
+    - video-to-gif

@@ -42,63 +42,62 @@ def main(params: Inputs, context: Context) -> Outputs:
             raise FileNotFoundError(f"Video file not found: {video_file}")
 
     # Get optional parameters
-    codec = params.get("codec", "libx264")
-    audio_codec = params.get("audio_codec", "aac")
-    crf = params.get("crf", 23)
-    preset = params.get("preset", "medium")
+    codec = params.get("codec") or "libx264"
+    audio_codec = params.get("audio_codec") or "aac"
+    crf = params.get("crf")
+    if crf is None:
+        crf = 23
+    preset = params.get("preset") or "medium"
+
+    # Generate output filename
+    base_name = os.path.splitext(os.path.basename(video_files[0]))[0]
+    if not output_path:
+        output_path = f"/oomol-driver/oomol-storage/{base_name}_merged.mp4"
 
     try:
         # Report initial progress
         context.report_progress(10)
 
-        # Create input streams for all videos
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_path)
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
+
+        context.report_progress(20)
+
+        # Create input streams
         input_streams = [ffmpeg.input(video_file) for video_file in video_files]
 
-        # Prepare video and audio streams for concatenation
-        video_streams = [stream.video for stream in input_streams]
-        audio_streams = [stream.audio for stream in input_streams]
+        context.report_progress(40)
 
-        context.report_progress(30)
+        # Concatenate using filter_complex
+        # Each input needs both video and audio streams
+        inputs = []
+        for stream in input_streams:
+            inputs.append(stream['v'])
+            inputs.append(stream['a'])
 
-        # Concatenate video and audio streams
-        joined_video = ffmpeg.concat(*video_streams, v=1, a=0).node
-        joined_audio = ffmpeg.concat(*audio_streams, v=0, a=1).node
+        # Use concat filter with n=number of videos, v=1 video stream, a=1 audio stream
+        joined = ffmpeg.concat(*inputs, n=len(video_files), v=1, a=1).node
 
         context.report_progress(50)
 
         # Build output options
-        output_kwargs = {}
+        output_options = {
+            'vcodec': codec if codec != "copy" else "libx264",
+            'acodec': audio_codec if audio_codec != "copy" else "aac"
+        }
 
-        if codec == "copy":
-            output_kwargs['vcodec'] = 'copy'
-        else:
-            output_kwargs['vcodec'] = codec
-            output_kwargs['crf'] = str(crf)
-            output_kwargs['preset'] = preset
+        if codec != "copy":
+            output_options['crf'] = str(crf)
+            output_options['preset'] = preset
 
-        if audio_codec == "copy":
-            output_kwargs['acodec'] = 'copy'
-        else:
-            output_kwargs['acodec'] = audio_codec
-
-        context.report_progress(60)
-
-        # Create output with both video and audio
-        output = ffmpeg.output(
-            joined_video[0],
-            joined_audio[0],
-            output_path,
-            **output_kwargs
-        )
+        # Create output stream - concat returns multiple outputs [v][a]
+        output_stream = ffmpeg.output(joined[0], joined[1], output_path, **output_options)
 
         # Run FFmpeg command
-        ffmpeg.run(output, overwrite_output=True, quiet=True)
-
-        context.report_progress(90)
-
-        # Verify output file was created
-        if not os.path.exists(output_path):
-            raise RuntimeError("Failed to create merged video file")
+        context.report_progress(60)
+        ffmpeg.run(output_stream, overwrite_output=True, quiet=True)
 
         context.report_progress(100)
 

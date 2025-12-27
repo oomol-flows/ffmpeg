@@ -82,3 +82,23 @@ nodes:
       - handle: subtitle_language
         value:
     task: self::add-subtitles
+  - node_id: merge-videos#1
+    title: "合并视频 #1"
+    inputs_from:
+      - handle: video_files
+        value:
+          - /oomol-driver/oomol-storage/KUN - Jasmine (Official
+            Video)_trimmed.mp4
+          - /oomol-driver/oomol-storage/KUN - Jasmine (Official
+            Video)_trimmed.mp4
+      - handle: output_path
+        value: /oomol-driver/oomol-storage/做梦/做梦 333.mp4
+      - handle: codec
+        value: libx264
+      - handle: audio_codec
+        value: aac
+      - handle: crf
+        value: 23
+      - handle: preset
+        value: medium
+    task: self::merge-videos

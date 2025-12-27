@@ -5,15 +5,15 @@ inputs_def:
       type: array
       items:
         type: string
-        ui:widget: file
+        "ui:widget": file
     nullable: false
 
   - handle: output_path
     description: "%output-file-path-for-merged-video%"
     json_schema:
       type: string
-      ui:widget: save
-      ui:options:
+      "ui:widget": save
+      "ui:options":
         filters:
           - name: MP4
             extensions:
@@ -84,7 +84,7 @@ outputs_def:
     description: "%path-to-the-merged-video-file%"
     json_schema:
       type: string
-      ui:widget: file
+      "ui:widget": file
 
 executor:
   name: python
