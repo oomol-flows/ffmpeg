@@ -8,6 +8,9 @@ inputs_def:
         "ui:widget": file
     nullable: false
 
+  - group: Optional
+    collapsed: false
+
   - handle: output_path
     description: "%output-file-path-for-merged-video%"
     json_schema:
@@ -25,10 +28,8 @@ inputs_def:
             extensions:
               - avi
         excludeAll: true
-    nullable: false
-
-  - group: Optional
-    collapsed: true
+    value:
+    nullable: true
 
   - handle: codec
     description: "%video-codec-default-libx264%"

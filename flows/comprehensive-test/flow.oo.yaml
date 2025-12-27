@@ -83,7 +83,7 @@ nodes:
         value:
     task: self::add-subtitles
   - node_id: merge-videos#1
-    title: "合并视频 #1"
+    title: "%16%"
     inputs_from:
       - handle: video_files
         value:

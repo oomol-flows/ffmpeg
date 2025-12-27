@@ -1,9 +1,11 @@
 {
   "1": "Get media information #1",
+  "4": "Merge video #4",
   "12": "Audio Preview #1",
   "13": "Add video subtitles #1",
   "14": "Extract audio from video #1",
   "15": "Extract video frame #1",
+  "16": "Merge video #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "A comprehensive video and audio processing toolkit for OOMOL platform, providing a collection of reusable blocks for multimedia manipulation powered by FFmpeg.",
   "display-name": "FFmpeg",
   "comprehensive-task-test": "Comprehensive Task Test",
@@ -243,5 +245,6 @@
   "trimmed-audio-file": "Trimmed audio file",
   "trimmed-video-file": "Trimmed video file",
   "video-with-applied-filter": "Video with applied filter",
-  "generated-gif-file": "Generated GIF file"
+  "generated-gif-file": "Generated GIF file",
+  "list-of-extracted-frame-file-paths": "Extract frame file path list"
 }

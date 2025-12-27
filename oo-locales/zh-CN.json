@@ -1,9 +1,11 @@
 {
   "1": "获取媒体信息 #1",
+  "4": "合并视频 #4",
   "12": "音频预览 #1",
   "13": "添加视频字幕 #1",
   "14": "从视频中提取音频 #1",
   "15": "提取视频帧 #1",
+  "16": "合并视频 #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "一个面向 OOMOL 平台的综合视频和音频处理工具包，提供由 FFmpeg 驱动的多媒体操作可复用模块集合。",
   "display-name": "FFmpeg",
   "comprehensive-task-test": "综合任务测试",
@@ -239,5 +241,9 @@
   "rotated-flipped-video-file": "旋转 / 翻转 的视频文件",
   "trimmed-audio-file": "已剪辑的音频文件",
   "trimmed-video-file": "剪辑后的视频文件",
-  "video-with-applied-filter": "已应用滤镜的视频"
+  "video-with-applied-filter": "已应用滤镜的视频",
+  "extracted-audio-file": "提取的音频文件",
+  "list-of-video-file-paths-to-merge": "要合并的视频文件路径列表",
+  "output-file-path-for-merged-video": "合并视频的输出文件路径",
+  "encoding-speed-preset": "编码速度预设"
 }

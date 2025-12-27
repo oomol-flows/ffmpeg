@@ -1,37 +1,15 @@
 title: "%test-video-merge%"
 nodes:
   # Test concat-videos task with direct file paths
-  - node_id: concat_videos#1
-    task: self::concat-videos
+  - node_id: merge-videos#4
+    title: "%4%"
     inputs_from:
       - handle: video_files
         value:
           - /oomol-driver/oomol-storage/KUN - Home（Official Video）.mp4
-          - /oomol-driver/oomol-storage/The Only Trait for Success in the AI
-            Era—How to Build It ｜ Carnegie Mellon University Po-Shen Loh.mp4
-      - handle: concat_method
-        value: "filter"
-      - handle: audio_handling
-        value: "first_only"
-      - handle: resolution_handling
-        value: "auto"
-      - handle: custom_width
-        value: null
-      - handle: custom_height
-        value: null
-      - handle: transition_duration
-        value: 0.0
-  - node_id: merge-videos#2
-    title: "合并视频 #2"
-    inputs_from:
-      - handle: video_files
-        value:
-          - /oomol-driver/oomol-storage/KUN - Jasmine (Official
-            Video)_trimmed.mp4
-          - /oomol-driver/oomol-storage/KUN - Jasmine (Official
-            Video)_trimmed.mp4
+          - /oomol-driver/oomol-storage/KUN - Home（Official Video）.mp4
       - handle: output_path
-        value: /oomol-driver/oomol-storage/做梦/做梦.mp4
+        value:
       - handle: codec
         value: libx264
       - handle: audio_codec
