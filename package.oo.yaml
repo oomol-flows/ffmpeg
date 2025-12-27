@@ -17,7 +17,7 @@ repository: https://github.com/oomol-flows/ffmpeg.git
 displayName: "%display-name%"
 description: "%a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla%"
 dependencies:
-  oomol-preview: 0.2.0
+  {}
 releaseNotes: remove layer ci
 ui:
   blocks:
