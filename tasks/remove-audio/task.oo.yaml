@@ -35,7 +35,7 @@ inputs_def:
 
 outputs_def:
   - handle: output_video
-    description: "Video file without audio"
+    description: "%video-file-without-audio%"
     json_schema:
       type: string
       ui:widget: save

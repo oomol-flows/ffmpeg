@@ -110,7 +110,7 @@ inputs_def:
 
 outputs_def:
   - handle: filtered_video
-    description: "Video with applied filter"
+    description: "%video-with-applied-filter%"
     json_schema:
       type: string
       ui:widget: save

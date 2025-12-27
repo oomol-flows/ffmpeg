@@ -73,7 +73,7 @@ inputs_def:
 
 outputs_def:
   - handle: speed_changed_video
-    description: "Video with changed playback speed"
+    description: "%video-with-changed-playback-speed%"
     json_schema:
       type: string
       ui:widget: save

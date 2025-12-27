@@ -49,7 +49,7 @@ inputs_def:
 
 outputs_def:
   - handle: trimmed_video
-    description: "Trimmed video file"
+    description: "%trimmed-video-file%"
     json_schema:
       type: string
       ui:widget: save

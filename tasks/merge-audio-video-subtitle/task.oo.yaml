@@ -96,7 +96,7 @@ inputs_def:
 
 outputs_def:
   - handle: merged_video
-    description: "Video with merged audio track"
+    description: "%video-with-merged-audio-track%"
     json_schema:
       type: string
       ui:widget: save

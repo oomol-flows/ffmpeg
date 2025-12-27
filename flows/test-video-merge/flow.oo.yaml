@@ -6,8 +6,9 @@ nodes:
     inputs_from:
       - handle: video_files
         value:
-          - /oomol-driver/oomol-storage/preview_audio_extract.mp3.mp4
-          - /oomol-driver/oomol-storage/oomol_local.mp4
+          - /oomol-driver/oomol-storage/KUN - Home（Official Video）.mp4
+          - /oomol-driver/oomol-storage/The Only Trait for Success in the AI
+            Era—How to Build It ｜ Carnegie Mellon University Po-Shen Loh.mp4
       - handle: concat_method
         value: "filter"
       - handle: audio_handling

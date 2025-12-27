@@ -78,7 +78,7 @@ inputs_def:
 
 outputs_def:
   - handle: resized_video
-    description: "Resized video file"
+    description: "%resized-video-file%"
     json_schema:
       type: string
       ui:widget: save

@@ -78,7 +78,7 @@ inputs_def:
 
 outputs_def:
   - handle: volume_adjusted_audio
-    description: "Volume adjusted audio file"
+    description: "%volume-adjusted-audio-file%"
     json_schema:
       type: string
       ui:widget: save

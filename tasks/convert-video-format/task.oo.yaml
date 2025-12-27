@@ -81,7 +81,7 @@ inputs_def:
 
 outputs_def:
   - handle: converted_video
-    description: "Converted video file"
+    description: "%converted-video-file%"
     json_schema:
       type: string
       ui:widget: save

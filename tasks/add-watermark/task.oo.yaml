@@ -106,7 +106,7 @@ inputs_def:
 
 outputs_def:
   - handle: watermarked_video
-    description: "Video with watermark added"
+    description: "%video-with-watermark-added%"
     json_schema:
       type: string
       ui:widget: save

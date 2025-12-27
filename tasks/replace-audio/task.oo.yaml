@@ -60,7 +60,7 @@ inputs_def:
 
 outputs_def:
   - handle: output_video
-    description: "Video with replaced audio track"
+    description: "%video-with-replaced-audio-track%"
     json_schema:
       type: string
       ui:widget: save

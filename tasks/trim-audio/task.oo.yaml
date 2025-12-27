@@ -50,7 +50,7 @@ inputs_def:
 
 outputs_def:
   - handle: trimmed_audio
-    description: "Trimmed audio file"
+    description: "%trimmed-audio-file%"
     json_schema:
       type: string
       ui:widget: save

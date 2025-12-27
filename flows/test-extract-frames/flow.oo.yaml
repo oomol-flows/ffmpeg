@@ -1,7 +1,7 @@
 title: "%test-extract-frames%"
 nodes:
   - node_id: extract-audio#1
-    title: "从视频中提取音频 #1"
+    title: "%14%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/video_compressed.mp4.mp4
@@ -11,7 +11,7 @@ nodes:
         value: 192
     task: self::extract-audio
   - node_id: extract-video-frames#1
-    title: "提取视频帧 #1"
+    title: "%15%"
     inputs_from:
       - handle: input_file
       - handle: extraction_mode

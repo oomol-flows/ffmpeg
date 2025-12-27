@@ -1,6 +1,7 @@
 {
   "nodes": {
     "concat_videos#1": {
+      "contentWidth": 350,
       "rfNode": {
         "position": {
           "x": 1200,

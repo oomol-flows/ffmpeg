@@ -73,7 +73,7 @@ inputs_def:
 
 outputs_def:
   - handle: converted_audio
-    description: "Converted audio file"
+    description: "%converted-audio-file%"
     json_schema:
       type: string
       ui:widget: save

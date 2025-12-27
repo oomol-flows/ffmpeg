@@ -111,7 +111,7 @@ inputs_def:
 
 outputs_def:
   - handle: merged_audio
-    description: "Merged audio file"
+    description: "%merged-audio-file%"
     json_schema:
       type: string
       ui:widget: save
@@ -146,3 +146,5 @@ executor:
 title: "%merge-multiple-audio%"
 icon: ":carbon:audio-console:"
 description: "%merge-multiple-audio-files-with-volume-control-supporting-overla%"
+ui:
+  default_width: 525.9167743577694

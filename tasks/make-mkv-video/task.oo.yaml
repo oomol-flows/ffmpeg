@@ -50,7 +50,7 @@ inputs_def:
 
 outputs_def:
   - handle: output_video
-    description: "MKV video file with muxed subtitle track"
+    description: "%mkv-video-file-with-muxed-subtitle-track%"
     json_schema:
       type: string
       ui:widget: save

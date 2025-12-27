@@ -79,7 +79,7 @@ inputs_def:
 
 outputs_def:
   - handle: noise_reduced_audio
-    description: "Noise reduced audio file"
+    description: "%noise-reduced-audio-file%"
     json_schema:
       type: string
       ui:widget: save

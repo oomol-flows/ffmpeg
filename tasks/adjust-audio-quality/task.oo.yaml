@@ -72,7 +72,7 @@ inputs_def:
 
 outputs_def:
   - handle: quality_adjusted_audio
-    description: "Quality adjusted audio file"
+    description: "%quality-adjusted-audio-file%"
     json_schema:
       type: string
       ui:widget: save

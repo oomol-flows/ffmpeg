@@ -44,7 +44,7 @@ inputs_def:
 
 outputs_def:
   - handle: audio_file
-    description: "Extracted audio file"
+    description: "%extracted-audio-file%"
     json_schema:
       type: string
       ui:widget: save

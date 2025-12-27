@@ -55,7 +55,7 @@ inputs_def:
 
 outputs_def:
   - handle: rotated_video
-    description: "Rotated/flipped video file"
+    description: "%rotated-flipped-video-file%"
     json_schema:
       type: string
       ui:widget: save

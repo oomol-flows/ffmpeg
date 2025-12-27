@@ -80,20 +80,20 @@ inputs_def:
 
 outputs_def:
   - handle: output_frames
-    description: "List of extracted frame file paths"
+    description: "%list-of-extracted-frame-file-paths%"
     json_schema:
       type: array
       items:
         type: string
 
   - handle: output_directory
-    description: "Directory containing extracted frames"
+    description: "%directory-containing-extracted-frames%"
     json_schema:
       type: string
       ui:widget: dir
 
   - handle: frame_info
-    description: "Information about extracted frames"
+    description: "%information-about-extracted-frames%"
     json_schema:
       contentMediaType: oomol/json
       type: object

@@ -41,7 +41,7 @@ inputs_def:
 
 outputs_def:
   - handle: framerate_changed_video
-    description: "Video with changed frame rate"
+    description: "%video-with-changed-frame-rate%"
     json_schema:
       type: string
       ui:widget: save

@@ -1,0 +1,97 @@
+inputs_def:
+  - handle: video_files
+    description: "%list-of-video-file-paths-to-merge%"
+    json_schema:
+      type: array
+      items:
+        type: string
+        ui:widget: file
+    nullable: false
+
+  - handle: output_path
+    description: "%output-file-path-for-merged-video%"
+    json_schema:
+      type: string
+      ui:widget: save
+      ui:options:
+        filters:
+          - name: MP4
+            extensions:
+              - mp4
+          - name: MKV
+            extensions:
+              - mkv
+          - name: AVI
+            extensions:
+              - avi
+        excludeAll: true
+    nullable: false
+
+  - group: Optional
+    collapsed: true
+
+  - handle: codec
+    description: "%video-codec-default-libx264%"
+    json_schema:
+      type: string
+      enum:
+        - libx264
+        - libx265
+        - mpeg4
+        - copy
+    value: libx264
+    nullable: true
+
+  - handle: audio_codec
+    description: "%audio-codec-default-aac%"
+    json_schema:
+      type: string
+      enum:
+        - aac
+        - mp3
+        - copy
+    value: aac
+    nullable: true
+
+  - handle: crf
+    description: "%constant-rate-factor-for-quality-lower-better-quality-0-51%"
+    json_schema:
+      type: integer
+      minimum: 0
+      maximum: 51
+    value: 23
+    nullable: true
+
+  - handle: preset
+    description: "%encoding-speed-preset%"
+    json_schema:
+      type: string
+      enum:
+        - ultrafast
+        - superfast
+        - veryfast
+        - faster
+        - fast
+        - medium
+        - slow
+        - slower
+        - veryslow
+    value: medium
+    nullable: true
+
+outputs_def:
+  - handle: output_file
+    description: "%path-to-the-merged-video-file%"
+    json_schema:
+      type: string
+      ui:widget: file
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "%merge-videos%"
+icon: ":carbon:video:"
+description: "%merge-multiple-video-files-into-a-single-video-file-sequentially%"

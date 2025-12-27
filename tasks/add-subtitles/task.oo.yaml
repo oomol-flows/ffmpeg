@@ -120,7 +120,7 @@ inputs_def:
 
 outputs_def:
   - handle: subtitled_video
-    description: "Video with subtitles added"
+    description: "%video-with-subtitles-added%"
     json_schema:
       type: string
       ui:widget: save

@@ -52,13 +52,13 @@ inputs_def:
 
 outputs_def:
   - handle: media_info
-    description: "Media file information as JSON"
+    description: "%media-file-information-as-json%"
     json_schema:
       contentMediaType: oomol/json
       type: object
 
   - handle: info_file
-    description: "Media information saved as file"
+    description: "%media-information-saved-as-file%"
     json_schema:
       type: string
       ui:widget: save

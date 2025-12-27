@@ -22,7 +22,10 @@
       "Read(//root/.claude/**)",
       "Bash(mv:*)",
       "Bash(ffprobe:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(cat:*)",
+      "Bash(env)"
     ],
     "deny": [],
     "ask": []

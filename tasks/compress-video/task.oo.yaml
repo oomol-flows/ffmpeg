@@ -84,7 +84,7 @@ inputs_def:
 
 outputs_def:
   - handle: compressed_video
-    description: "Compressed video file"
+    description: "%compressed-video-file%"
     json_schema:
       type: string
       ui:widget: save

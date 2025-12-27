@@ -77,7 +77,7 @@ inputs_def:
 
 outputs_def:
   - handle: gif_file
-    description: "Generated GIF file"
+    description: "%generated-gif-file%"
     json_schema:
       type: string
       ui:widget: save

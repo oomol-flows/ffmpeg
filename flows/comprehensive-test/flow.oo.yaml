@@ -59,7 +59,7 @@ nodes:
         value: false
     task: self::get-media-info
   - node_id: add-subtitles#1
-    title: "添加视频字幕 #1"
+    title: "%13%"
     inputs_from:
       - handle: video_file
       - handle: subtitle_file
