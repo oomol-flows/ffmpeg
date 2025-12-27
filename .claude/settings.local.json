@@ -32,7 +32,9 @@
       "Bash(then)",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(for task_file in tasks/*/__init__.py)"
+      "Bash(for task_file in tasks/*/__init__.py)",
+      "Bash(ssh:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

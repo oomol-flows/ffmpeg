@@ -16,6 +16,7 @@ class Outputs(typing.TypedDict):
 from oocana import Context
 import ffmpeg
 import os
+import subprocess
 
 def main(params: Inputs, context: Context) -> Outputs:
     """
@@ -38,67 +39,67 @@ def main(params: Inputs, context: Context) -> Outputs:
     quality = params.get("quality") or "medium"
     dither = params.get("dither") if params.get("dither") is not None else True
     loop_count = params.get("loop_count") if params.get("loop_count") is not None else 0
-    
-    # Generate output filename
+
+    # Set quality parameters based on quality setting
+    if quality == "high":
+        colors = 256
+        bayer_scale = 0 if dither else -1
+    elif quality == "medium":
+        colors = 128
+        bayer_scale = 2 if dither else -1
+    else:  # low
+        colors = 64
+        bayer_scale = 4 if dither else -1
+
+    # Generate output filename using session directory
     base_name = os.path.splitext(os.path.basename(video_file))[0]
     output_file = os.path.join(context.session_dir, f"{base_name}.gif")
-    
+
+    # Ensure output directory exists
+    os.makedirs(context.session_dir, exist_ok=True)
+
     try:
-        # Create FFmpeg input stream with timing
-        input_options = {'ss': start_time}
+        # Build ffmpeg filter chain
+        filter_complex = f'[0:v]fps={framerate}[s0];[s0]scale={int(output_width)}:-1:flags=lanczos[s1];[s1]split=2[s2][s3];[s2]palettegen=max_colors={colors}[s4];[s3][s4]paletteuse'
+
+        if bayer_scale >= 0:
+            filter_complex += f'=dither=bayer\\:bayer_scale\\={bayer_scale}'
+
+        filter_complex += '[s5]'
+
+        # Build ffmpeg command
+        cmd = [
+            'ffmpeg',
+            '-ss', str(start_time),
+            '-i', video_file
+        ]
+
         if duration > 0:
-            input_options['t'] = duration
-            
-        input_stream = ffmpeg.input(video_file, **input_options)
-        
-        # Set quality parameters based on quality setting
-        if quality == "high":
-            colors = 256
-            bayer_scale = 0 if dither else -1
-        elif quality == "medium":
-            colors = 128
-            bayer_scale = 2 if dither else -1
-        else:  # low
-            colors = 64
-            bayer_scale = 4 if dither else -1
-        
-        # Create filter chain for GIF optimization
-        # Step 1: Scale and set framerate
-        video_stream = (
-            input_stream
-            .video
-            .filter('fps', framerate)
-            .filter('scale', output_width, -1, flags='lanczos')  # -1 maintains aspect ratio
-        )
-        
-        # Step 2: Generate optimal palette
-        palette_stream = video_stream.filter('palettegen', max_colors=colors)
-        
-        # Step 3: Use palette for final GIF with dithering options
-        paletteuse_options = {'dither': 'bayer:bayer_scale=' + str(bayer_scale)} if bayer_scale >= 0 else {}
-        
-        gif_stream = ffmpeg.filter(
-            [video_stream, palette_stream], 
-            'paletteuse',
-            **paletteuse_options
-        )
-        
-        # Create output with loop settings
-        output_options = {}
+            cmd.extend(['-t', str(duration)])
+
+        cmd.extend([
+            '-filter_complex', filter_complex,
+            '-map', '[s5]'
+        ])
+
         if loop_count > 0:
-            output_options['loop'] = loop_count
+            cmd.extend(['-loop', str(int(loop_count))])
         elif loop_count == 0:
-            output_options['loop'] = -1  # Infinite loop
-        
-        output_stream = ffmpeg.output(gif_stream, output_file, **output_options)
-        
-        # Run FFmpeg command
-        ffmpeg.run(output_stream, overwrite_output=True, quiet=True)
-        
+            cmd.extend(['-loop', '-1'])  # Infinite loop
+
+        cmd.extend(['-y', output_file])
+
+        # Run ffmpeg
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if result.returncode != 0:
+            raise Exception(f"FFmpeg failed with return code {result.returncode}: {result.stderr}")
+
+        # Verify file was created
+        if not os.path.exists(output_file):
+            raise Exception(f"GIF file was not created at {output_file}")
+
         return {"gif_file": output_file}
-        
-    except ffmpeg.Error as e:
-        error_msg = e.stderr.decode('utf-8') if e.stderr else str(e)
-        raise Exception(f"FFmpeg error during GIF conversion: {error_msg}")
+
     except Exception as e:
         raise Exception(f"Error converting video to GIF: {str(e)}")

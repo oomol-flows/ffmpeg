@@ -1,0 +1,19 @@
+{
+  "nodes": {
+    "video-to-gif#3": {
+      "rfNode": {
+        "position": {
+          "x": 537.5,
+          "y": 236.5
+        }
+      },
+      "sections": {
+        "inputs": {
+          "groupCollapsed": {
+            "Advanced Options": true
+          }
+        }
+      }
+    }
+  }
+}
