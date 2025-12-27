@@ -1,2 +1,15 @@
 nodes:
-  []
+  - node_id: video-to-gif#2
+    title: "视频转GIF转换器 #2"
+    inputs_from:
+      - handle: video_file
+      - handle: start_time
+      - handle: duration
+      - handle: output_width
+      - handle: framerate
+      - handle: quality
+        value: medium
+      - handle: dither
+        value: true
+      - handle: loop_count
+    task: self::video-to-gif

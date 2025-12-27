@@ -46,7 +46,7 @@ inputs_def:
         - "flac"
         - "ogg"
     value: mp3
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: trimmed_audio

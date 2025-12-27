@@ -21,14 +21,16 @@ inputs_def:
     json_schema:
       type: number
       minimum: 0
-    nullable: false
+    value: null
+    nullable: true
 
   - handle: duration
     description: "%duration-in-seconds-0-entire-video%"
     json_schema:
       type: number
       minimum: 0
-    nullable: false
+    value: null
+    nullable: true
 
   - handle: output_width
     description: "%output-gif-width-height-will-be-calculated-to-maintain-aspect-ra%"
@@ -36,7 +38,8 @@ inputs_def:
       type: number
       minimum: 100
       maximum: 1920
-    nullable: false
+    value: null
+    nullable: true
 
   - handle: framerate
     description: "%output-framerate-fps%"
@@ -44,9 +47,10 @@ inputs_def:
       type: number
       minimum: 1
       maximum: 30
-    nullable: false
+    value: null
+    nullable: true
 
-  - group: Quality Options
+  - group: Advanced Options
     collapsed: true
 
   - handle: quality
@@ -57,15 +61,15 @@ inputs_def:
         - "high"
         - "medium"
         - "low"
-    value: medium
-    nullable: false
+    value: null
+    nullable: true
 
   - handle: dither
     description: "%enable-dithering-for-better-color-gradients%"
     json_schema:
       type: boolean
-    value: true
-    nullable: false
+    value: null
+    nullable: true
 
   - handle: loop_count
     description: "%number-of-loops-0-infinite-loop%"
@@ -73,7 +77,8 @@ inputs_def:
       type: number
       minimum: 0
       maximum: 100
-    nullable: false
+    value: null
+    nullable: true
 
 outputs_def:
   - handle: gif_file

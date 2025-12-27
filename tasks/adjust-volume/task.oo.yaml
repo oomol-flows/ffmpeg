@@ -65,7 +65,7 @@ inputs_def:
       minimum: 0
       maximum: 30
     value: 0
-    nullable: false
+    nullable: true
 
   - handle: fade_out_duration
     description: "%fade-out-duration-in-seconds-0-no-fade-out%"
@@ -74,7 +74,7 @@ inputs_def:
       minimum: 0
       maximum: 30
     value: 0
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: volume_adjusted_audio

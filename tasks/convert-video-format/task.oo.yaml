@@ -48,7 +48,7 @@ inputs_def:
         - "libvpx-vp9"
         - "copy"
     value: libx264
-    nullable: false
+    nullable: true
 
   - handle: audio_codec
     description: "%audio-codec%"
@@ -60,7 +60,7 @@ inputs_def:
         - "libvorbis"
         - "copy"
     value: aac
-    nullable: false
+    nullable: true
 
   - handle: quality_preset
     description: "%encoding-quality-preset%"
@@ -77,7 +77,7 @@ inputs_def:
         - "slower"
         - "veryslow"
     value: medium
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: converted_video

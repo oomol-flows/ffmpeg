@@ -62,21 +62,21 @@ inputs_def:
         - "png"
         - "webp"
     value: jpg
-    nullable: false
+    nullable: true
 
   - handle: quality
     description: "%image-quality-1-100-for-jpg-and-webp%"
     json_schema:
       type: number
     value: 95
-    nullable: false
+    nullable: true
 
   - handle: output_prefix
     description: "%prefix-for-output-filenames%"
     json_schema:
       type: string
     value: frame
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: output_frames

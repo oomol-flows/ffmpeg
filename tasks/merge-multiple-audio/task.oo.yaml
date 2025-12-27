@@ -35,6 +35,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Optional
+    collapsed: true
+
   - handle: merge_mode
     description: "%merge-mode-overlay-mix-together-or-sequential-one-after-another%"
     json_schema:
@@ -43,7 +46,7 @@ inputs_def:
         - "overlay"
         - "sequential"
     value: overlay
-    nullable: false
+    nullable: true
 
   - handle: main_volume
     description: "%main-audio-volume-1-0-original-0-5-half-volume-2-0-double-volume%"
@@ -52,7 +55,7 @@ inputs_def:
       minimum: 0.0
       maximum: 3.0
     value: 1
-    nullable: false
+    nullable: true
 
   - handle: background_volume
     description: "%background-audio-volume-1-0-original-recommended-0-3-0-5-for-bac%"
@@ -61,7 +64,7 @@ inputs_def:
       minimum: 0.0
       maximum: 3.0
     value: 0.4
-    nullable: false
+    nullable: true
 
   - group: Advanced Options
     collapsed: true
@@ -84,7 +87,7 @@ inputs_def:
       minimum: 0
       maximum: 10
     value: 0
-    nullable: false
+    nullable: true
 
   - handle: fade_out_duration
     description: "%fade-out-duration-in-seconds-0-no-fade-out2%"
@@ -93,7 +96,7 @@ inputs_def:
       minimum: 0
       maximum: 10
     value: 0
-    nullable: false
+    nullable: true
 
   - handle: output_format
     description: "%output-audio-format4%"
@@ -107,7 +110,7 @@ inputs_def:
         - "ogg"
         - "m4a"
     value: mp3
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: merged_audio

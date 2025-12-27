@@ -6,8 +6,8 @@ class Inputs(typing.TypedDict):
     crf_value: float | None
     target_bitrate: float | None
     target_filesize_mb: float | None
-    preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
-    audio_bitrate: float
+    preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"] | None
+    audio_bitrate: float | None
 class Outputs(typing.TypedDict):
     compressed_video: typing.NotRequired[str]
 #endregion
@@ -37,7 +37,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_compressed.mp4"
+    output_file = os.path.join(context.session_dir, f"{base_name}_compressed.mp4")
     
     try:
         # Create GPU-aware encoder

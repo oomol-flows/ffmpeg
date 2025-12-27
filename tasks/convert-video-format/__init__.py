@@ -3,9 +3,9 @@ import typing
 class Inputs(typing.TypedDict):
     video_file: str
     output_format: typing.Literal["mp4", "avi", "mov", "mkv", "webm", "flv", "wmv"]
-    video_codec: typing.Literal["libx264", "libx265", "libvpx", "libvpx-vp9", "copy"]
-    audio_codec: typing.Literal["aac", "mp3", "libvorbis", "copy"]
-    quality_preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"]
+    video_codec: typing.Literal["libx264", "libx265", "libvpx", "libvpx-vp9", "copy"] | None
+    audio_codec: typing.Literal["aac", "mp3", "libvorbis", "copy"] | None
+    quality_preset: typing.Literal["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow"] | None
 class Outputs(typing.TypedDict):
     converted_video: typing.NotRequired[str]
 #endregion
@@ -36,7 +36,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_converted.{output_format}"
+    output_file = os.path.join(context.session_dir, f"{base_name}_converted.{output_format}")
     
     try:
         # Create GPU-aware encoder

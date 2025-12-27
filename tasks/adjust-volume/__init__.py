@@ -6,8 +6,8 @@ class Inputs(typing.TypedDict):
     volume_percentage: float | None
     volume_decibels: float | None
     normalize_target: float | None
-    fade_in_duration: float
-    fade_out_duration: float
+    fade_in_duration: float | None
+    fade_out_duration: float | None
 class Outputs(typing.TypedDict):
     volume_adjusted_audio: typing.NotRequired[str]
 #endregion
@@ -34,7 +34,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(audio_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_volume_adjusted.mp3"
+    output_file = os.path.join(context.session_dir, f"{base_name}_volume_adjusted.mp3")
     
     try:
         # Create FFmpeg input stream

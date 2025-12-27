@@ -2,13 +2,13 @@
 import typing
 class Inputs(typing.TypedDict):
     video_file: str
-    start_time: float
-    duration: float
-    output_width: float
-    framerate: float
-    quality: typing.Literal["high", "medium", "low"]
-    dither: bool
-    loop_count: float
+    start_time: float | None
+    duration: float | None
+    output_width: float | None
+    framerate: float | None
+    quality: typing.Literal["high", "medium", "low"] | None
+    dither: bool | None
+    loop_count: float | None
 class Outputs(typing.TypedDict):
     gif_file: typing.NotRequired[str]
 #endregion
@@ -20,26 +20,28 @@ import os
 def main(params: Inputs, context: Context) -> Outputs:
     """
     Convert video to GIF with optimization options
-    
+
     Args:
         params: Input parameters containing video file and GIF settings
         context: OOMOL context object
-        
+
     Returns:
         Output GIF file path
     """
     video_file = params["video_file"]
-    start_time = params["start_time"]
-    duration = params["duration"]
-    output_width = params["output_width"]
-    framerate = params["framerate"]
-    quality = params["quality"]
-    dither = params["dither"]
-    loop_count = params["loop_count"]
+
+    # Apply default values for optional parameters
+    start_time = params.get("start_time") or 0
+    duration = params.get("duration") or 0
+    output_width = params.get("output_width") or 480
+    framerate = params.get("framerate") or 10
+    quality = params.get("quality") or "medium"
+    dither = params.get("dither") if params.get("dither") is not None else True
+    loop_count = params.get("loop_count") if params.get("loop_count") is not None else 0
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}.gif"
+    output_file = os.path.join(context.session_dir, f"{base_name}.gif")
     
     try:
         # Create FFmpeg input stream with timing

@@ -43,7 +43,7 @@ inputs_def:
       minimum: 32
       maximum: 320
     value: 192
-    nullable: false
+    nullable: true
 
   - handle: sample_rate
     description: "%sample-rate-in-hz-0-keep-original%"
@@ -58,7 +58,7 @@ inputs_def:
         - 48000
         - 96000
     value: 0
-    nullable: false
+    nullable: true
 
   - handle: channels
     description: "%audio-channels-0-keep-original-1-mono-2-stereo%"
@@ -69,7 +69,7 @@ inputs_def:
         - 1
         - 2
     value: 0
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: converted_audio

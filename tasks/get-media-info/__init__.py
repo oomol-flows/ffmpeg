@@ -34,7 +34,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(media_file))[0]
     file_extension = "json" if output_format == "json" else "txt"
-    info_file_path = f"/oomol-driver/oomol-storage/{base_name}_info.{file_extension}"
+    info_file_path = os.path.join(context.session_dir, f"{base_name}_info.{file_extension}")
     
     try:
         # Get media information using ffprobe

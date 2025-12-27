@@ -43,7 +43,7 @@ inputs_def:
         - "default"
         - "custom"
     value: default
-    nullable: false
+    nullable: true
 
   - handle: font_name
     description: "%font-name-used-when-subtitle_style-is-custom%"
@@ -90,7 +90,7 @@ inputs_def:
         - "top"
         - "center"
     value: bottom
-    nullable: false
+    nullable: true
 
   - group: Advanced Options
     collapsed: true
@@ -100,14 +100,14 @@ inputs_def:
     json_schema:
       type: boolean
     value: true
-    nullable: false
+    nullable: true
 
   - handle: use_gpu
     description: "%enable-gpu-acceleration-for-video-encoding%"
     json_schema:
       type: boolean
     value: true
-    nullable: false
+    nullable: true
 
   - handle: subtitle_language
     description: "%subtitle-language-code-leave-empty-for-auto-detect%"

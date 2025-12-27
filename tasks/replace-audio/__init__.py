@@ -3,8 +3,8 @@ import typing
 class Inputs(typing.TypedDict):
     video_file: str
     audio_file: str
-    sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
-    audio_volume: float
+    sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"] | None
+    audio_volume: float | None
 class Outputs(typing.TypedDict):
     output_video: typing.NotRequired[str]
 #endregion
@@ -33,7 +33,7 @@ def main(params: Inputs, context: Context) -> Outputs:
 
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_replaced_audio.mp4"
+    output_file = os.path.join(context.session_dir, f"{base_name}_replaced_audio.mp4")
 
     try:
         # Validate and probe video file

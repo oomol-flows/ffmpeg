@@ -6,9 +6,9 @@ class Inputs(typing.TypedDict):
     timestamp: float | None
     interval: float | None
     frame_count: float | None
-    output_format: typing.Literal["jpg", "png", "webp"]
-    quality: float
-    output_prefix: str
+    output_format: typing.Literal["jpg", "png", "webp"] | None
+    quality: float | None
+    output_prefix: str | None
 class Outputs(typing.TypedDict):
     output_frames: typing.NotRequired[list[str]]
     output_directory: typing.NotRequired[str]
@@ -40,7 +40,7 @@ def main(params: Inputs, context: Context) -> Outputs:
 
     # Create output directory
     base_name = os.path.splitext(os.path.basename(input_file))[0]
-    output_dir = f"/oomol-driver/oomol-storage/{base_name}_frames"
+    output_dir = os.path.join(context.session_dir, f"{base_name}_frames")
     os.makedirs(output_dir, exist_ok=True)
 
     try:

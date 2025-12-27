@@ -25,7 +25,14 @@
       "Bash(echo:*)",
       "Bash(ffmpeg:*)",
       "Bash(cat:*)",
-      "Bash(env)"
+      "Bash(env)",
+      "Bash(for task_file in tasks/*/_ _init__.py)",
+      "Bash(do)",
+      "Bash(if grep -q '\"\"/oomol-driver/oomol-storage' \"$task_file\")",
+      "Bash(then)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(for task_file in tasks/*/__init__.py)"
     ],
     "deny": [],
     "ask": []

@@ -5,11 +5,11 @@ class Inputs(typing.TypedDict):
     watermark_type: typing.Literal["text", "image"]
     watermark_text: str | None
     watermark_image: str | None
-    position: typing.Literal["top-left", "top-right", "bottom-left", "bottom-right", "center"]
-    opacity: float
+    position: typing.Literal["top-left", "top-right", "bottom-left", "bottom-right", "center"] | None
+    opacity: float | None
     font_size: float | None
     font_color: str | None
-    padding: float
+    padding: float | None
 class Outputs(typing.TypedDict):
     watermarked_video: typing.NotRequired[str]
 #endregion
@@ -37,7 +37,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_watermarked.mp4"
+    output_file = os.path.join(context.session_dir, f"{base_name}_watermarked.mp4")
     
     try:
         # Create FFmpeg input stream

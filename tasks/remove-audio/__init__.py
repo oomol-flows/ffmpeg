@@ -27,7 +27,7 @@ def main(params: Inputs, context: Context) -> Outputs:
 
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_no_audio.{output_format}"
+    output_file = os.path.join(context.session_dir, f"{base_name}_no_audio.{output_format}")
 
     try:
         # Create FFmpeg input stream

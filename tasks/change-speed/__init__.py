@@ -31,7 +31,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     audio_handling = params["audio_handling"]
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_speed_changed.mp4"
+    output_file = os.path.join(context.session_dir, f"{base_name}_speed_changed.mp4")
     
     try:
         # Determine speed multiplier

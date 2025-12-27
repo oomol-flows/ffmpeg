@@ -4,7 +4,7 @@ class Inputs(typing.TypedDict):
     audio_file: str
     start_time: float
     duration: float
-    output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg"]
+    output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg"] | None
 class Outputs(typing.TypedDict):
     trimmed_audio: typing.NotRequired[str]
 #endregion
@@ -31,7 +31,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(audio_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_trimmed.{output_format}"
+    output_file = os.path.join(context.session_dir, f"{base_name}_trimmed.{output_format}")
     
     try:
         # Create FFmpeg input stream

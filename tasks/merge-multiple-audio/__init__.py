@@ -3,13 +3,13 @@ import typing
 class Inputs(typing.TypedDict):
     main_audio: str
     background_audio: str
-    merge_mode: typing.Literal["overlay", "sequential"]
-    main_volume: float
-    background_volume: float
+    merge_mode: typing.Literal["overlay", "sequential"] | None
+    main_volume: float | None
+    background_volume: float | None
     background_sync_method: typing.Literal["loop", "stretch", "trim"] | None
-    fade_in_duration: float
-    fade_out_duration: float
-    output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg", "m4a"]
+    fade_in_duration: float | None
+    fade_out_duration: float | None
+    output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg", "m4a"] | None
 class Outputs(typing.TypedDict):
     merged_audio: typing.NotRequired[str]
 #endregion
@@ -41,7 +41,7 @@ def main(params: Inputs, context: Context) -> Outputs:
 
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(main_audio))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_merged.{output_format}"
+    output_file = os.path.join(context.session_dir, f"{base_name}_merged.{output_format}")
 
     try:
         # Probe audio files to get durations

@@ -36,6 +36,9 @@ inputs_def:
     value: blur
     nullable: false
 
+  - group: Filter Parameters
+    collapsed: true
+
   - handle: blur_strength
     description: "%blur-strength-used-when-filter_type-is-blur%"
     json_schema:

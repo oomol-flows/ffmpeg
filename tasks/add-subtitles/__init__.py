@@ -3,14 +3,14 @@ import typing
 class Inputs(typing.TypedDict):
     video_file: str
     subtitle_file: str
-    subtitle_style: typing.Literal["default", "custom"]
+    subtitle_style: typing.Literal["default", "custom"] | None
     font_name: str | None
     font_size: float | None
     font_color: str | None
     outline_color: str | None
-    subtitle_position: typing.Literal["bottom", "top", "center"]
-    hard_subtitle: bool
-    use_gpu: bool
+    subtitle_position: typing.Literal["bottom", "top", "center"] | None
+    hard_subtitle: bool | None
+    use_gpu: bool | None
     subtitle_language: str | None
 class Outputs(typing.TypedDict):
     subtitled_video: typing.NotRequired[str]
@@ -81,11 +81,11 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    
+
     if hard_subtitle:
-        output_file = f"/oomol-driver/oomol-storage/{base_name}_with_subtitles.mp4"
+        output_file = os.path.join(context.session_dir, f"{base_name}_with_subtitles.mp4")
     else:
-        output_file = f"/oomol-driver/oomol-storage/{base_name}_with_subtitles.mkv"
+        output_file = os.path.join(context.session_dir, f"{base_name}_with_subtitles.mkv")
     
     try:
         # Create FFmpeg input streams

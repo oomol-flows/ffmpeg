@@ -47,7 +47,7 @@ inputs_def:
         - "trim_audio"
         - "trim_video"
     value: stretch_audio
-    nullable: false
+    nullable: true
 
   - handle: audio_volume
     description: "%volume-level-for-the-new-audio-1-0-original%"
@@ -56,7 +56,7 @@ inputs_def:
       minimum: 0.0
       maximum: 3.0
     value: 1
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: output_video

@@ -51,6 +51,9 @@ inputs_def:
     value:
     nullable: true
 
+  - group: Optional
+    collapsed: true
+
   - handle: position
     description: "%watermark-position%"
     json_schema:
@@ -62,7 +65,7 @@ inputs_def:
         - "bottom-right"
         - "center"
     value: bottom-right
-    nullable: false
+    nullable: true
 
   - group: Style Options
     collapsed: true
@@ -74,7 +77,7 @@ inputs_def:
       minimum: 0.0
       maximum: 1.0
     value: 0.8
-    nullable: false
+    nullable: true
 
   - handle: font_size
     description: "%text-font-size-used-when-watermark_type-is-text%"
@@ -102,7 +105,7 @@ inputs_def:
       minimum: 0
       maximum: 100
     value: 20
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: watermarked_video

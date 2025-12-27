@@ -34,6 +34,9 @@ inputs_def:
         excludeAll: true
     nullable: false
 
+  - group: Optional
+    collapsed: true
+
   - handle: audio_handling
     description: "%how-to-handle-audio-tracks%"
     json_schema:
@@ -43,7 +46,7 @@ inputs_def:
         - "mix"
         - "keep_both"
     value: replace
-    nullable: false
+    nullable: true
 
   - handle: audio_volume
     description: "%new-audio-track-volume-1-0-original%"
@@ -52,7 +55,7 @@ inputs_def:
       minimum: 0.0
       maximum: 3.0
     value: 1
-    nullable: false
+    nullable: true
 
   - group: Advanced Options
     collapsed: true
@@ -76,7 +79,7 @@ inputs_def:
         - "trim_audio"
         - "trim_video"
     value: stretch_audio
-    nullable: false
+    nullable: true
 
   - handle: subtitle_file
     description: "%optional-subtitle-file-to-burn-into-video%"

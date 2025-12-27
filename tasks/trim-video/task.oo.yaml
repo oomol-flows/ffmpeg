@@ -45,7 +45,7 @@ inputs_def:
         - "mkv"
         - "webm"
     value: mp4
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: trimmed_video

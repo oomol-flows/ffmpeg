@@ -3,10 +3,10 @@ import typing
 class Inputs(typing.TypedDict):
     video_file: str
     audio_file: str
-    audio_handling: typing.Literal["replace", "mix", "keep_both"]
-    audio_volume: float
+    audio_handling: typing.Literal["replace", "mix", "keep_both"] | None
+    audio_volume: float | None
     original_audio_volume: float | None
-    sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"]
+    sync_method: typing.Literal["stretch_audio", "loop_audio", "trim_audio", "trim_video"] | None
     subtitle_file: str | None
 class Outputs(typing.TypedDict):
     merged_video: typing.NotRequired[str]
@@ -38,7 +38,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(video_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_with_audio.mp4"
+    output_file = os.path.join(context.session_dir, f"{base_name}_with_audio.mp4")
     
     try:
         # Validate and probe video file
@@ -125,7 +125,7 @@ def main(params: Inputs, context: Context) -> Outputs:
                 
         elif audio_handling == "keep_both":
             # Keep both audio tracks as separate streams (works with MKV)
-            output_file = f"/oomol-driver/oomol-storage/{base_name}_with_audio.mkv"
+            output_file = os.path.join(context.session_dir, f"{base_name}_with_audio.mkv")
 
             # Check if video has audio
             has_audio = video_probe_result.has_audio

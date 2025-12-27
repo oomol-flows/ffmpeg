@@ -3,9 +3,9 @@ import typing
 class Inputs(typing.TypedDict):
     audio_file: str
     output_format: typing.Literal["mp3", "wav", "aac", "flac", "ogg", "m4a"]
-    audio_quality: float
-    sample_rate: typing.Literal[0, 8000, 16000, 22050, 44100, 48000, 96000]
-    channels: typing.Literal[0, 1, 2]
+    audio_quality: float | None
+    sample_rate: typing.Literal[0, 8000, 16000, 22050, 44100, 48000, 96000] | None
+    channels: typing.Literal[0, 1, 2] | None
 class Outputs(typing.TypedDict):
     converted_audio: typing.NotRequired[str]
 #endregion
@@ -33,7 +33,7 @@ def main(params: Inputs, context: Context) -> Outputs:
     
     # Generate output filename
     base_name = os.path.splitext(os.path.basename(audio_file))[0]
-    output_file = f"/oomol-driver/oomol-storage/{base_name}_converted.{output_format}"
+    output_file = os.path.join(context.session_dir, f"{base_name}_converted.{output_format}")
     
     try:
         # Create FFmpeg input stream

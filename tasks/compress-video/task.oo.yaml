@@ -71,7 +71,7 @@ inputs_def:
         - "slower"
         - "veryslow"
     value: medium
-    nullable: false
+    nullable: true
 
   - handle: audio_bitrate
     description: "%audio-bitrate-in-kbps%"
@@ -80,7 +80,7 @@ inputs_def:
       minimum: 32
       maximum: 320
     value: 128
-    nullable: false
+    nullable: true
 
 outputs_def:
   - handle: compressed_video
