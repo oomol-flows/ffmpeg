@@ -1,6 +1,6 @@
 nodes:
   - node_id: extract-video-frames#1
-    title: "提取视频帧 #1"
+    title: "%17%"
     inputs_from:
       - handle: input_file
         value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
@@ -20,7 +20,7 @@ nodes:
         value: frame
     task: self::extract-video-frames
   - node_id: add-watermark#1
-    title: "添加视频水印 #1"
+    title: "%18%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
@@ -42,7 +42,7 @@ nodes:
         value: 20
     task: self::add-watermark
   - node_id: convert-video-format#1
-    title: "转换视频格式 #1"
+    title: "%19%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
@@ -55,4 +55,4 @@ nodes:
       - handle: quality_preset
         value: medium
     task: self::convert-video-format
-title: video-to-gif
+title: "%video-to-gif%"

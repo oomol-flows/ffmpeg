@@ -6,6 +6,9 @@
   "14": "从视频中提取音频 #1",
   "15": "提取视频帧 #1",
   "16": "合并视频 #1",
+  "17": "提取视频帧 #1",
+  "18": "添加视频水印 #1",
+  "19": "转换视频格式 #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "一个面向 OOMOL 平台的综合视频和音频处理工具包，提供由 FFmpeg 驱动的多媒体操作可复用模块集合。",
   "display-name": "FFmpeg",
   "comprehensive-task-test": "综合任务测试",
@@ -245,5 +248,8 @@
   "extracted-audio-file": "提取的音频文件",
   "list-of-video-file-paths-to-merge": "要合并的视频文件路径列表",
   "output-file-path-for-merged-video": "合并视频的输出文件路径",
-  "encoding-speed-preset": "编码速度预设"
+  "encoding-speed-preset": "编码速度预设",
+  "video-to-gif": "视频转 GIF",
+  "gif-3": "视频转GIF转换器 #3",
+  "generated-gif-file": "生成的 GIF 文件"
 }

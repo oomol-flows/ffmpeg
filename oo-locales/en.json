@@ -1,4 +1,7 @@
 {
+  "17": "Extract video frame #1",
+  "18": "Add Video Watermark #1",
+  "19": "Convert video format #1",
   "a-comprehensive-video-and-audio-processing-toolkit-for-oomol-pla": "A comprehensive video and audio processing toolkit for OOMOL platform, providing a collection of reusable blocks for multimedia manipulation powered by FFmpeg.",
   "display-name": "FFmpeg",
   "add-video-subtitles": "Add Video Subtitles",
@@ -224,5 +227,7 @@
   "trimmed-video-file": "Trimmed video file",
   "video-with-applied-filter": "Video with applied filter",
   "generated-gif-file": "Generated GIF file",
-  "list-of-extracted-frame-file-paths": "Extract frame file path list"
+  "list-of-extracted-frame-file-paths": "Extract frame file path list",
+  "video-to-gif": "video-to-gif",
+  "gif-3": "Video to GIF Converter #3"
 }

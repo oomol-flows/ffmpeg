@@ -1,6 +1,6 @@
 nodes:
   - node_id: video-to-gif#3
-    title: "视频转GIF转换器 #3"
+    title: "%gif-3%"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
