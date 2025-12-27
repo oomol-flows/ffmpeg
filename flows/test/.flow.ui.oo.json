@@ -1,0 +1,50 @@
+{
+  "nodes": {
+    "extract-video-frames#1": {
+      "rfNode": {
+        "position": {
+          "x": 300.0415207141522,
+          "y": 433.49443132055245
+        }
+      },
+      "sections": {
+        "inputs": {
+          "groupCollapsed": {
+            "Output Options": true
+          }
+        }
+      }
+    },
+    "add-watermark#1": {
+      "rfNode": {
+        "position": {
+          "x": -553.5890753500553,
+          "y": 760.086097312903
+        }
+      },
+      "sections": {
+        "inputs": {
+          "groupCollapsed": {
+            "Optional": true,
+            "Style Options": true
+          }
+        }
+      }
+    },
+    "convert-video-format#1": {
+      "rfNode": {
+        "position": {
+          "x": -498.4190939329396,
+          "y": 1397.3268571358133
+        }
+      },
+      "sections": {
+        "inputs": {
+          "groupCollapsed": {
+            "Codec Options": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,22 +1,58 @@
 nodes:
-  - node_id: video-to-gif#3
-    title: "视频转GIF转换器 #3"
+  - node_id: extract-video-frames#1
+    title: "提取视频帧 #1"
+    inputs_from:
+      - handle: input_file
+        value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
+      - handle: extraction_mode
+        value: single
+      - handle: timestamp
+        value: 0
+      - handle: interval
+        value: 1
+      - handle: frame_count
+        value: 10
+      - handle: output_format
+        value: jpg
+      - handle: quality
+        value: 95
+      - handle: output_prefix
+        value: frame
+    task: self::extract-video-frames
+  - node_id: add-watermark#1
+    title: "添加视频水印 #1"
     inputs_from:
       - handle: video_file
         value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
-      - handle: start_time
+      - handle: watermark_type
+        value: text
+      - handle: watermark_text
+        value: WATERMARK
+      - handle: watermark_image
         value: null
-      - handle: duration
-        value: null
-      - handle: output_width
-        value: null
-      - handle: framerate
-        value: null
-      - handle: quality
-        value: null
-      - handle: dither
-        value: null
-      - handle: loop_count
-        value: null
-    task: self::video-to-gif
+      - handle: position
+        value: bottom-right
+      - handle: opacity
+        value: 0.8
+      - handle: font_size
+        value: 24
+      - handle: font_color
+        value: "#FFFFFF"
+      - handle: padding
+        value: 20
+    task: self::add-watermark
+  - node_id: convert-video-format#1
+    title: "转换视频格式 #1"
+    inputs_from:
+      - handle: video_file
+        value: /oomol-driver/oomol-storage/KUN - Jasmine (Official Video)_trimmed.mp4
+      - handle: output_format
+        value: mp4
+      - handle: video_codec
+        value: libx265
+      - handle: audio_codec
+        value: aac
+      - handle: quality_preset
+        value: medium
+    task: self::convert-video-format
 title: video-to-gif

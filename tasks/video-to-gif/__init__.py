@@ -14,7 +14,7 @@ class Outputs(typing.TypedDict):
 #endregion
 
 from oocana import Context
-import ffmpeg
+
 import os
 import subprocess
 
